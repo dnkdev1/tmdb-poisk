@@ -1,8 +1,5 @@
 header {
     width: 100%;
-    /*background: whitesmoke;*/
-    border-bottom: 1px solid #ccc;
-    padding: 10px 20px;
 }
 
 header nav {
@@ -13,16 +10,10 @@ header nav {
 header nav a {
     display: inline-flex;
     text-decoration: none;
-    /*color: black;        !* обычный цвет ссылок *!*/
     font-weight: 500;
 }
 
-header nav a:hover {
-    color: cornflowerblue;        /* цвет при наведении */
-}
-
 .active-link {
-    /*color: black;*/
     background: lightgrey;
     text-decoration: none;
     border-radius: 20px;
