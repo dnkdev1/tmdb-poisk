@@ -1,16 +1,6 @@
-/*header nav a::after {*/
-/*    content: "|";*/
-/*    margin: 0 10px;*/
-/*    color: black;*/
-/*}*/
-
-/*header nav a:last-child::after {*/
-/*    content: "";*/
-/*}*/
-
 header {
     width: 100%;
-    background: #fff;
+    /*background: whitesmoke;*/
     border-bottom: 1px solid #ccc;
     padding: 10px 20px;
 }
@@ -21,21 +11,25 @@ header nav {
 }
 
 header nav a {
+    display: inline-flex;
     text-decoration: none;
-    color: #0077cc;        /* обычный цвет ссылок */
+    /*color: black;        !* обычный цвет ссылок *!*/
     font-weight: 500;
 }
 
 header nav a:hover {
-    color: #ff6600;        /* цвет при наведении */
+    color: cornflowerblue;        /* цвет при наведении */
 }
 
-header nav a::after {
-    content: "|";
-    margin: 0 10px;
-    color: darkgray;           /* цвет разделителя */
+.active-link {
+    /*color: black;*/
+    background: lightgrey;
+    text-decoration: none;
+    border-radius: 20px;
+    padding: 4px 12px 4px 12px;
 }
 
-header nav a:last-child::after {
-    content: "";
+span{
+    color: darkgray;
+    margin: 20px;
 }

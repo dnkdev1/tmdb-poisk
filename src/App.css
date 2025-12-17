@@ -1,19 +1,20 @@
+html, body, #root, .app {
+    min-height: 150vh;
+}
+
 header {
     width: 100%;          /* во всю ширину */
     position: fixed;      /* закрепить сверху */
     top: 0;
     left: 0;
-    background: #fff;     /* фон, чтобы не перекрывалось содержимое */
     border-bottom: 1px solid #ccc;
     padding: 10px 20px;
     z-index: 1000;        /* чтобы был поверх контента */
 }
 
-header nav a::after {
-    content: "|";
-    margin: 0 10px;
-}
-
-header nav a:last-child::after {
-    content: "";
+.wrapper {
+    flex: 1;
+    padding: 100px;
+    height: 100%;
+    min-height: 100vh;
 }
