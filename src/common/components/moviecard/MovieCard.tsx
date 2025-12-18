@@ -15,6 +15,12 @@ export const MovieCard = ({ title, posterPath }: MovieCardProps) => {
                 height="280"
                 image={imageUrl}
                 alt={`${title} poster`}
+                sx={{
+                    transition: "transform 0.3s ease",
+                    "&:hover": {
+                        transform: "scale(1.05)",
+                    },
+                }}
             />
             <CardContent>
                 <Typography variant="subtitle1" noWrap>

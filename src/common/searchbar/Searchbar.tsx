@@ -3,7 +3,13 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
-export const SearchBar = ({ onSearch }: { onSearch: (query: string) => void }) => {
+type Props = {
+    onSearch: (query: string) => void
+    textFieldSx?: object
+    buttonSx?: object
+}
+
+export const SearchBar = ({ onSearch, textFieldSx, buttonSx }: Props) => {
     const [query, setQuery] = useState("");
 
     const handleSearch = () => {
@@ -15,6 +21,7 @@ export const SearchBar = ({ onSearch }: { onSearch: (query: string) => void }) =
     return (
         <Box display="flex" alignItems="center" gap={2}>
             <TextField
+                style={textFieldSx}
                 label="Search"
                 variant="outlined"
                 value={query}
@@ -22,8 +29,9 @@ export const SearchBar = ({ onSearch }: { onSearch: (query: string) => void }) =
                 fullWidth
             />
             <Button
+                style={buttonSx}
                 variant="contained"
-                color="primary"
+                // color="primary"
                 onClick={handleSearch}
             >
                 Search

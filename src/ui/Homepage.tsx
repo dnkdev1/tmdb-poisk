@@ -1,5 +1,5 @@
 import {SearchBar} from "../common/searchbar/Searchbar.tsx";
-import {Box, Typography} from "@mui/material";
+import {Box, Grid, Typography} from "@mui/material";
 import {
     useGetNowPlayingMoviesQuery,
     useGetPopularMoviesQuery,
@@ -42,7 +42,12 @@ export const Homepage = () => {
 
                 <Typography variant="h1" sx={{color: "white"}}>welcome</Typography>
                 <Typography variant="h2" sx={{color: "white"}}>Browse highlighted titles from TMDB</Typography>
-                <SearchBar onSearch={handleSearch}/>
+
+                <SearchBar
+                    textFieldSx={{ color: "black", backgroundColor: "white", height: "50px", width: "430px", borderRadius: "40px" }}
+                           buttonSx={{color: "white", backgroundColor: "#2563eb", height: "50px", borderRadius: "40px"}}
+                           onSearch={handleSearch}
+                />
 
             </Box>
 
@@ -54,7 +59,7 @@ export const Homepage = () => {
             <Box sx={{display: "flex", flexWrap: "nowrap"}}>
 
                 {popularMovies?.results.slice(0, 6).map((movie) => (
-
+                    // <Grid item xs={6} sm={4} md={2} key={movie.id}>
                     <Box key={movie.id} sx={{position: "relative", margin: 2,
                         "&:hover .favorite-btn": {opacity: 1,},}}>
 
@@ -62,7 +67,9 @@ export const Homepage = () => {
                         <RatingButton voteAverage={movie.vote_average} onClick={handleRatingClick}/>
                         <FavoriteButton/>
                     </Box>
+                    // </Grid>
                 ))}
+
             </Box>
 
             <h2>Top Rated Movies</h2>
