@@ -7,7 +7,7 @@ header {
     position: fixed;      /* закрепить сверху */
     top: 0;
     left: 0;
-    border-bottom: 1px solid #ccc;
+    /*border-bottom: 1px solid #ccc;*/
     padding: 10px 20px;
     z-index: 1000;        /* чтобы был поверх контента */
 }
@@ -18,3 +18,5 @@ header {
     height: 100%;
     min-height: 100vh;
 }
+
+

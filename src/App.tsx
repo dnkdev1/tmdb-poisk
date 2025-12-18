@@ -12,17 +12,20 @@ import {useAppSelector} from "./common/hooks/useAppSelector.ts";
 import {selectThemeMode} from "./app/app-slice.ts";
 import {getTheme} from "./common/theme/theme.ts";
 
+
 function App() {
+
     const themeMode = useAppSelector(selectThemeMode)
 
     const theme = getTheme(themeMode)
-    console.log(theme)
+
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Header/>
 
             <div className={"wrapper"}>
+                <div className="content">
                 <Routes>
                     <Route path={"/"} element={<Homepage/>}/>
                     <Route path={"/movies/popular"} element={<Movies/>}/>
@@ -33,7 +36,7 @@ function App() {
             </div>
 
             <Footer/>
-
+            </div>
         </ThemeProvider>
     )
 }

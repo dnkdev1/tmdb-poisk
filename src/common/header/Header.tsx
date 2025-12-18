@@ -26,7 +26,7 @@ export const Header = () => {
     return (
 
 
-        <AppBar position="static" sx={{mb: "30px", backgroundColor: theme.palette.background.default}}>
+        <AppBar position="static" color="default" sx={{mb: "30px"}}>
             <Toolbar>
 
                 <header style={{
