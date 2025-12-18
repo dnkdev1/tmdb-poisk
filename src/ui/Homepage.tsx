@@ -36,7 +36,7 @@ export const Homepage = () => {
         <>
             <Box sx={{
                 width: "100vw", height: "700px", backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
-                backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center",
+                backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "left", pl: 4,
                 justifyContent: "center", flexDirection: "column",
             }}>
 
