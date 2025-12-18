@@ -1,101 +1,104 @@
 import {SearchBar} from "../common/searchbar/Searchbar.tsx";
-import {Box} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {
     useGetNowPlayingMoviesQuery,
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,
-    useGetUpcomingMoviesQuery
+    useGetUpcomingMoviesQuery,
 } from "../features/api/movieApi.ts";
 import {MovieCard} from "../common/components/moviecard/MovieCard.tsx";
-
+import {RatingButton} from "../common/components/ratingbutton/RatingButton.tsx";
+import {FavoriteButton} from "../common/components/favoritebutton/FavoriteButton.tsx";
 
 export const Homepage = () => {
-
     const {data: popularMovies} = useGetPopularMoviesQuery();
-    const {data: topRatedMovies } = useGetTopRatedMoviesQuery()
-    const {data: upcomingMovies } = useGetUpcomingMoviesQuery()
-    const {data: nowPlayingMovies } = useGetNowPlayingMoviesQuery()
-
-    console.log(popularMovies?.results)
+    const {data: topRatedMovies} = useGetTopRatedMoviesQuery();
+    const {data: upcomingMovies} = useGetUpcomingMoviesQuery();
+    const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery();
 
     const handleSearch = (query: string) => {
         console.log("Поиск:", query);
         // здесь можно вызвать API или фильтрацию
     };
 
-    const randomNumber = Math.floor(Math.random() * 20)
+    const handleRatingClick = () => {
+
+    }
+
+
+    const randomNumber = Math.floor(Math.random() * 20);
 
     const imageUrl = popularMovies?.results?.[randomNumber]?.backdrop_path
         ? `https://image.tmdb.org/t/p/original${popularMovies.results[randomNumber].backdrop_path}`
-        : ""
-
+        : "";
 
     return (
         <>
-        <h1>welcome</h1>
-        <h2>Browse highlighted titles from TMDB</h2>
+            <Box sx={{
+                width: "100vw", height: "700px", backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
+                backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center",
+                justifyContent: "center", flexDirection: "column",
+            }}>
 
-        <Box sx={{width: "100vw", height: "700px",
-            backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center", }} >
-            <SearchBar onSearch={handleSearch}/>
+                <Typography variant="h1" sx={{color: "white"}}>welcome</Typography>
+                <Typography variant="h2" sx={{color: "white"}}>Browse highlighted titles from TMDB</Typography>
+                <SearchBar onSearch={handleSearch}/>
 
-        </Box>
+            </Box>
+
+
+
+
 
             <h2>Popular Movies</h2>
+            <Box sx={{display: "flex", flexWrap: "nowrap"}}>
 
-            <Box sx={{ display: "flex", flexWrap: "wrap" }}>
                 {popularMovies?.results.slice(0, 6).map((movie) => (
-                    <MovieCard
-                        key={movie.id}
-                        title={movie.title}
-                        posterPath={movie.poster_path}
-                    />
+
+                    <Box key={movie.id} sx={{position: "relative", margin: 2,
+                        "&:hover .favorite-btn": {opacity: 1,},}}>
+
+                        <MovieCard title={movie.title} posterPath={movie.poster_path}/>
+                        <RatingButton voteAverage={movie.vote_average} onClick={handleRatingClick}/>
+                        <FavoriteButton/>
+                    </Box>
                 ))}
             </Box>
 
             <h2>Top Rated Movies</h2>
-
-            <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <Box sx={{display: "flex", flexWrap: "nowrap"}}>
                 {topRatedMovies?.results.slice(0, 6).map((movie) => (
-                    <MovieCard
-                        key={movie.id}
-                        title={movie.title}
-                        posterPath={movie.poster_path}
-                    />
+                    <Box key={movie.id} sx={{position: "relative", margin: 2, "&:hover .favorite-btn": {
+                            opacity: 1,
+                        },}}>
+                        <MovieCard title={movie.title} posterPath={movie.poster_path}/>
+                        <RatingButton voteAverage={movie.vote_average} onClick={handleRatingClick}/>
+                        <FavoriteButton/>
+                    </Box>
                 ))}
             </Box>
 
             <h2>Upcoming Movies</h2>
-
-            <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <Box sx={{display: "flex", flexWrap: "nowrap"}}>
                 {upcomingMovies?.results.slice(0, 6).map((movie) => (
-                    <MovieCard
-                        key={movie.id}
-                        title={movie.title}
-                        posterPath={movie.poster_path}
-                    />
+                    <Box key={movie.id} sx={{position: "relative", margin: 2}}>
+                        <MovieCard title={movie.title} posterPath={movie.poster_path}/>
+                        <RatingButton voteAverage={movie.vote_average} onClick={handleRatingClick}/>
+                        <FavoriteButton/>
+                    </Box>
                 ))}
             </Box>
 
             <h2>Now Playing Movies</h2>
-
-            <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <Box sx={{display: "flex", flexWrap: "nowrap"}}>
                 {nowPlayingMovies?.results.slice(0, 6).map((movie) => (
-                    <MovieCard
-                        key={movie.id}
-                        title={movie.title}
-                        posterPath={movie.poster_path}
-                    />
+                    <Box key={movie.id} sx={{position: "relative", margin: 2}}>
+                        <MovieCard title={movie.title} posterPath={movie.poster_path}/>
+                        <RatingButton voteAverage={movie.vote_average} onClick={handleRatingClick}/>
+                        <FavoriteButton/>
+                    </Box>
                 ))}
             </Box>
-
-
-
         </>
-)
-}
+    );
+};
