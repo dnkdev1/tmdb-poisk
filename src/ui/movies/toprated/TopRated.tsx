@@ -2,10 +2,14 @@ import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx";
 import {useGetTopRatedMoviesQuery} from "../../../features/api/movieApi.ts";
 import {Box} from "@mui/material";
 import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx";
+import {useState} from "react";
+import {PAGE_SIZE} from "../../../common/constants.ts";
+import {MoviesPagination} from "../../../common/components/pagination/MoviesPagination.tsx";
 
 
 export const TopRated = () => {
-    const {data: topRatedMovies} = useGetTopRatedMoviesQuery()
+    const [page, setPage] = useState(1)
+    const {data: topRatedMovies} = useGetTopRatedMoviesQuery({params:{page}})
 
     return (
         <>
@@ -34,6 +38,13 @@ export const TopRated = () => {
                     </Box>
                 ))}
             </Box>
+
+            {topRatedMovies?.results !== undefined && topRatedMovies.total_results > PAGE_SIZE ? (
+                <MoviesPagination totalCount={topRatedMovies?.total_results || 0} page={page} setPage={setPage} />
+            ) : (
+                <div></div>
+            )}
+
         </>
     )
 }

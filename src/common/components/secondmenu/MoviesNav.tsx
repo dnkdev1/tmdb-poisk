@@ -24,11 +24,6 @@ export const MoviesNav = () => {
             <NavLink
                 onMouseEnter={onHoover}
                 onMouseLeave={onLiveHoover}
-                // style={{
-                //     color: theme.palette.mode === "light" ? "black" : "white",
-                //     textDecoration: "none",
-                //     fontWeight: 500,
-                // }}
                 style={({ isActive }) => ({
                     color: theme.palette.mode === "light" ? "black" : "white",
                     textDecoration: "none",

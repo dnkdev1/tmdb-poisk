@@ -36,7 +36,6 @@ function App() {
         <ThemeProvider theme={theme}>
             <CssBaseline/>
             <Header/>
-
             <div className="content">
                 <Routes>
                     <Route path={PATH.HOMEPAGE} element={<Homepage/>}/>
@@ -47,12 +46,10 @@ function App() {
                     <Route path={PATH.NOW_PLAYING_MOVIES} element={<NowPlaying/>}/>
                     <Route path={PATH.SEARCH} element={<Search/>}/>
                     <Route path={PATH.FAVORITES} element={<Favorites/>}/>
-
                 </Routes>
             </div>
             <Outlet/>
             {/*<Footer/>*/}
-
         </ThemeProvider>
     )
 }

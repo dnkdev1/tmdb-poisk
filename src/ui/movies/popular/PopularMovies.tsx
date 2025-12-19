@@ -2,11 +2,16 @@ import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx";
 import {useGetPopularMoviesQuery} from "../../../features/api/movieApi.ts";
 import {Box} from "@mui/material";
 import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx";
+import {MoviesPagination} from "../../../common/components/pagination/MoviesPagination.tsx";
+import {PAGE_SIZE} from "../../../common/constants.ts";
+import {useState} from "react";
 
 
 export const PopularMovies = () => {
+    const [page, setPage] = useState(1)
 
-    const {data: popularMovies} = useGetPopularMoviesQuery();
+
+    const {data: popularMovies} = useGetPopularMoviesQuery({params:{page}});
 
 
     return (
@@ -36,6 +41,13 @@ export const PopularMovies = () => {
                     </Box>
                 ))}
             </Box>
+
+            {popularMovies?.results !== undefined && popularMovies.total_results > PAGE_SIZE ? (
+                <MoviesPagination totalCount={popularMovies?.total_results || 0} page={page} setPage={setPage} />
+            ) : (
+                <div></div>
+            )}
+
         </>
     )
 }

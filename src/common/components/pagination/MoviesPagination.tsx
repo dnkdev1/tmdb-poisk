@@ -1,7 +1,9 @@
 import type {ChangeEvent} from "react";
-import {Typography} from "@mui/material";
+import {Pagination, Typography} from "@mui/material";
 import styles from './Pagination.module.css'
 import {PAGE_SIZE} from "../../constants.ts";
+
+
 
 type Props = {
     totalCount: number
@@ -9,7 +11,7 @@ type Props = {
     setPage: (page: number) => void
 }
 
-export const Pagination = ({ totalCount, page, setPage }: Props) => {
+export const MoviesPagination = ({ totalCount, page, setPage }: Props) => {
     const changePage = (_: ChangeEvent<unknown>, page: number) => {
         setPage(page)
     }

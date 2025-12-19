@@ -11,14 +11,15 @@ import {MovieCard} from "../common/components/moviecard/MovieCard.tsx";
 const randomNumber = Math.floor(Math.random() * 20);
 
 export const Homepage = () => {
-    const {data: popularMovies} = useGetPopularMoviesQuery();
-    const {data: topRatedMovies} = useGetTopRatedMoviesQuery();
-    const {data: upcomingMovies} = useGetUpcomingMoviesQuery();
-    const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery();
+    const page = 1
+    const {data: popularMovies} = useGetPopularMoviesQuery({params:{page}})
+    const {data: topRatedMovies} = useGetTopRatedMoviesQuery({params:{page}})
+    const {data: upcomingMovies} = useGetUpcomingMoviesQuery({params:{page}})
+    const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery({params:{page}})
 
-    const handleSearch = (query: string) => {
-        console.log("Поиск:", query);
-        // здесь можно вызвать API или фильтрацию
+    const handleSearch = (search: string) => {
+        console.log("Поиск:", search);
+
     }
 
     const imageUrl = popularMovies?.results?.[randomNumber]?.backdrop_path
