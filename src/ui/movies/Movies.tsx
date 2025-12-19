@@ -4,7 +4,7 @@ import * as React from "react";
 import {getTheme} from "../../common/theme/theme.ts";
 import {useAppSelector} from "../../common/hooks/useAppSelector.ts";
 import {selectThemeMode} from "../../app/app-slice.ts";
-
+import {Outlet} from "react-router-dom"
 
 
 export const Movies = () => {
@@ -30,7 +30,7 @@ export const Movies = () => {
                              border: "solid",
                              borderRadius: 10,
                              borderColor: theme.palette.mode === "light" ? "black" : "white",
-                         }} className={({isActive}) => (isActive ? "active-link" : "")} to={"movies/popular"}>Category
+                         }} className={({isActive}) => (isActive ? "active-link" : "")} to={"/popular"}>Category
                     movies</NavLink>
 
                 <NavLink onMouseEnter={onHoover}
@@ -49,6 +49,8 @@ export const Movies = () => {
                 <Route path={"/toprated"} element={<TopRated />}/>
 
             </Routes>
+
+            <Outlet/>
         </>
     )
 }

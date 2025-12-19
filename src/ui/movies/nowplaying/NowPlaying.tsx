@@ -1,28 +1,28 @@
 import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx";
-import {useGetPopularMoviesQuery} from "../../../features/api/movieApi.ts";
+import {useGetNowPlayingMoviesQuery} from "../../../features/api/movieApi.ts";
 import {Box} from "@mui/material";
 import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx";
 import {RatingButton} from "../../../common/components/ratingbutton/RatingButton.tsx";
 import {FavoriteButton} from "../../../common/components/favoritebutton/FavoriteButton.tsx";
 
 
-export const PopularMovies = () => {
+export const NowPlaying = () => {
+    const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery();
 
-    const {data: popularMovies} = useGetPopularMoviesQuery();
-    // const [page, setPage] = useState(1)
     const handleRatingClick = () => {
 
     }
 
+
     return (
         <>
-                <MoviesNav />
+            <MoviesNav />
 
-            <h1>Popular Movies Page</h1>
+            <h1>NowPlaying</h1>
 
 
             <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-                {popularMovies?.results.map((movie) => (
+                {nowPlayingMovies?.results.map((movie) => (
                     <Box
                         key={movie.id}
                         sx={{

@@ -11,7 +11,22 @@ import {useAppSelector} from "./common/hooks/useAppSelector.ts";
 import {selectThemeMode} from "./app/app-slice.ts";
 import {getTheme} from "./common/theme/theme.ts";
 import {PopularMovies} from "./ui/movies/popular/PopularMovies.tsx";
+import {Outlet} from "react-router-dom"
+import {TopRated} from "./ui/movies/toprated/TopRated.tsx";
+import {Upcoming} from "./ui/movies/upcoming/Upcoming.tsx"
+import {NowPlaying} from "./ui/movies/nowplaying/NowPlaying.tsx";
 
+const PATH = {
+    HOMEPAGE: '/homepage',
+    CATEGORYMOVIES: '/movies',
+    POPULARMOVIES: '/movies/popular',
+    TOPRATEDMOVIES: 'movies/top-rated',
+    UPCOMINGMOVIES: '/movies/upcoming',
+    NOWPLAYINGMOVIES: '/movies/now-playing',
+    FILTREDMOVIES: '/filtered-movies',
+    SEARCH: '/search',
+    FAVORITES: '/favorites',
+} as const
 
 
 function App() {
@@ -20,19 +35,25 @@ function App() {
 
     return (
         <ThemeProvider theme={theme}>
-            <CssBaseline />
+            <CssBaseline/>
             <Header/>
 
 
-                <div className="content">
+            <div className="content">
                 <Routes>
                     <Route path={"/"} element={<Homepage/>}/>
                     <Route path={"/movies/popular"} element={<PopularMovies/>}/>
                     <Route path={"/filtered-movies"} element={<Filteredmovies/>}/>
+                    <Route path={"/movies/top-rated"} element={<TopRated/>}/>
+                    <Route path={"/movies/upcoming"} element={<Upcoming/>}/>
+                    <Route path={"/movies/now-playing"} element={<NowPlaying/>}/>
                     <Route path={"/search"} element={<Search/>}/>
                     <Route path={"/favorites"} element={<Favorites/>}/>
+
+
                 </Routes>
             </div>
+            <Outlet/>
             {/*<Footer/>*/}
 
         </ThemeProvider>

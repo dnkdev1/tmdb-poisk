@@ -16,7 +16,6 @@ export const movieApi = baseApi.injectEndpoints({
         getNowPlayingMovies: builder.query<PopularMoviesResponse, void>({
             query: () => "/movie/now_playing",
         }),
-
     }),
 })
 

@@ -1,5 +1,5 @@
 import {SearchBar} from "../common/searchbar/Searchbar.tsx";
-import {Box, Grid, Typography} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {
     useGetNowPlayingMoviesQuery,
     useGetPopularMoviesQuery,
