@@ -17,13 +17,12 @@ import {Upcoming} from "./ui/movies/upcoming/Upcoming.tsx"
 import {NowPlaying} from "./ui/movies/nowplaying/NowPlaying.tsx";
 
 const PATH = {
-    HOMEPAGE: '/homepage',
-    CATEGORYMOVIES: '/movies',
-    POPULARMOVIES: '/movies/popular',
-    TOPRATEDMOVIES: 'movies/top-rated',
-    UPCOMINGMOVIES: '/movies/upcoming',
-    NOWPLAYINGMOVIES: '/movies/now-playing',
-    FILTREDMOVIES: '/filtered-movies',
+    HOMEPAGE: '/',
+    POPULAR_MOVIES: '/movies/popular',
+    TOP_RATED_MOVIES: 'movies/top-rated',
+    UPCOMING_MOVIES: '/movies/upcoming',
+    NOW_PLAYING_MOVIES: '/movies/now-playing',
+    FILTRED_MOVIES: '/filtered-movies',
     SEARCH: '/search',
     FAVORITES: '/favorites',
 } as const
@@ -38,18 +37,16 @@ function App() {
             <CssBaseline/>
             <Header/>
 
-
             <div className="content">
                 <Routes>
-                    <Route path={"/"} element={<Homepage/>}/>
-                    <Route path={"/movies/popular"} element={<PopularMovies/>}/>
-                    <Route path={"/filtered-movies"} element={<Filteredmovies/>}/>
-                    <Route path={"/movies/top-rated"} element={<TopRated/>}/>
-                    <Route path={"/movies/upcoming"} element={<Upcoming/>}/>
-                    <Route path={"/movies/now-playing"} element={<NowPlaying/>}/>
-                    <Route path={"/search"} element={<Search/>}/>
-                    <Route path={"/favorites"} element={<Favorites/>}/>
-
+                    <Route path={PATH.HOMEPAGE} element={<Homepage/>}/>
+                    <Route path={PATH.POPULAR_MOVIES} element={<PopularMovies/>}/>
+                    <Route path={PATH.FILTRED_MOVIES} element={<Filteredmovies/>}/>
+                    <Route path={PATH.TOP_RATED_MOVIES} element={<TopRated/>}/>
+                    <Route path={PATH.UPCOMING_MOVIES} element={<Upcoming/>}/>
+                    <Route path={PATH.NOW_PLAYING_MOVIES} element={<NowPlaying/>}/>
+                    <Route path={PATH.SEARCH} element={<Search/>}/>
+                    <Route path={PATH.FAVORITES} element={<Favorites/>}/>
 
                 </Routes>
             </div>
