@@ -11,6 +11,7 @@ export const PopularMovies = () => {
     const [page, setPage] = useState(1)
 
 
+
     const {data: popularMovies} = useGetPopularMoviesQuery({params:{page}});
 
 
@@ -32,9 +33,7 @@ export const PopularMovies = () => {
                             "&:hover .favorite-btn": {opacity: 1},
                         }}
                     >
-                        <MovieCard
-                            title={movie.title}
-                            posterPath={movie.poster_path}
+                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
                             vote_average={movie.vote_average}
                             />
 

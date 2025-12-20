@@ -6,8 +6,8 @@ import * as React from "react";
 
 
 export const MoviesNav = () => {
-    const themeMode = useAppSelector(selectThemeMode);
-    const theme = getTheme(themeMode);
+    const themeMode = useAppSelector(selectThemeMode)
+    const theme = getTheme(themeMode)
 
 
     const onHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -18,9 +18,19 @@ export const MoviesNav = () => {
     };
 
 
-
+//align-items
+// Aligns flex items along the cross axis of the current line of the flex container.
+//
+// Widely available across major browsers (Baseline since March 2018)
+// Learn more
+//
+// Don't show
+// : center;
+//     justify-content: center;
+//     display: flex;
+//     border: 1px solid;
     return (
-        <nav>
+        <nav style={{alignItems: "center",display:"flex", justifyContent: "center", paddingTop: "50px"}}>
             <NavLink
                 onMouseEnter={onHoover}
                 onMouseLeave={onLiveHoover}

@@ -1,20 +1,24 @@
 import {IconButton} from "@mui/material";
 
 type Props = {
-    voteAverage: number
+    voteAverage?: number
     onClick: () => void
 }
 
 export const RatingButton = ({voteAverage, onClick}: Props) => {
+    let rounded
+    let fixedVoiteAverage
+    if (voteAverage !== undefined) {
+        rounded = Math.ceil(voteAverage * 10) / 10
+        fixedVoiteAverage = rounded.toFixed(1)
+    }
 
-    const rounded = Math.ceil(voteAverage * 10) / 10
-    const fixedVoiteAverage = rounded.toFixed(1)
 
     let color
     if (Number(fixedVoiteAverage) >= 7)
         color = '#22c55e'
 
-    if ( Number(fixedVoiteAverage) > 5 && Number(fixedVoiteAverage) < 7)
+    if (Number(fixedVoiteAverage) > 5 && Number(fixedVoiteAverage) < 7)
         color = '#facc15'
 
     return (

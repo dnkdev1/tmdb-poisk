@@ -15,18 +15,8 @@ import {Outlet} from "react-router-dom"
 import {TopRated} from "./ui/movies/toprated/TopRated.tsx";
 import {Upcoming} from "./ui/movies/upcoming/Upcoming.tsx"
 import {NowPlaying} from "./ui/movies/nowplaying/NowPlaying.tsx";
-
-const PATH = {
-    HOMEPAGE: '/',
-    POPULAR_MOVIES: '/movies/popular',
-    TOP_RATED_MOVIES: 'movies/top-rated',
-    UPCOMING_MOVIES: '/movies/upcoming',
-    NOW_PLAYING_MOVIES: '/movies/now-playing',
-    FILTRED_MOVIES: '/filtered-movies',
-    SEARCH: '/search',
-    FAVORITES: '/favorites',
-} as const
-
+import {Movie} from  "./ui/movies/Movie.tsx"
+import {PATH} from "./common/constants.ts";
 
 function App() {
     const themeMode = useAppSelector(selectThemeMode)
@@ -46,6 +36,7 @@ function App() {
                     <Route path={PATH.NOW_PLAYING_MOVIES} element={<NowPlaying/>}/>
                     <Route path={PATH.SEARCH} element={<Search/>}/>
                     <Route path={PATH.FAVORITES} element={<Favorites/>}/>
+                    <Route path={PATH.MOVIE} element={<Movie/>}/>
                 </Routes>
             </div>
             <Outlet/>

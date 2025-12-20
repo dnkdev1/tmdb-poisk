@@ -30,9 +30,7 @@ export const NowPlaying = () => {
                             "&:hover .favorite-btn": {opacity: 1},
                         }}
                     >
-                        <MovieCard
-                            title={movie.title}
-                            posterPath={movie.poster_path}
+                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
                             vote_average={movie.vote_average}
                             />
 

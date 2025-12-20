@@ -7,10 +7,18 @@ import {
     useGetUpcomingMoviesQuery,
 } from "../features/api/movieApi.ts";
 import {MovieCard} from "../common/components/moviecard/MovieCard.tsx";
+import {NavLink} from "react-router";
+import {useAppSelector} from "../common/hooks/useAppSelector.ts";
+import {selectThemeMode} from "../app/app-slice.ts";
+import {getTheme} from "../common/theme/theme.ts";
 
 const randomNumber = Math.floor(Math.random() * 20);
 
 export const Homepage = () => {
+    const themeMode = useAppSelector(selectThemeMode);
+    const theme = getTheme(themeMode);
+
+
     const page = 1
     const {data: popularMovies} = useGetPopularMoviesQuery({params:{page}})
     const {data: topRatedMovies} = useGetTopRatedMoviesQuery({params:{page}})
@@ -47,13 +55,35 @@ export const Homepage = () => {
 
 
             <h2>Popular Movies</h2>
+
+
+            <NavLink
+
+                style={({ isActive }) => ({
+                    color: theme.palette.mode === "light" ? "black" : "white",
+                    textDecoration: "none",
+                    fontWeight: 500,
+                    backgroundColor: isActive ? "#2563eb" : "transparent",
+                    borderRadius: 20,
+                    marginRight: "20px",
+                })}
+                className={({ isActive }) => (isActive ? "active-link" : "")}
+                to="/movies/popular"
+            >
+                View more
+            </NavLink>
+
+
+
+
+
             <Box sx={{display: "flex", flexWrap: "nowrap"}}>
 
                 {popularMovies?.results.slice(0, 6).map((movie) => (
 
                     <Box key={movie.id} sx={{position: "relative", margin: 2,
                         "&:hover .favorite-btn": {opacity: 1,},}}>
-                        <MovieCard title={movie.title} posterPath={movie.poster_path}
+                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
                             vote_average={movie.vote_average}
                         />
                     </Box>
@@ -67,7 +97,7 @@ export const Homepage = () => {
                     <Box key={movie.id} sx={{position: "relative", margin: 2, "&:hover .favorite-btn": {
                             opacity: 1,
                         },}}>
-                        <MovieCard title={movie.title} posterPath={movie.poster_path}
+                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
                                    vote_average={movie.vote_average}
                         />
                     </Box>
@@ -80,7 +110,7 @@ export const Homepage = () => {
                     <Box key={movie.id} sx={{position: "relative", margin: 2, "&:hover .favorite-btn": {
                             opacity: 1,
                         },}}>
-                        <MovieCard title={movie.title} posterPath={movie.poster_path}
+                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
                                    vote_average={movie.vote_average}
                         />
                     </Box>
@@ -93,7 +123,7 @@ export const Homepage = () => {
                     <Box key={movie.id} sx={{position: "relative", margin: 2, "&:hover .favorite-btn": {
                             opacity: 1,
                         },}}>
-                        <MovieCard title={movie.title} posterPath={movie.poster_path}
+                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
                                    vote_average={movie.vote_average}
                         />
                     </Box>

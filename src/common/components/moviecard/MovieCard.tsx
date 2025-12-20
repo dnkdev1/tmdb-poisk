@@ -1,22 +1,28 @@
-import {Card, CardMedia, CardContent, Typography, Box} from "@mui/material";
+import {Box, Card, CardContent, CardMedia, Typography} from "@mui/material";
 import {RatingButton} from "../ratingbutton/RatingButton.tsx";
 import {FavoriteButton} from "../favoritebutton/FavoriteButton.tsx";
+import {useNavigate} from "react-router-dom";
 
 type MovieCardProps = {
+    movieId: number,
     title: string
     posterPath: string
     vote_average:number
 };
 
-export const MovieCard = ({ title, posterPath, vote_average }: MovieCardProps) => {
-    const imageUrl = `https://image.tmdb.org/t/p/w185${posterPath}`;
-    const handleRatingClick = () => {
+export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCardProps) => {
 
+    const navigate = useNavigate();
+
+    const imageUrl = `https://image.tmdb.org/t/p/w185${posterPath}`;
+
+    const handleNavigateClick = () => {
+        navigate(`/movie/${movieId}`)
     }
 
     return (
         <>
-        <Card sx={{
+        <Card onClick={handleNavigateClick} sx={{
             maxWidth: 200,
             margin: 2,
             borderRadius: "15px",
@@ -48,7 +54,7 @@ export const MovieCard = ({ title, posterPath, vote_average }: MovieCardProps) =
                 top: -20,
                 right: -10, display: "flex", flexDirection: "column", gap: 1,
             }} >
-                <RatingButton voteAverage={vote_average} onClick={handleRatingClick} />
+                <RatingButton voteAverage={vote_average} onClick={handleNavigateClick} />
             </Box>
 
 

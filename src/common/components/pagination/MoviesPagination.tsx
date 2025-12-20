@@ -26,6 +26,11 @@ export const MoviesPagination = ({ totalCount, page, setPage }: Props) => {
                 shape="rounded"
                 color="primary"
                 className={styles.pagination}
+                sx={{
+                    "& .MuiPaginationItem-root": { backgroundColor: "#f0f0f0" },
+                    "& .MuiPaginationItem-root.Mui-selected": { backgroundColor: "#2563eb", color: "#fff", },
+                    "& .MuiPaginationItem-root:hover": { backgroundColor: "#90caf9", },
+                }}
             />
 
             <div className={styles.totalCount}>
