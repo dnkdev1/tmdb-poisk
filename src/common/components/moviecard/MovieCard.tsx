@@ -2,13 +2,21 @@ import {Box, Card, CardContent, CardMedia, Typography} from "@mui/material";
 import {RatingButton} from "../ratingbutton/RatingButton.tsx";
 import {FavoriteButton} from "../favoritebutton/FavoriteButton.tsx";
 import {useNavigate} from "react-router-dom";
+import {setFavoriteMovieToLocalStorage} from "../../utils/localstorage.ts";
 
-type MovieCardProps = {
+export type MovieCardProps = {
     movieId: number,
     title: string
     posterPath: string
     vote_average:number
-};
+}
+
+export type FavoriteMovie = {
+    id: string
+    posterUrl: string
+    title: string
+    voteAverage: number
+}
 
 export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCardProps) => {
 
@@ -20,15 +28,11 @@ export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCard
         navigate(`/movie/${movieId}`)
     }
 
+
     return (
         <>
-        <Card onClick={handleNavigateClick} sx={{
-            maxWidth: 200,
-            margin: 2,
-            borderRadius: "15px",
-            boxShadow: "none",
-            position: "relative",
-        }}>
+        <Card onClick={handleNavigateClick} sx={{ maxWidth: 200, margin: 2, borderRadius: "15px", boxShadow: "none", position: "relative", }}>
+
             <CardMedia
                 component="img"
                 height="280"
@@ -47,7 +51,7 @@ export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCard
                 top: -10,
                 right: -10, display: "flex", flexDirection: "column", gap: 1,
             }} >
-                <FavoriteButton />
+                <FavoriteButton onClick={() => setFavoriteMovieToLocalStorage( movieId.toString(), imageUrl, title, vote_average ) } />
             </Box>
 
             <Box sx={{ position: "absolute",
@@ -68,3 +72,5 @@ export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCard
         </>
     )
 }
+
+
