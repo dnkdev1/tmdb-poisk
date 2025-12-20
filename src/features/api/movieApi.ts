@@ -52,6 +52,13 @@ export const movieApi = baseApi.injectEndpoints({
             }),
         }),
 
+        getSearchMovies: builder.query<ListOfMoviesResponse, {query: string, params: { page: number } }>({
+            query: ({query,params}) => ({
+                url: `/search/movie?query=${query}`,
+                params: { ...params, count: PAGE_SIZE },
+            }),
+        }),
+
     }),
 })
 
@@ -62,5 +69,6 @@ export const {
     useGetNowPlayingMoviesQuery,
     useGetDetailsOfMoviesQuery,
     useGetCreditsQuery,
-    useGetSimilarQuery
+    useGetSimilarQuery,
+    useGetSearchMoviesQuery
 } = movieApi

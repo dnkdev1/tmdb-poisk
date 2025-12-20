@@ -11,12 +11,16 @@ import {NavLink} from "react-router";
 import {useAppSelector} from "../common/hooks/useAppSelector.ts";
 import {selectThemeMode} from "../app/app-slice.ts";
 import {getTheme} from "../common/theme/theme.ts";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const randomNumber = Math.floor(Math.random() * 20);
 
 export const Homepage = () => {
     const themeMode = useAppSelector(selectThemeMode);
     const theme = getTheme(themeMode);
+    const [search, setSearch] = useState('')
+    const navigate = useNavigate()
 
 
     const page = 1
@@ -25,9 +29,22 @@ export const Homepage = () => {
     const {data: upcomingMovies} = useGetUpcomingMoviesQuery({params:{page}})
     const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery({params:{page}})
 
-    const handleSearch = (search: string) => {
-        console.log("Поиск:", search);
+    const onChangeSearch = (value: string) => {
 
+        console.log("Поиск:", value)
+        console.log(search)
+        navigate(`/search?query=${encodeURIComponent(value)}`)
+    }
+
+    const handleSearch = (value: string) => {
+        // console.log("Поиск:", value)
+        setSearch(value)
+
+    }
+
+    const clearResults = () => {
+        setSearch("")
+        // navigate("/search")
     }
 
     const imageUrl = popularMovies?.results?.[randomNumber]?.backdrop_path
@@ -45,10 +62,10 @@ export const Homepage = () => {
                 <Typography variant="h1" sx={{color: "white"}}>welcome</Typography>
                 <Typography variant="h2" sx={{color: "white"}}>Browse highlighted titles from TMDB</Typography>
 
-                <SearchBar
+                <SearchBar onClear={clearResults} value={''} onChange={handleSearch}
                     textFieldSx={{ color: "black", backgroundColor: "white", height: "50px", width: "430px", borderRadius: "40px" }}
                            buttonSx={{color: "white", backgroundColor: "#2563eb", height: "50px", borderRadius: "40px"}}
-                           onSearch={handleSearch}
+                           onSearch={onChangeSearch}
                 />
 
             </Box>

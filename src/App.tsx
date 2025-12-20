@@ -18,9 +18,11 @@ import {NowPlaying} from "./ui/movies/nowplaying/NowPlaying.tsx";
 import {Movie} from  "./ui/movies/Movie.tsx"
 import {PATH} from "./common/constants.ts";
 
+
 function App() {
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
+
 
     return (
         <ThemeProvider theme={theme}>
