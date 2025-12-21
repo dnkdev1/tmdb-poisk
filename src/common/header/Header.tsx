@@ -1,16 +1,17 @@
 import "./header.css";
 import {NavLink} from "react-router-dom";
 import {useAppSelector} from "../hooks/useAppSelector.ts";
-import {changeThemeModeAC, selectThemeMode} from "../../app/app-slice.ts";
+import {changeThemeModeAC, selectAppStatus, selectThemeMode} from "../../app/app-slice.ts";
 import {getTheme} from "../theme/theme.ts";
 import {useAppDispatch} from "../hooks/useAppDispatch.ts";
-import {AppBar, IconButton, Toolbar} from "@mui/material";
+import {AppBar, IconButton, LinearProgress, Toolbar} from "@mui/material";
 import * as React from "react";
 
 export const Header = () => {
     const themeMode = useAppSelector(selectThemeMode)
     const dispatch = useAppDispatch()
     const theme = getTheme(themeMode)
+    const status = useAppSelector(selectAppStatus)
 
     const changeMode = () => {
         dispatch(changeThemeModeAC({themeMode: themeMode === "light" ? "dark" : "light"}))
@@ -22,6 +23,9 @@ export const Header = () => {
     const onLiveHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.currentTarget.style.color = theme.palette.mode === "light" ? "black" : "white";
     };
+
+
+    console.log(status)
 
     return (
 
@@ -113,6 +117,11 @@ export const Header = () => {
                     </IconButton>
                 </header>
             </Toolbar>
+
+
+            {status === "idle" && <LinearProgress />}
+
+
         </AppBar>
     )
 }

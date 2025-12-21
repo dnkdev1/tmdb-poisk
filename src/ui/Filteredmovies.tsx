@@ -93,7 +93,7 @@ export const Filteredmovies = () => {
 
             <Grid container spacing={2} wrap="nowrap">
                 {/* Левая колонка */}
-                <Grid item sx={{width: '1200px', paddingX: '30px', paddingTop: '20px'}}>
+                <Grid sx={{width: '1200px', paddingX: '30px', paddingTop: '20px'}}>
                     <Box sx={{
                         display: "flex",
                         flexDirection: "column",
@@ -197,7 +197,7 @@ export const Filteredmovies = () => {
                 </Grid>
 
                                                                      {/* Правая колонка */}
-                <Grid item xs>
+                <Grid>
                     <Box sx={{display: "flex", flexWrap: "wrap"}}>
                         {discoverMovies?.results.map((movie) => (
                             <Box

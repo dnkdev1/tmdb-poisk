@@ -5,7 +5,7 @@ export const Footer = () => {
         <AppBar position="static" color="default" >
             <Toolbar sx={{ justifyContent: "center" }}>
                 <Typography variant="body2" color="inherit">
-                    © 2025 My Movie App
+                    © 2025 Poisk Demo · Data courtesy of TMDB.
                 </Typography>
             </Toolbar>
         </AppBar>
