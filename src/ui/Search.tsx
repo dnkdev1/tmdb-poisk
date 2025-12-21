@@ -1,6 +1,6 @@
 import {useLocation, useNavigate} from "react-router-dom";
 import {useGetSearchMoviesQuery} from "../features/api/movieApi.ts";
-import {Box} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {MovieCard} from "../common/components/moviecard/MovieCard.tsx";
 import {PAGE_SIZE} from "../common/constants.ts";
 import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx";
@@ -35,9 +35,9 @@ export const Search = () => {
 
     return (
         <>
+            <Box sx={{paddingTop:"20px", paddingLeft:"30px", paddingBottom: "30px"}}>
 
-            <h1>Search Results</h1>
-
+                <Typography variant={"h5"} sx={{paddingBottom: "30px"}}>Search Results</Typography>
 
             <SearchBar onClear={clearResults} value={query} onChange={handleSearch}
                        textFieldSx={{ color: "black", backgroundColor: "white", height: "50px", width: "430px", borderRadius: "40px" }}
@@ -45,35 +45,97 @@ export const Search = () => {
                        onSearch={onChangeSearch}
             />
 
-
-
-            <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-                {searchResults?.results.map((movie) => (
-                    <Box
-                        key={movie.id}
-                        sx={{
-                            position: "relative",
-
-                            flex: "0 0 20%", // 5 карточек в ряд
-                            "&:hover .favorite-btn": { opacity: 1 },
-                        }}
-                    >
-                        <MovieCard
-                            movieId={movie.id}
-                            title={movie.title}
-                            posterPath={movie.poster_path}
-                            vote_average={movie.vote_average}
-                        />
-                    </Box>
-                ))}
             </Box>
 
+            <Box
+                sx={{
+                    paddingLeft:"15px",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    minHeight: "300px", // минимальная высота блока
+
+                    alignItems: searchResults?.results?.length ? "flex-start" : "center",
+                    justifyContent: searchResults?.results?.length ? "flex-start" : "center",
+                }}
+            >
+
+                {searchResults?.results?.length ? (
+                    searchResults.results.map((movie) => (
+                        <Box
+                            key={movie.id}
+                            sx={{
+                                position: "relative",
+                                flex: "0 0 20%",
+                                "&:hover .favorite-btn": { opacity: 1 },
+                            }}
+                        >
+                            <MovieCard
+                                movieId={movie.id}
+                                title={movie.title}
+                                posterPath={movie.poster_path}
+                                vote_average={movie.vote_average}
+                            />
+                        </Box>
+                    ))
+                ) : (
+                    <Typography variant="h6" color="text.secondary">
+                        Ничего не найдено
+                    </Typography>
+                )}
+
+
+
+
+            </Box>
 
             {searchResults?.results !== undefined && searchResults.total_results > PAGE_SIZE ? (
                 <MoviesPagination totalCount={searchResults?.total_results || 0} page={page} setPage={setPage} />
             ) : (
                 <div></div>
             )}
+
+
+
+            {/*/!*<Box sx={{minHeight: "800px" }}>*!/*/}
+            {/*<h1>Search Results</h1>*/}
+
+
+            {/*<SearchBar onClear={clearResults} value={query} onChange={handleSearch}*/}
+            {/*           textFieldSx={{ color: "black", backgroundColor: "white", height: "50px", width: "430px", borderRadius: "40px" }}*/}
+            {/*           buttonSx={{color: "white", backgroundColor: "#2563eb", height: "50px", borderRadius: "40px"}}*/}
+            {/*           onSearch={onChangeSearch}*/}
+            {/*/>*/}
+
+
+
+            {/*<Box sx={{ display: "flex", flexWrap: "wrap" }}>*/}
+            {/*    {searchResults?.results.map((movie) => (*/}
+            {/*        <Box*/}
+            {/*            key={movie.id}*/}
+            {/*            sx={{*/}
+            {/*                position: "relative",*/}
+
+            {/*                flex: "0 0 20%", // 5 карточек в ряд*/}
+            {/*                "&:hover .favorite-btn": { opacity: 1 },*/}
+            {/*            }}*/}
+            {/*        >*/}
+            {/*            <MovieCard*/}
+            {/*                movieId={movie.id}*/}
+            {/*                title={movie.title}*/}
+            {/*                posterPath={movie.poster_path}*/}
+            {/*                vote_average={movie.vote_average}*/}
+            {/*            />*/}
+            {/*        </Box>*/}
+            {/*    ))}*/}
+            {/*</Box>*/}
+
+
+            {/*{searchResults?.results !== undefined && searchResults.total_results > PAGE_SIZE ? (*/}
+            {/*    <MoviesPagination totalCount={searchResults?.total_results || 0} page={page} setPage={setPage} />*/}
+            {/*) : (*/}
+            {/*    <div></div>*/}
+            {/*)}*/}
+            {/*/!*</Box>*!/*/}
         </>
     )
 }

@@ -1,5 +1,5 @@
 import {baseApi} from "./../../app/baseApi"
-import type {DetailOfMovieResponse, ListOfMoviesResponse, MovieCastResponse} from "./movieApi.types.ts";
+import type {DetailOfMovieResponse, GenresResponse, ListOfMoviesResponse, MovieCastResponse} from "./movieApi.types.ts";
 import {PAGE_SIZE} from "../../common/constants.ts";
 
 
@@ -59,6 +59,21 @@ export const movieApi = baseApi.injectEndpoints({
             }),
         }),
 
+        getGenreListMovies: builder.query<GenresResponse, void>({
+            query: () => ({
+                url: `/genre/movie/list`,
+            }),
+        }),
+
+        getDiscoverMovieMovies: builder.query<ListOfMoviesResponse, {
+            params: { sort_by: string, "vote_average.gte": number, "vote_average.lte": number, with_genres: number[],page: number}
+        }>({
+            query: ({params}) => ({
+                url: `/discover/movie`,
+                params: { ...params, count: PAGE_SIZE },
+            }),
+        }),
+
     }),
 })
 
@@ -70,5 +85,7 @@ export const {
     useGetDetailsOfMoviesQuery,
     useGetCreditsQuery,
     useGetSimilarQuery,
-    useGetSearchMoviesQuery
+    useGetSearchMoviesQuery,
+    useGetGenreListMoviesQuery,
+    useGetDiscoverMovieMoviesQuery,
 } = movieApi

@@ -17,6 +17,7 @@ import {Upcoming} from "./ui/movies/upcoming/Upcoming.tsx"
 import {NowPlaying} from "./ui/movies/nowplaying/NowPlaying.tsx";
 import {Movie} from  "./ui/movies/Movie.tsx"
 import {PATH} from "./common/constants.ts";
+import {Footer} from "./common/footer/Footer.tsx";
 
 
 function App() {
@@ -27,8 +28,12 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
+
+
+            <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+
             <Header/>
-            <div className="content">
+            <div className="content" style={{ flex: 1 }}>
                 <Routes>
                     <Route path={PATH.HOMEPAGE} element={<Homepage/>}/>
                     <Route path={PATH.POPULAR_MOVIES} element={<PopularMovies/>}/>
@@ -42,7 +47,9 @@ function App() {
                 </Routes>
             </div>
             <Outlet/>
-            {/*<Footer/>*/}
+            <Footer/>
+            </div>
+
         </ThemeProvider>
     )
 }

@@ -2,7 +2,7 @@ import {Box, Card, CardContent, CardMedia, Typography} from "@mui/material";
 import {RatingButton} from "../ratingbutton/RatingButton.tsx";
 import {FavoriteButton} from "../favoritebutton/FavoriteButton.tsx";
 import {useNavigate} from "react-router-dom";
-import {setFavoriteMovieToLocalStorage} from "../../utils/localstorage.ts";
+import {manageFavoriteMovieToLocalStorage} from "../../utils/localstorage.ts";
 
 export type MovieCardProps = {
     movieId: number,
@@ -51,7 +51,22 @@ export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCard
                 top: -10,
                 right: -10, display: "flex", flexDirection: "column", gap: 1,
             }} >
-                <FavoriteButton onClick={() => setFavoriteMovieToLocalStorage( movieId.toString(), imageUrl, title, vote_average ) } />
+                <FavoriteButton onClick={() => manageFavoriteMovieToLocalStorage( movieId.toString(), imageUrl, title, vote_average ) } />
+
+                <FavoriteButton
+                    onClick={(e) => {
+                        e.preventDefault()   // отменяет переход по ссылке
+                        manageFavoriteMovieToLocalStorage(
+                            movieId.toString(),
+                            imageUrl,
+                            title,
+                            vote_average
+                        )
+                    }}
+                />
+
+
+
             </Box>
 
             <Box sx={{ position: "absolute",

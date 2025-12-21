@@ -1,5 +1,5 @@
 import {SearchBar} from "../common/searchbar/Searchbar.tsx";
-import {Box, Typography} from "@mui/material";
+import {Box, Button, Typography} from "@mui/material";
 import {
     useGetNowPlayingMoviesQuery,
     useGetPopularMoviesQuery,
@@ -7,45 +7,28 @@ import {
     useGetUpcomingMoviesQuery,
 } from "../features/api/movieApi.ts";
 import {MovieCard} from "../common/components/moviecard/MovieCard.tsx";
-import {NavLink} from "react-router";
-import {useAppSelector} from "../common/hooks/useAppSelector.ts";
-import {selectThemeMode} from "../app/app-slice.ts";
-import {getTheme} from "../common/theme/theme.ts";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 const randomNumber = Math.floor(Math.random() * 20);
 
 export const Homepage = () => {
-    const themeMode = useAppSelector(selectThemeMode);
-    const theme = getTheme(themeMode);
+
     const [search, setSearch] = useState('')
+    console.log(search)
+
     const navigate = useNavigate()
-
-
     const page = 1
-    const {data: popularMovies} = useGetPopularMoviesQuery({params:{page}})
-    const {data: topRatedMovies} = useGetTopRatedMoviesQuery({params:{page}})
-    const {data: upcomingMovies} = useGetUpcomingMoviesQuery({params:{page}})
-    const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery({params:{page}})
+    const {data: popularMovies} = useGetPopularMoviesQuery({params: {page}})
+    const {data: topRatedMovies} = useGetTopRatedMoviesQuery({params: {page}})
+    const {data: upcomingMovies} = useGetUpcomingMoviesQuery({params: {page}})
+    const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery({params: {page}})
 
-    const onChangeSearch = (value: string) => {
+    const onChangeSearch = (value: string) => navigate(`/search?query=${encodeURIComponent(value)}`)
 
-        console.log("Поиск:", value)
-        console.log(search)
-        navigate(`/search?query=${encodeURIComponent(value)}`)
-    }
+    const handleSearch = (value: string) => setSearch(value)
 
-    const handleSearch = (value: string) => {
-        // console.log("Поиск:", value)
-        setSearch(value)
-
-    }
-
-    const clearResults = () => {
-        setSearch("")
-        // navigate("/search")
-    }
+    const clearResults = () => setSearch("")
 
     const imageUrl = popularMovies?.results?.[randomNumber]?.backdrop_path
         ? `https://image.tmdb.org/t/p/original${popularMovies.results[randomNumber].backdrop_path}`
@@ -63,7 +46,13 @@ export const Homepage = () => {
                 <Typography variant="h2" sx={{color: "white"}}>Browse highlighted titles from TMDB</Typography>
 
                 <SearchBar onClear={clearResults} value={''} onChange={handleSearch}
-                    textFieldSx={{ color: "black", backgroundColor: "white", height: "50px", width: "430px", borderRadius: "40px" }}
+                           textFieldSx={{
+                               color: "black",
+                               backgroundColor: "white",
+                               height: "50px",
+                               width: "430px",
+                               borderRadius: "40px"
+                           }}
                            buttonSx={{color: "white", backgroundColor: "#2563eb", height: "50px", borderRadius: "40px"}}
                            onSearch={onChangeSearch}
                 />
@@ -71,49 +60,84 @@ export const Homepage = () => {
             </Box>
 
 
-            <h2>Popular Movies</h2>
 
 
-            <NavLink
-
-                style={({ isActive }) => ({
-                    color: theme.palette.mode === "light" ? "black" : "white",
-                    textDecoration: "none",
-                    fontWeight: 500,
-                    backgroundColor: isActive ? "#2563eb" : "transparent",
-                    borderRadius: 20,
-                    marginRight: "20px",
-                })}
-                className={({ isActive }) => (isActive ? "active-link" : "")}
-                to="/movies/popular"
-            >
-                View more
-            </NavLink>
-
-
-
+            <Box sx={{display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
+                marginLeft: '30px',
+                marginRight: '40px',
+                paddingTop: '20px',
+            }}>
+                <h2>Popular Movies</h2>
+                <Button
+                    variant="contained"
+                    href={"/movies/popular"}
+                    sx={{
+                        width: '100px',
+                        height: '40px',
+                        borderRadius: "20px",
+                        textTransform: "none",
+                        padding: "2px",
+                        backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
+                        color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
+                        whiteSpace: "normal",
+                        wordBreak: "break-word",
+                    }}
+                >
+                    View more
+                </Button>
+            </Box>
 
 
             <Box sx={{display: "flex", flexWrap: "nowrap"}}>
 
                 {popularMovies?.results.slice(0, 6).map((movie) => (
 
-                    <Box key={movie.id} sx={{position: "relative", margin: 2,
-                        "&:hover .favorite-btn": {opacity: 1,},}}>
+                    <Box key={movie.id} sx={{
+                        position: "relative", margin: 2,
+                        "&:hover .favorite-btn": {opacity: 1,},
+                    }}>
                         <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
-                            vote_average={movie.vote_average}
+                                   vote_average={movie.vote_average}
                         />
                     </Box>
                 ))}
 
             </Box>
 
-            <h2>Top Rated Movies</h2>
+
+            <Box sx={{display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
+                marginLeft: '30px',
+                marginRight: '40px',
+                paddingTop: '20px',
+            }}>
+                <h2>Top Rated Movies</h2>
+                <Button
+                    variant="contained"
+                    href={"/movies/top-rated"}
+                    sx={{
+                        width: '100px',
+                        height: '40px',
+                        borderRadius: "20px",
+                        textTransform: "none",
+                        padding: "2px",
+                        backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
+                        color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
+                        whiteSpace: "normal",
+                        wordBreak: "break-word",
+                    }}
+                >
+                    View more
+                </Button>
+            </Box>
+
+
             <Box sx={{display: "flex", flexWrap: "nowrap"}}>
                 {topRatedMovies?.results.slice(0, 6).map((movie) => (
-                    <Box key={movie.id} sx={{position: "relative", margin: 2, "&:hover .favorite-btn": {
+                    <Box key={movie.id} sx={{
+                        position: "relative", margin: 2, "&:hover .favorite-btn": {
                             opacity: 1,
-                        },}}>
+                        },
+                    }}>
                         <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
                                    vote_average={movie.vote_average}
                         />
@@ -121,12 +145,44 @@ export const Homepage = () => {
                 ))}
             </Box>
 
-            <h2>Upcoming Movies</h2>
+
+
+
+
+            <Box sx={{display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
+                marginLeft: '30px',
+                marginRight: '40px',
+                paddingTop: '20px',
+            }}>
+                <h2>Upcoming Movies</h2>
+                <Button
+                    variant="contained"
+                    href={"/movies/upcoming"}
+                    sx={{
+                        width: '100px',
+                        height: '40px',
+                        borderRadius: "20px",
+                        textTransform: "none",
+                        padding: "2px",
+                        backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
+                        color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
+                        whiteSpace: "normal",
+                        wordBreak: "break-word",
+                    }}
+                >
+                    View more
+                </Button>
+            </Box>
+
+
+
             <Box sx={{display: "flex", flexWrap: "nowrap"}}>
                 {upcomingMovies?.results.slice(0, 6).map((movie) => (
-                    <Box key={movie.id} sx={{position: "relative", margin: 2, "&:hover .favorite-btn": {
+                    <Box key={movie.id} sx={{
+                        position: "relative", margin: 2, "&:hover .favorite-btn": {
                             opacity: 1,
-                        },}}>
+                        },
+                    }}>
                         <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
                                    vote_average={movie.vote_average}
                         />
@@ -134,12 +190,42 @@ export const Homepage = () => {
                 ))}
             </Box>
 
-            <h2>Now Playing Movies</h2>
+
+
+            <Box sx={{display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
+                marginLeft: '30px',
+                marginRight: '40px',
+                paddingTop: '20px',
+            }}>
+                <h2>Now Playing Movies</h2>
+                <Button
+                    variant="contained"
+                    href={"/movies/now-playing"}
+                    sx={{
+                        width: '100px',
+                        height: '40px',
+                        borderRadius: "20px",
+                        textTransform: "none",
+                        padding: "2px",
+                        backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
+                        color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
+                        whiteSpace: "normal",
+                        wordBreak: "break-word",
+                    }}
+                >
+                    View more
+                </Button>
+            </Box>
+
+
+
             <Box sx={{display: "flex", flexWrap: "nowrap"}}>
                 {nowPlayingMovies?.results.slice(0, 6).map((movie) => (
-                    <Box key={movie.id} sx={{position: "relative", margin: 2, "&:hover .favorite-btn": {
+                    <Box key={movie.id} sx={{
+                        position: "relative", margin: 2, "&:hover .favorite-btn": {
                             opacity: 1,
-                        },}}>
+                        },
+                    }}>
                         <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
                                    vote_average={movie.vote_average}
                         />
