@@ -31,11 +31,12 @@ export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCard
 
     return (
         <>
-        <Card onClick={handleNavigateClick} sx={{ maxWidth: 200, margin: 2, borderRadius: "15px", boxShadow: "none", position: "relative", }}>
+        <Card onClick={handleNavigateClick} sx={{ maxWidth: '189px', borderRadius: "15px", boxShadow: "none", position: "relative", }}>
 
             <CardMedia
                 component="img"
-                height="280"
+                width="180"
+                height="270"
                 image={imageUrl}
                 alt={`${title} poster`}
                 sx={{

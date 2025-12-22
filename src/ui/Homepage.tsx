@@ -36,201 +36,217 @@ export const Homepage = () => {
 
     return (
         <>
-            <Box sx={{
-                width: "100vw", height: "700px", backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
-                backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "left", pl: 4,
-                justifyContent: "center", flexDirection: "column",
-            }}>
+            <Box className={'testWRAPPER'}>
+                <Box sx={{
+                    width: "100vw", height: "700px", backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
+                    backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "left", pl: 4,
+                    justifyContent: "center", flexDirection: "column",
+                }}>
 
-                <Typography variant="h1" sx={{color: "white"}}>welcome</Typography>
-                <Typography variant="h2" sx={{color: "white"}}>Browse highlighted titles from TMDB</Typography>
+                    <Typography variant="h1" sx={{color: "white"}}>welcome</Typography>
+                    <Typography variant="h2" sx={{color: "white"}}>Browse highlighted titles from TMDB</Typography>
 
-                <SearchBar onClear={clearResults} value={''} onChange={handleSearch}
-                           textFieldSx={{
-                               color: "black",
-                               backgroundColor: "white",
-                               height: "50px",
-                               width: "430px",
-                               borderRadius: "40px"
-                           }}
-                           buttonSx={{color: "white", backgroundColor: "#2563eb", height: "50px", borderRadius: "40px"}}
-                           onSearch={onChangeSearch}
-                />
+                    <SearchBar onClear={clearResults} value={''} onChange={handleSearch}
+                               textFieldSx={{
+                                   color: "black",
+                                   backgroundColor: "white",
+                                   height: "50px",
+                                   width: "430px",
+                                   borderRadius: "40px"
+                               }}
+                               buttonSx={{
+                                   color: "white",
+                                   backgroundColor: "#2563eb",
+                                   height: "50px",
+                                   borderRadius: "40px"
+                               }}
+                               onSearch={onChangeSearch}
+                    />
 
-            </Box>
-
-
-
-
-            <Box sx={{display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
-                marginLeft: '30px',
-                marginRight: '40px',
-                paddingTop: '20px',
-            }}>
-                <h2>Popular Movies</h2>
-                <Button
-                    variant="contained"
-                    href={"/movies/popular"}
-                    sx={{
-                        width: '100px',
-                        height: '40px',
-                        borderRadius: "20px",
-                        textTransform: "none",
-                        padding: "2px",
-                        backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
-                        color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
-                        whiteSpace: "normal",
-                        wordBreak: "break-word",
-                    }}
-                >
-                    View more
-                </Button>
-            </Box>
+                </Box>
 
 
-            <Box sx={{display: "flex", flexWrap: "nowrap"}}>
+                <Box className={'mainTestWR'} sx={{maxWidth: '1200px', margin: '0 auto'
+                }}>
+                    <Box className={'testWR'}>
+                        <Box sx={{
+                            display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
+                            marginLeft: '10px',
+                            marginRight: '20px',
+                            paddingTop: '20px',
+                            alignItems: 'center'
+                        }}>
+                            <h2>Popular Movies</h2>
+                            <Button
+                                variant="contained"
+                                href={"/movies/popular"}
+                                sx={{
+                                    width: '100px',
+                                    height: '40px',
+                                    borderRadius: "20px",
+                                    textTransform: "none",
+                                    padding: "2px",
+                                    backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
+                                    color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
+                                    whiteSpace: "normal",
+                                    wordBreak: "break-word",
+                                }}
+                            >
+                                View more
+                            </Button>
+                        </Box>
 
-                {popularMovies?.results.slice(0, 6).map((movie) => (
+                        <Box sx={{display: "flex", flexWrap: "nowrap"}}>
 
-                    <Box key={movie.id} sx={{
-                        position: "relative", margin: 2,
-                        "&:hover .favorite-btn": {opacity: 1,},
-                    }}>
-                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
-                                   vote_average={movie.vote_average}
-                        />
+                            {popularMovies?.results.slice(0, 6).map((movie) => (
+
+                                <Box key={movie.id} sx={{
+                                    position: "relative", margin: 1,
+                                    "&:hover .favorite-btn": {opacity: 1,},
+                                }}>
+                                    <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
+                                               vote_average={movie.vote_average}
+                                    />
+                                </Box>
+                            ))}
+
+                        </Box>
                     </Box>
-                ))}
 
-            </Box>
+                    <Box className={'testWR'} sx={{maxWidth: '1200px',}}>
+                        <Box sx={{
+                            display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
+                            marginLeft: '10px',
+                            marginRight: '20px',
+                            paddingTop: '20px',
+                            alignItems: 'center',
+                        }}>
+                            <h2>Top Rated Movies</h2>
+                            <Button
+                                variant="contained"
+                                href={"/movies/top-rated"}
+                                sx={{
+                                    width: '100px',
+                                    height: '40px',
+                                    borderRadius: "20px",
+                                    textTransform: "none",
+                                    padding: "2px",
+                                    backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
+                                    color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
+                                    whiteSpace: "normal",
+                                    wordBreak: "break-word",
+                                }}
+                            >
+                                View more
+                            </Button>
+                        </Box>
 
 
-            <Box sx={{display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
-                marginLeft: '30px',
-                marginRight: '40px',
-                paddingTop: '20px',
-            }}>
-                <h2>Top Rated Movies</h2>
-                <Button
-                    variant="contained"
-                    href={"/movies/top-rated"}
-                    sx={{
-                        width: '100px',
-                        height: '40px',
-                        borderRadius: "20px",
-                        textTransform: "none",
-                        padding: "2px",
-                        backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
-                        color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
-                        whiteSpace: "normal",
-                        wordBreak: "break-word",
-                    }}
-                >
-                    View more
-                </Button>
-            </Box>
-
-
-            <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-                {topRatedMovies?.results.slice(0, 6).map((movie) => (
-                    <Box key={movie.id} sx={{
-                        position: "relative", margin: 2, "&:hover .favorite-btn": {
-                            opacity: 1,
-                        },
-                    }}>
-                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
-                                   vote_average={movie.vote_average}
-                        />
+                        <Box sx={{display: "flex", flexWrap: "nowrap"}}>
+                            {topRatedMovies?.results.slice(0, 6).map((movie) => (
+                                <Box key={movie.id} sx={{
+                                    position: "relative", margin: 1, "&:hover .favorite-btn": {
+                                        opacity: 1,
+                                    },
+                                }}>
+                                    <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
+                                               vote_average={movie.vote_average}
+                                    />
+                                </Box>
+                            ))}
+                        </Box>
                     </Box>
-                ))}
-            </Box>
 
 
+                    <Box className={'testWR'} sx={{maxWidth: '1200px',}}>
+                        <Box sx={{
+                            display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
+                            marginLeft: '10px',
+                            marginRight: '20px',
+                            paddingTop: '20px',
+                            alignItems: 'center',
+                        }}>
+                            <h2>Upcoming Movies</h2>
+                            <Button
+                                variant="contained"
+                                href={"/movies/upcoming"}
+                                sx={{
+                                    width: '100px',
+                                    height: '40px',
+                                    borderRadius: "20px",
+                                    textTransform: "none",
+                                    padding: "2px",
+                                    backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
+                                    color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
+                                    whiteSpace: "normal",
+                                    wordBreak: "break-word",
+                                }}
+                            >
+                                View more
+                            </Button>
+                        </Box>
 
 
-
-            <Box sx={{display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
-                marginLeft: '30px',
-                marginRight: '40px',
-                paddingTop: '20px',
-            }}>
-                <h2>Upcoming Movies</h2>
-                <Button
-                    variant="contained"
-                    href={"/movies/upcoming"}
-                    sx={{
-                        width: '100px',
-                        height: '40px',
-                        borderRadius: "20px",
-                        textTransform: "none",
-                        padding: "2px",
-                        backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
-                        color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
-                        whiteSpace: "normal",
-                        wordBreak: "break-word",
-                    }}
-                >
-                    View more
-                </Button>
-            </Box>
-
-
-
-            <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-                {upcomingMovies?.results.slice(0, 6).map((movie) => (
-                    <Box key={movie.id} sx={{
-                        position: "relative", margin: 2, "&:hover .favorite-btn": {
-                            opacity: 1,
-                        },
-                    }}>
-                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
-                                   vote_average={movie.vote_average}
-                        />
+                        <Box sx={{display: "flex", flexWrap: "nowrap"}}>
+                            {upcomingMovies?.results.slice(0, 6).map((movie) => (
+                                <Box key={movie.id} sx={{
+                                    position: "relative", margin: 1, "&:hover .favorite-btn": {
+                                        opacity: 1,
+                                    },
+                                }}>
+                                    <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
+                                               vote_average={movie.vote_average}
+                                    />
+                                </Box>
+                            ))}
+                        </Box>
                     </Box>
-                ))}
-            </Box>
 
 
+                    <Box className={'testWR'} sx={{maxWidth: '1200px',}}>
+                        <Box sx={{
+                            display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
+                            marginLeft: '10px',
+                            marginRight: '20px',
+                            paddingTop: '20px',
+                            alignItems: 'center',
+                        }}>
+                            <h2>Now Playing Movies</h2>
+                            <Button
+                                variant="contained"
+                                href={"/movies/now-playing"}
+                                sx={{
+                                    width: '100px',
+                                    height: '40px',
+                                    borderRadius: "20px",
+                                    textTransform: "none",
+                                    padding: "2px",
+                                    backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
+                                    color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
+                                    whiteSpace: "normal",
+                                    wordBreak: "break-word",
+                                }}
+                            >
+                                View more
+                            </Button>
+                        </Box>
 
-            <Box sx={{display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
-                marginLeft: '30px',
-                marginRight: '40px',
-                paddingTop: '20px',
-            }}>
-                <h2>Now Playing Movies</h2>
-                <Button
-                    variant="contained"
-                    href={"/movies/now-playing"}
-                    sx={{
-                        width: '100px',
-                        height: '40px',
-                        borderRadius: "20px",
-                        textTransform: "none",
-                        padding: "2px",
-                        backgroundColor: (theme) => theme.palette.mode === 'light' ? 'white' : '#27354f',
-                        color: (theme) => theme.palette.mode === 'light' ? 'black' : 'white',
-                        whiteSpace: "normal",
-                        wordBreak: "break-word",
-                    }}
-                >
-                    View more
-                </Button>
-            </Box>
 
-
-
-            <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-                {nowPlayingMovies?.results.slice(0, 6).map((movie) => (
-                    <Box key={movie.id} sx={{
-                        position: "relative", margin: 2, "&:hover .favorite-btn": {
-                            opacity: 1,
-                        },
-                    }}>
-                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
-                                   vote_average={movie.vote_average}
-                        />
+                        <Box sx={{display: "flex", flexWrap: "nowrap"}}>
+                            {nowPlayingMovies?.results.slice(0, 6).map((movie) => (
+                                <Box key={movie.id} sx={{
+                                    position: "relative", margin: 1, "&:hover .favorite-btn": {
+                                        opacity: 1,
+                                    },
+                                }}>
+                                    <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path}
+                                               vote_average={movie.vote_average}
+                                    />
+                                </Box>
+                            ))}
+                        </Box>
                     </Box>
-                ))}
+                </Box>
             </Box>
         </>
     );
