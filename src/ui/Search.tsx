@@ -35,61 +35,74 @@ export const Search = () => {
 
     return (
         <>
-            <Box sx={{paddingTop:"20px", paddingLeft:"30px", paddingBottom: "30px"}}>
+            <Box className={'mainsearchWR'} sx={{alignItems: "center", maxWidth: '1200px', margin: '0 auto'}}>
 
-                <Typography variant={"h5"} sx={{paddingBottom: "30px"}}>Search Results</Typography>
+                <Box sx={{paddingTop: "20px", paddingLeft: "10px", paddingBottom: "30px"}}>
 
-            <SearchBar onClear={clearResults} value={query} onChange={handleSearch}
-                       textFieldSx={{ color: "black", backgroundColor: "white", height: "50px", width: "430px", borderRadius: "40px" }}
-                       buttonSx={{color: "white", backgroundColor: "#2563eb", height: "50px", borderRadius: "40px"}}
-                       onSearch={onChangeSearch}
-            />
+                    <Typography variant={"h5"} sx={{paddingBottom: "30px"}}>Search Results</Typography>
 
-            </Box>
+                    <SearchBar onClear={clearResults} value={query} onChange={handleSearch}
+                               textFieldSx={{
+                                   color: "black",
+                                   backgroundColor: "white",
+                                   height: "50px",
+                                   width: "430px",
+                                   borderRadius: "40px"
+                               }}
+                               buttonSx={{
+                                   color: "white",
+                                   backgroundColor: "#2563eb",
+                                   height: "50px",
+                                   borderRadius: "40px"
+                               }}
+                               onSearch={onChangeSearch}
+                    />
 
-            <Box
-                sx={{
-                    paddingLeft:"15px",
-                    display: "flex",
-                    flexWrap: "wrap",
-                    minHeight: "300px", // минимальная высота блока
+                </Box>
 
-                    alignItems: searchResults?.results?.length ? "flex-start" : "center",
-                    justifyContent: searchResults?.results?.length ? "flex-start" : "center",
-                }}
-            >
+                <Box
+                    sx={{
+                        paddingLeft: "15px",
+                        display: "flex",
+                        flexWrap: "wrap",
+                        minHeight: "300px", // минимальная высота блока
 
-                {searchResults?.results?.length ? (
-                    searchResults.results.map((movie) => (
-                        <Box
-                            key={movie.id}
-                            sx={{
-                                position: "relative",
-                                flex: "0 0 20%",
-                                "&:hover .favorite-btn": { opacity: 1 },
-                            }}
-                        >
-                            <MovieCard
-                                movieId={movie.id}
-                                title={movie.title}
-                                posterPath={movie.poster_path}
-                                vote_average={movie.vote_average}
-                            />
-                        </Box>
-                    ))
-                ) : (
-                    <Typography variant="h6" color="text.secondary">
-                        Ничего не найдено
-                    </Typography>
-                )}
+                        alignItems: searchResults?.results?.length ? "flex-start" : "center",
+                        justifyContent: searchResults?.results?.length ? "flex-start" : "center",
+                    }}
+                >
+
+                    {searchResults?.results?.length ? (
+                        searchResults.results.map((movie) => (
+                            <Box
+                                key={movie.id}
+                                sx={{
+                                    position: "relative",
+                                    flex: "0 0 20%",
+                                    "&:hover .favorite-btn": {opacity: 1},
+                                }}
+                            >
+                                <MovieCard
+                                    movieId={movie.id}
+                                    title={movie.title}
+                                    posterPath={movie.poster_path}
+                                    vote_average={movie.vote_average}
+                                />
+                            </Box>
+                        ))
+                    ) : (
+                        <Typography variant="h6" color="text.secondary">
+                            Ничего не найдено
+                        </Typography>
+                    )}
 
 
-
+                </Box>
 
             </Box>
 
             {searchResults?.results !== undefined && searchResults.total_results > PAGE_SIZE ? (
-                <MoviesPagination totalCount={searchResults?.total_results || 0} page={page} setPage={setPage} />
+                <MoviesPagination totalCount={searchResults?.total_results || 0} page={page} setPage={setPage}/>
             ) : (
                 <div></div>
             )}
