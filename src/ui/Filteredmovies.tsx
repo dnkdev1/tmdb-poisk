@@ -1,4 +1,4 @@
-import {useGetDiscoverMovieMoviesQuery, useGetGenreListMoviesQuery} from "../features/api/movieApi.ts";
+import {useGetDiscoverMovieMoviesQuery, useGetGenreListMoviesQuery} from "../features/api/movieApi.ts"
 import {
     Box,
     Button,
@@ -10,14 +10,14 @@ import {
     type SelectChangeEvent,
     Slider,
     Typography
-} from "@mui/material";
-import {useState} from "react";
-import {PAGE_SIZE} from "../common/constants.ts";
-import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx";
-import {MovieCard} from "../common/components/moviecard/MovieCard.tsx";
-import {useAppSelector} from "../common/hooks/useAppSelector.ts";
-import {selectThemeMode} from "../app/app-slice.ts";
-import {getTheme} from "../common/theme/theme.ts";
+} from "@mui/material"
+import {useState} from "react"
+import {PAGE_SIZE} from "../common/constants.ts"
+import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx"
+import {MovieCard} from "../common/components/moviecard/MovieCard.tsx"
+import {useAppSelector} from "../common/hooks/useAppSelector.ts"
+import {selectThemeMode} from "../app/app-slice.ts"
+import {getTheme} from "../common/theme/theme.ts"
 
 
 export const Filteredmovies = () => {

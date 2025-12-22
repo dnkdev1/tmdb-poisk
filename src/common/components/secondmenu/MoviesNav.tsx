@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
-import { useAppSelector } from "../../../common/hooks/useAppSelector";
-import { selectThemeMode } from "../../../app/app-slice";
-import { getTheme } from "../../../common/theme/theme";
+import { NavLink } from "react-router"
+import { useAppSelector } from "../../../common/hooks/useAppSelector"
+import { selectThemeMode } from "../../../app/app-slice"
+import { getTheme } from "../../../common/theme/theme"
 import * as React from "react";
 
 
@@ -11,24 +11,13 @@ export const MoviesNav = () => {
 
 
     const onHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.currentTarget.style.color = "cornflowerblue";
-    };
+        e.currentTarget.style.color = "cornflowerblue"
+    }
     const onLiveHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.currentTarget.style.color = theme.palette.mode === "light" ? "black" : "white";
-    };
+        e.currentTarget.style.color = theme.palette.mode === "light" ? "black" : "white"
+    }
 
 
-//align-items
-// Aligns flex items along the cross axis of the current line of the flex container.
-//
-// Widely available across major browsers (Baseline since March 2018)
-// Learn more
-//
-// Don't show
-// : center;
-//     justify-content: center;
-//     display: flex;
-//     border: 1px solid;
     return (
         <nav style={{alignItems: "center",display:"flex", justifyContent: "center", paddingTop: "50px"}}>
             <NavLink
@@ -100,5 +89,5 @@ export const MoviesNav = () => {
                 Now Playing Movies
             </NavLink>
         </nav>
-    );
-};
+    )
+}

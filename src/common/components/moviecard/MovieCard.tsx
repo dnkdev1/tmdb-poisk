@@ -1,7 +1,7 @@
 import {Box, Card, CardContent, CardMedia, Typography} from "@mui/material";
 import {RatingButton} from "../ratingbutton/RatingButton.tsx";
 import {FavoriteButton} from "../favoritebutton/FavoriteButton.tsx";
-import {useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router";
 import {manageFavoriteMovieToLocalStorage} from "../../utils/localstorage.ts";
 
 export type MovieCardProps = {

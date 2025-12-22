@@ -1,10 +1,10 @@
-import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx";
-import {useGetTopRatedMoviesQuery} from "../../../features/api/movieApi.ts";
-import {Box} from "@mui/material";
-import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx";
-import {useState} from "react";
-import {PAGE_SIZE} from "../../../common/constants.ts";
-import {MoviesPagination} from "../../../common/components/pagination/MoviesPagination.tsx";
+import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx"
+import {useGetTopRatedMoviesQuery} from "../../../features/api/movieApi.ts"
+import {Box} from "@mui/material"
+import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx"
+import {useState} from "react"
+import {PAGE_SIZE} from "../../../common/constants.ts"
+import {MoviesPagination} from "../../../common/components/pagination/MoviesPagination.tsx"
 
 
 export const TopRated = () => {

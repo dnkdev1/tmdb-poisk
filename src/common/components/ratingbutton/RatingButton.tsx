@@ -8,6 +8,7 @@ type Props = {
 export const RatingButton = ({voteAverage, onClick}: Props) => {
     let rounded
     let fixedVoiteAverage
+
     if (voteAverage !== undefined) {
         rounded = Math.ceil(voteAverage * 10) / 10
         fixedVoiteAverage = rounded.toFixed(1)

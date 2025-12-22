@@ -3,8 +3,6 @@ import {Pagination, Typography} from "@mui/material";
 import styles from './Pagination.module.css'
 import {PAGE_SIZE} from "../../constants.ts";
 
-
-
 type Props = {
     totalCount: number
     page: number
@@ -36,7 +34,6 @@ export const MoviesPagination = ({ totalCount, page, setPage }: Props) => {
             <div className={styles.totalCount}>
                 <Typography variant="caption">Total: {totalCount}</Typography>
             </div>
-
         </>
     )
 }

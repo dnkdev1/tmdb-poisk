@@ -1,10 +1,10 @@
-import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx";
-import {useGetPopularMoviesQuery} from "../../../features/api/movieApi.ts";
-import {Box} from "@mui/material";
-import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx";
-import {MoviesPagination} from "../../../common/components/pagination/MoviesPagination.tsx";
-import {PAGE_SIZE} from "../../../common/constants.ts";
-import {useState} from "react";
+import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx"
+import {useGetPopularMoviesQuery} from "../../../features/api/movieApi.ts"
+import {Box} from "@mui/material"
+import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx"
+import {MoviesPagination} from "../../../common/components/pagination/MoviesPagination.tsx"
+import {PAGE_SIZE} from "../../../common/constants.ts"
+import {useState} from "react"
 
 
 export const PopularMovies = () => {

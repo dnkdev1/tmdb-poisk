@@ -1,11 +1,11 @@
-import {useLocation, useNavigate} from "react-router-dom";
-import {useGetSearchMoviesQuery} from "../features/api/movieApi.ts";
-import {Box, Typography} from "@mui/material";
-import {MovieCard} from "../common/components/moviecard/MovieCard.tsx";
-import {PAGE_SIZE} from "../common/constants.ts";
-import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx";
-import {useState} from "react";
-import {SearchBar} from "../common/searchbar/Searchbar.tsx";
+import {useLocation, useNavigate} from "react-router"
+import {useGetSearchMoviesQuery} from "../features/api/movieApi.ts"
+import {Box, Typography} from "@mui/material"
+import {MovieCard} from "../common/components/moviecard/MovieCard.tsx"
+import {PAGE_SIZE} from "../common/constants.ts"
+import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx"
+import {useState} from "react"
+import {SearchBar} from "../common/searchbar/Searchbar.tsx"
 
 export const Search = () => {
 
@@ -94,48 +94,6 @@ export const Search = () => {
                 <div></div>
             )}
 
-
-
-            {/*/!*<Box sx={{minHeight: "800px" }}>*!/*/}
-            {/*<h1>Search Results</h1>*/}
-
-
-            {/*<SearchBar onClear={clearResults} value={query} onChange={handleSearch}*/}
-            {/*           textFieldSx={{ color: "black", backgroundColor: "white", height: "50px", width: "430px", borderRadius: "40px" }}*/}
-            {/*           buttonSx={{color: "white", backgroundColor: "#2563eb", height: "50px", borderRadius: "40px"}}*/}
-            {/*           onSearch={onChangeSearch}*/}
-            {/*/>*/}
-
-
-
-            {/*<Box sx={{ display: "flex", flexWrap: "wrap" }}>*/}
-            {/*    {searchResults?.results.map((movie) => (*/}
-            {/*        <Box*/}
-            {/*            key={movie.id}*/}
-            {/*            sx={{*/}
-            {/*                position: "relative",*/}
-
-            {/*                flex: "0 0 20%", // 5 карточек в ряд*/}
-            {/*                "&:hover .favorite-btn": { opacity: 1 },*/}
-            {/*            }}*/}
-            {/*        >*/}
-            {/*            <MovieCard*/}
-            {/*                movieId={movie.id}*/}
-            {/*                title={movie.title}*/}
-            {/*                posterPath={movie.poster_path}*/}
-            {/*                vote_average={movie.vote_average}*/}
-            {/*            />*/}
-            {/*        </Box>*/}
-            {/*    ))}*/}
-            {/*</Box>*/}
-
-
-            {/*{searchResults?.results !== undefined && searchResults.total_results > PAGE_SIZE ? (*/}
-            {/*    <MoviesPagination totalCount={searchResults?.total_results || 0} page={page} setPage={setPage} />*/}
-            {/*) : (*/}
-            {/*    <div></div>*/}
-            {/*)}*/}
-            {/*/!*</Box>*!/*/}
         </>
     )
 }

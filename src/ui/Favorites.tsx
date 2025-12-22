@@ -1,6 +1,6 @@
-import {getFavoriteMoviesFromLocalStorage} from "../common/utils/localstorage.ts";
-import {Box} from "@mui/material";
-import {MovieCard} from "../common/components/moviecard/MovieCard.tsx";
+import {getFavoriteMoviesFromLocalStorage} from "../common/utils/localstorage.ts"
+import {Box} from "@mui/material"
+import {MovieCard} from "../common/components/moviecard/MovieCard.tsx"
 
 
 export const Favorites = () => {

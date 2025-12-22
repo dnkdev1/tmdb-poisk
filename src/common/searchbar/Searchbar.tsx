@@ -1,8 +1,8 @@
-import {useState} from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import {IconButton} from "@mui/material";
+import {useState} from "react"
+import TextField from "@mui/material/TextField"
+import Button from "@mui/material/Button"
+import Box from "@mui/material/Box"
+import {IconButton} from "@mui/material"
 import ClearIcon from "@mui/icons-material/Clear"
 
 type Props = {
@@ -21,8 +21,7 @@ export const SearchBar = ({onClear, value, onSearch, onChange, textFieldSx, butt
         if (query.trim()) {
             onSearch(query);
         }
-        // navigate("/search")
-    };
+    }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 

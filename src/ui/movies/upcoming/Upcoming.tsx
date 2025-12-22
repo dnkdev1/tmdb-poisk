@@ -1,10 +1,10 @@
-import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx";
+import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx"
 import {Box} from "@mui/material";
-import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx";
-import {useGetUpcomingMoviesQuery} from "../../../features/api/movieApi.ts";
-import {useState} from "react";
-import {PAGE_SIZE} from "../../../common/constants.ts";
-import {MoviesPagination} from "../../../common/components/pagination/MoviesPagination.tsx";
+import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx"
+import {useGetUpcomingMoviesQuery} from "../../../features/api/movieApi.ts"
+import {useState} from "react"
+import {PAGE_SIZE} from "../../../common/constants.ts"
+import {MoviesPagination} from "../../../common/components/pagination/MoviesPagination.tsx"
 
 export const Upcoming = () => {
     const [page, setPage] = useState(1)

@@ -1,16 +1,16 @@
-import {SearchBar} from "../common/searchbar/Searchbar.tsx";
-import {Box, Button, Typography} from "@mui/material";
+import {SearchBar} from "../common/searchbar/Searchbar.tsx"
+import {Box, Button, Typography} from "@mui/material"
 import {
     useGetNowPlayingMoviesQuery,
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,
     useGetUpcomingMoviesQuery,
-} from "../features/api/movieApi.ts";
-import {MovieCard} from "../common/components/moviecard/MovieCard.tsx";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+} from "../features/api/movieApi.ts"
+import {MovieCard} from "../common/components/moviecard/MovieCard.tsx"
+import {useState} from "react"
+import {useNavigate} from "react-router"
 
-const randomNumber = Math.floor(Math.random() * 20);
+const randomNumber = Math.floor(Math.random() * 20)
 
 export const Homepage = () => {
 
