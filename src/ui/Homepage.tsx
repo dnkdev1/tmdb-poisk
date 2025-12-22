@@ -34,6 +34,21 @@ export const Homepage = () => {
         ? `https://image.tmdb.org/t/p/original${popularMovies.results[randomNumber].backdrop_path}`
         : "";
 
+
+
+    //     font-family: system-ui,Avenir,Helvetica,Arial,sans-serif;
+    //     color-scheme: light;
+    //     font-synthesis: none;
+    //     text-rendering: optimizeLegibility;
+    //     -webkit-font-smoothing: antialiased;
+    //     line-height: 1.1;
+    //     margin: 0;
+    //     font-size: 48px;
+    //     font-weight: 800;
+    //     text-transform: uppercase;
+    //     color: var(--color-white);
+
+
     return (
         <>
             <Box className={'testWRAPPER'}>
@@ -44,8 +59,8 @@ export const Homepage = () => {
                 }}>
 
                     <Box className={'searchWR'} sx={{minWidth: '1200px'}}>
-                    <Typography variant="h1" sx={{color: "white"}}>welcome</Typography>
-                    <Typography variant="h2" sx={{color: "white"}}>Browse highlighted titles from TMDB</Typography>
+                    <Typography variant="h3" sx={{color: "white", paddingBottom: '10px', fontFamily:'Helvetica', fontWeight:'800'}}>WELCOME</Typography>
+                    <Typography variant="h6" sx={{color: "white", paddingBottom: '20px'}}>Browse highlighted titles from TMDB</Typography>
 
                     <SearchBar onClear={clearResults} value={''} onChange={handleSearch}
                                textFieldSx={{
