@@ -41,9 +41,9 @@ export const Header = () => {
     return (
         <>
             <AppBar position="relative"
-                    sx={{backgroundColor: theme.palette.background.default, color: theme.palette.text.primary}}>
+                    sx={{backgroundColor: theme.palette.background.default, color: theme.palette.text.primary, width: '100vw'}}>
                 <Toolbar>
-                    <header className={s.header}>
+                    <div className={s.header}>
                         <NavLink to="/">
                             <svg xmlns="http://www.w3.org/2000/svg" width={185} height={25} viewBox="0 0 273.42 35.52"
                                  role="img" aria-label="The Movie Database" className="logo">
@@ -157,7 +157,7 @@ export const Header = () => {
                         }}>
                             {themeMode === "light" ? "🌙" : "☀️"}
                         </IconButton>
-                    </header>
+                    </div>
                 </Toolbar>
             </AppBar>
 

@@ -1,5 +1,12 @@
 import { AppBar, Toolbar, Typography } from "@mui/material"
 
+
+
+// {передалеть чтобы не было хедером}
+
+
+
+
 export const Footer = () => {
     return (
         <AppBar position="static" color="default" >
