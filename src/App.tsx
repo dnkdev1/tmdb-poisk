@@ -11,7 +11,7 @@ import {useAppSelector} from "./common/hooks/useAppSelector.ts";
 import {selectThemeMode} from "./app/app-slice.ts";
 import {getTheme} from "./common/theme/theme.ts";
 import {PopularMovies} from "./ui/movies/popular/PopularMovies.tsx";
-import {Outlet} from "react-router-dom"
+import {Outlet} from "react-router"
 import {TopRated} from "./ui/movies/toprated/TopRated.tsx";
 import {Upcoming} from "./ui/movies/upcoming/Upcoming.tsx"
 import {NowPlaying} from "./ui/movies/nowplaying/NowPlaying.tsx";
