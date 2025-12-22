@@ -35,7 +35,6 @@ export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCard
 
             <CardMedia
                 component="img"
-                width="180"
                 height="270"
                 image={imageUrl}
                 alt={`${title} poster`}

@@ -39,10 +39,11 @@ export const Homepage = () => {
             <Box className={'testWRAPPER'}>
                 <Box sx={{
                     width: "100vw", height: "700px", backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
-                    backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "left", pl: 4,
+                    backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", pl: 4,
                     justifyContent: "center", flexDirection: "column",
                 }}>
 
+                    <Box className={'searchWR'} sx={{minWidth: '1200px'}}>
                     <Typography variant="h1" sx={{color: "white"}}>welcome</Typography>
                     <Typography variant="h2" sx={{color: "white"}}>Browse highlighted titles from TMDB</Typography>
 
@@ -62,7 +63,7 @@ export const Homepage = () => {
                                }}
                                onSearch={onChangeSearch}
                     />
-
+                    </Box>
                 </Box>
 
 
