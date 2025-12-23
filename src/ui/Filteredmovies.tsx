@@ -74,7 +74,7 @@ export const Filteredmovies = () => {
 
 
     const handleRatingChange = (_event: Event, newValue: number[]) => {
-        setValue(newValue);
+        setValue(newValue) //Реализуй debounce с задержкой в 200 мс, чтобы при движении ползунка не улетала 100 запросов
     }
 
 
