@@ -45,13 +45,19 @@ export const Header = () => {
                         backgroundColor: theme.palette.background.default,
                         color: theme.palette.text.primary,
                         width: '100vw',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
                     }}>
 
                 <div className={s.wrapper}>
 
-                    <Toolbar sx={{display: "flex", flexWrap: "nowrap",}}>
-                        <div className={s.header}>
+                    <Toolbar sx={{
+                        display: "flex",
+                        flexWrap: "nowrap",
+                        width: '100%',
+
+                    }}>
+                        <div className={s.headerWR}>
+
                             <NavLink to="/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width={185} height={25}
                                      viewBox="0 0 273.42 35.52"

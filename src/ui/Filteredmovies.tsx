@@ -1,15 +1,5 @@
 import {useGetDiscoverMovieMoviesQuery, useGetGenreListMoviesQuery} from "../features/api/movieApi.ts"
-import {
-    Box,
-    Button,
-    FormControl,
-    InputLabel,
-    MenuItem,
-    Select,
-    type SelectChangeEvent,
-    Slider,
-    Typography
-} from "@mui/material"
+import {Box, Button, FormControl, MenuItem, Select, type SelectChangeEvent, Slider} from "@mui/material"
 import {useState} from "react"
 import {PAGE_SIZE} from "../common/constants.ts"
 import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx"
@@ -22,6 +12,9 @@ import {getTheme} from "../common/theme/theme.ts"
 export const Filteredmovies = () => {
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
+
+
+
 
 
     const sortsOptions = [
@@ -85,6 +78,10 @@ export const Filteredmovies = () => {
     }
 
 
+
+
+
+
     return (
 
 
@@ -106,31 +103,51 @@ export const Filteredmovies = () => {
                     flexDirection: "column",
                     gap: 2,
                     backgroundColor: theme.palette.mode === "light" ? "#f3f4f6" : "#141c2c",
-                    maxWidth: '294px',
+                    borderRadius: '20px',
+                    width: '294px',
                     flexShrink: 0,
+                    padding: '24px',
                 }}>
                     <h3>Filters / Sort</h3>
 
                     {/* Select */}
-                    <FormControl fullWidth>
-                        <InputLabel id="genre-select-label">Жанр</InputLabel>
-                        <Select
-                            labelId="genre-select-label"
-                            id="genre-select"
-                            value={sortSelect}
-                            onChange={handleSortChange}
-                        >
-                            {sortsOptions?.map((option) => (
-                                <MenuItem key={option.value} value={option.sortby}>
-                                    {option.value}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
+                    <Box
+                        className={'selectWR'}
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'flex-start',
+                            justifyContent: 'space-between',
+                            width: '100%',
+                            gap: 1,
+                        }}
+                    >
+                        Sort by
+                        <FormControl sx={{flex: 1}}>
+                            <Select
+                                labelId="genre-select-label"
+                                id="genre-select"
+                                value={sortSelect}
+                                onChange={handleSortChange}
+                            >
+                                {sortsOptions?.map((option) => (
+                                    <MenuItem key={option.value} value={option.sortby}>
+                                        {option.value}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                    </Box>
+
 
                     {/* Slider */}
-                    <Box sx={{width: "200px"}}>
-                        <Typography gutterBottom>Диапазон</Typography>
+                    <Box sx={{width: "246px", height: "61px"}}>
+
+                        <Box className={'wrapper-ratingWR'} sx={{ alignItems:'center' ,width: '100%', display: 'flex' ,justifyContent: 'space-between'}}>
+                            <span>Rating</span>
+                            <span>{value[0].toFixed(1)} – {value[1].toFixed(1)}</span>
+                        </Box>
+
                         <Slider
                             value={value}
                             onChange={handleRatingChange}
@@ -139,11 +156,25 @@ export const Filteredmovies = () => {
                             max={10}
                             step={0.1}
                             valueLabelFormat={(val) => val.toFixed(1)}
+                            sx={{
+                                color: '#2563eb', // основной цвет слайдера
+                                '& .MuiSlider-thumb': {
+                                    backgroundColor: '#fff', // цвет "ползунка"
+                                    border: '2px solid #2563eb',
+                                },
+                                '& .MuiSlider-track': {
+                                    backgroundColor: '#2563eb', // цвет активной линии
+                                },
+                                '& .MuiSlider-rail': {
+                                    backgroundColor: '#ccc', // цвет неактивной линии
+                                },
+                            }}
+
+
                         />
-                        <Typography>
-                            Выбранный диапазон: {value[0].toFixed(1)} – {value[1].toFixed(1)}
-                        </Typography>
+
                     </Box>
+
 
                     {/* Кнопки жанров */}
                     <Box
@@ -151,20 +182,30 @@ export const Filteredmovies = () => {
                             display: "grid",
                             gridTemplateColumns: "1fr 1fr",
                             gap: 1,
+                            justifyItems: 'start',
+                            alignItems: "start",
+
+
                         }}
                     >
                         {genreMovieList?.genres.map((movie) => (
+
+
+
+
                             <Button
                                 key={movie.id}
                                 variant="contained"
                                 onClick={() => toggleGenre(movie.id)}
                                 sx={{
-                                    borderRadius: "50px",
+                                    borderRadius: "20px",
                                     textTransform: "none",
                                     padding: "5px 12px",
+                                    minWidth: "auto",
+                                    width: "auto",
                                     backgroundColor: (theme) =>
                                         activeGenres.includes(movie.id)
-                                            ? theme.palette.primary.main
+                                            ? "#2563eb"
                                             : theme.palette.mode === "light"
                                                 ? "white"
                                                 : "#324061",
@@ -174,8 +215,8 @@ export const Filteredmovies = () => {
                                             : theme.palette.mode === "light"
                                                 ? "black"
                                                 : "white",
-                                    whiteSpace: "normal",
-                                    wordBreak: "break-word",
+                                    whiteSpace: "nowrap",
+                                    wordBreak: "normal",
                                 }}
                             >
                                 {movie.name}
@@ -188,13 +229,18 @@ export const Filteredmovies = () => {
                             variant="contained"
                             onClick={resetFiltersHandler}
                             sx={{
-                                borderRadius: "50px",
+                                height: "35px",
+
+                                borderRadius: "20px",
                                 textTransform: "none",
-                                padding: "5px 12px",
+
                                 backgroundColor: '#2563eb',
                                 color: 'white',
                                 whiteSpace: "normal",
                                 wordBreak: "break-word",
+                                padding: "5px 12px",
+                                minWidth: "auto",
+                                width: "auto",
                             }}
                         >
                             Reset filters
