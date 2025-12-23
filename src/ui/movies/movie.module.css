@@ -1,8 +1,11 @@
 .container {
+    max-width: 1200px;
     display: flex;
     gap: 32px;
     align-items: flex-start;
-    padding: 16px 160px;
+    /*padding: 16px 160px;*/
+    padding-top: 30px;
+    margin: 0 auto;
 }
 
 .poster {
@@ -60,14 +63,18 @@
 }
 
 .castSection {
-    padding: 0 160px;
-    margin-top: 32px;
+    padding-top: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
+    /*justify-content: space-around;*/
 }
 
 .castList {
     display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
+
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .castItem {
@@ -87,16 +94,20 @@
 }
 
 .similarSection {
-    padding: 0 160px;
-    margin-top: 32px;
+    padding-top: 30px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .similarList {
     display: flex;
     flex-wrap: nowrap;
+    justify-content: space-between;
+
+    width: 100%;
 }
 
 .similarItem {
     position: relative;
-    margin: 8px;
+
 }
