@@ -34,21 +34,6 @@ export const Homepage = () => {
         ? `https://image.tmdb.org/t/p/original${popularMovies.results[randomNumber].backdrop_path}`
         : "";
 
-
-
-    //     font-family: system-ui,Avenir,Helvetica,Arial,sans-serif;
-    //     color-scheme: light;
-    //     font-synthesis: none;
-    //     text-rendering: optimizeLegibility;
-    //     -webkit-font-smoothing: antialiased;
-    //     line-height: 1.1;
-    //     margin: 0;
-    //     font-size: 48px;
-    //     font-weight: 800;
-    //     text-transform: uppercase;
-    //     color: var(--color-white);
-
-
     return (
         <>
             <Box className={'testWRAPPER'}>
