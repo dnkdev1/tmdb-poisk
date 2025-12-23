@@ -10,8 +10,8 @@ import {useState} from "react"
 
 export const Header = () => {
     const themeMode = useAppSelector(selectThemeMode)
-    const dispatch = useAppDispatch()
     const theme = getTheme(themeMode)
+    const dispatch = useAppDispatch()
     const status = useAppSelector(selectAppStatus)
     const error = useAppSelector(selectAppError)
     const [openSnackbar, setOpenSnackbar] = useState(false)

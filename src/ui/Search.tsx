@@ -6,9 +6,13 @@ import {PAGE_SIZE} from "../common/constants.ts"
 import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx"
 import {useState} from "react"
 import {SearchBar} from "../common/searchbar/Searchbar.tsx"
+import {useAppSelector} from "../common/hooks/useAppSelector.ts";
+import {selectThemeMode} from "../app/app-slice.ts";
+import {getTheme} from "../common/theme/theme.ts";
 
 export const Search = () => {
-
+    const themeMode = useAppSelector(selectThemeMode)
+    const theme = getTheme(themeMode)
     const navigate = useNavigate()
     const [search, setSearch] = useState('')
     const location = useLocation()
@@ -41,22 +45,31 @@ export const Search = () => {
 
                     <Typography variant={"h5"} sx={{paddingBottom: "30px"}}>Search Results</Typography>
 
-                    <SearchBar onClear={clearResults} value={query} onChange={handleSearch}
-                               textFieldSx={{
-                                   color: "black",
-                                   backgroundColor: "white",
-                                   height: "50px",
-                                   width: "430px",
-                                   borderRadius: "40px"
-                               }}
-                               buttonSx={{
-                                   color: "white",
-                                   backgroundColor: "#2563eb",
-                                   height: "50px",
-                                   borderRadius: "40px"
-                               }}
-                               onSearch={onChangeSearch}
+
+                    <SearchBar
+                        onClear={clearResults}
+                        value={''}
+                        onChange={handleSearch}
+                        textFieldSx={{
+                            color: theme.palette.mode === "light" ? "black" : "white", // цвет текста
+                            backgroundColor: theme.palette.mode === "light" ? "white" : "black",
+                            height: "50px",
+                            width: "430px",
+                            borderRadius: "40px",
+                            "& .MuiInputBase-input::placeholder": {
+                                color: theme.palette.mode === "light" ? "white" : "black", // цвет placeholder
+                                opacity: 1,
+                            },
+                        }}
+                        buttonSx={{
+                            color: "white",
+                            backgroundColor: "#2563eb",
+                            height: "50px",
+                            borderRadius: "40px",
+                        }}
+                        onSearch={onChangeSearch}
                     />
+
 
                 </Box>
 
@@ -65,7 +78,7 @@ export const Search = () => {
                         paddingLeft: "15px",
                         display: "flex",
                         flexWrap: "wrap",
-                        minHeight: "300px", // минимальная высота блока
+                        minHeight: "300px",
 
                         alignItems: searchResults?.results?.length ? "flex-start" : "center",
                         justifyContent: searchResults?.results?.length ? "flex-start" : "center",
