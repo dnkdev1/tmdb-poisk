@@ -18,6 +18,7 @@ import {NowPlaying} from "./ui/movies/nowplaying/NowPlaying.tsx";
 import {Movie} from  "./ui/movies/Movie.tsx"
 import {PATH} from "./common/constants.ts";
 import {Footer} from "./common/footer/Footer.tsx";
+import {Error404} from "./ui/Error404.tsx";
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
                     <Route path={PATH.SEARCH} element={<Search/>}/>
                     <Route path={PATH.FAVORITES} element={<Favorites/>}/>
                     <Route path={PATH.MOVIE} element={<Movie/>}/>
+                    <Route path={PATH.ERROR} element={<Error404 /> } />
                 </Routes>
             </div>
             <Outlet/>

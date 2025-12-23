@@ -10,5 +10,6 @@ export const PATH = {
     FILTRED_MOVIES: '/filtered-movies',
     SEARCH: '/search',
     FAVORITES: '/favorites',
-    MOVIE: '/movie/:id'
+    MOVIE: '/movie/:id',
+    ERROR: '/*',
 } as const
