@@ -1,14 +1,13 @@
-import { NavLink } from "react-router"
-import { useAppSelector } from "../../../common/hooks/useAppSelector"
-import { selectThemeMode } from "../../../app/app-slice"
-import { getTheme } from "../../../common/theme/theme"
+import {NavLink} from "react-router"
+import {useAppSelector} from "../../../common/hooks/useAppSelector"
+import {selectThemeMode} from "../../../app/app-slice"
+import {getTheme} from "../../../common/theme/theme"
 import * as React from "react";
 
 
 export const MoviesNav = () => {
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
-
 
     const onHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.currentTarget.style.color = "cornflowerblue"
@@ -19,17 +18,28 @@ export const MoviesNav = () => {
 
 
     return (
-        <nav style={{alignItems: "center",display:"flex", justifyContent: "center", paddingTop: "50px"}}>
+        <nav style={{alignItems: "center",display:"flex", justifyContent: "center", paddingTop: "20px"}}>
+
+
             <NavLink
                 onMouseEnter={onHoover}
                 onMouseLeave={onLiveHoover}
+
                 style={({ isActive }) => ({
-                    color: theme.palette.mode === "light" ? "black" : "white",
+                    color: isActive ? "white" : (theme.palette.mode === "light" ? "black" : "white"),
                     textDecoration: "none",
-                    fontWeight: 500,
-                    backgroundColor: isActive ? "#2563eb" : "transparent",
+                    fontSize: '14px',
+                    backgroundColor: isActive ? "#2563eb" : (theme.palette.mode === "light" ? "#d1d5db" : "#324061"),
                     borderRadius: 20,
-                    marginRight: "20px",
+
+                    height: "35px",
+                    width: '144px',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: isActive ? "1px solid transparent" : "1px solid #d1d5db",
+                    marginLeft: '10px',
+                    marginRight: "10px",
                 })}
                 className={({ isActive }) => (isActive ? "active-link" : "")}
                 to="/movies/popular"
@@ -37,21 +47,37 @@ export const MoviesNav = () => {
                 Category movies
             </NavLink>
 
+
+
+
+
+
+
             <NavLink
                 onMouseEnter={onHoover}
                 onMouseLeave={onLiveHoover}
                 style={({ isActive }) => ({
-                    color: theme.palette.mode === "light" ? "black" : "white",
+                    color: isActive ? "white" : (theme.palette.mode === "light" ? "black" : "white"),
                     textDecoration: "none",
-                    fontWeight: 500,
-                    backgroundColor: isActive ? "#2563eb" : "transparent",
+                    fontSize: '14px',
+                    backgroundColor: isActive ? "#2563eb" : (theme.palette.mode === "light" ? "#d1d5db" : "#324061"),
                     borderRadius: 20,
-                    marginRight: "20px",
+
+                    height: '35px',
+                    width: '144px',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: isActive ? "1px solid transparent" : "1px solid #d1d5db",
+                    marginLeft: '10px',
+                    marginRight: "10px",
+
                 })}
                 className={({ isActive }) => (isActive ? "active-link" : "")}
                 to="/movies/top-rated"
             >
                 Top Rated Movies
+
             </NavLink>
 
 
@@ -59,12 +85,20 @@ export const MoviesNav = () => {
                 onMouseEnter={onHoover}
                 onMouseLeave={onLiveHoover}
                 style={({ isActive }) => ({
-                    color: theme.palette.mode === "light" ? "black" : "white",
+                    color: isActive ? "white" : (theme.palette.mode === "light" ? "black" : "white"),
                     textDecoration: "none",
-                    fontWeight: 500,
-                    backgroundColor: isActive ? "#2563eb" : "transparent",
+                    fontSize: '14px',
+                    backgroundColor: isActive ? "#2563eb" : (theme.palette.mode === "light" ? "#d1d5db" : "#324061"),
                     borderRadius: 20,
-                    marginRight: "20px",
+
+                    height: '35px',
+                    width: '144px',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: isActive ? "1px solid transparent" : "1px solid #d1d5db",
+                    marginLeft: '10px',
+                    marginRight: "10px",
                 })}
                 className={({ isActive }) => (isActive ? "active-link" : "")}
                 to="/movies/upcoming"
@@ -76,12 +110,20 @@ export const MoviesNav = () => {
                 onMouseEnter={onHoover}
                 onMouseLeave={onLiveHoover}
                 style={({ isActive }) => ({
-                    color: theme.palette.mode === "light" ? "black" : "white",
+                    color: isActive ? "white" : (theme.palette.mode === "light" ? "black" : "white"),
                     textDecoration: "none",
-                    fontWeight: 500,
-                    backgroundColor: isActive ? "#2563eb" : "transparent",
+                    fontSize: '14px',
+                    backgroundColor: isActive ? "#2563eb" : (theme.palette.mode === "light" ? "#d1d5db" : "#324061"),
                     borderRadius: 20,
-                    marginRight: "20px",
+
+                    height: '35px',
+                    width: '144px',
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    border: isActive ? "1px solid transparent" : "1px solid #d1d5db",
+                    marginLeft: '10px',
+                    marginRight: "10px",
                 })}
                 className={({ isActive }) => (isActive ? "active-link" : "")}
                 to="/movies/now-playing"
