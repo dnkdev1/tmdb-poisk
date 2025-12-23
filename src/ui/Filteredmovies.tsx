@@ -3,7 +3,6 @@ import {
     Box,
     Button,
     FormControl,
-    Grid,
     InputLabel,
     MenuItem,
     Select,
@@ -90,147 +89,161 @@ export const Filteredmovies = () => {
 
 
         <>
+            <Box className={'mainfilterWR'} sx={{
+                alignItems: "flex-start",
+                maxWidth: '1200px',
+                margin: '0 auto',
+                display: 'flex',
+                flexDirection: "row",
+                gap: 2,
+                paddingTop: '30px',
+            }}>
 
-            <Grid container spacing={2} wrap="nowrap">
                 {/* Левая колонка */}
-                <Grid sx={{width: '1200px', paddingX: '30px', paddingTop: '20px'}}>
-                    <Box sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: 2,
-                        backgroundColor: theme.palette.mode === "light" ? "#f3f4f6" : "#141c2c"
-                    }}>
-                        <h3>Filters / Sort</h3>
 
-                        {/* Select */}
-                        <FormControl fullWidth>
-                            <InputLabel id="genre-select-label">Жанр</InputLabel>
-                            <Select
-                                labelId="genre-select-label"
-                                id="genre-select"
-                                value={sortSelect}
-                                onChange={handleSortChange}
-                            >
-                                {sortsOptions?.map((option) => (
-                                    <MenuItem key={option.value} value={option.sortby}>
-                                        {option.value}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
+                <Box sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 2,
+                    backgroundColor: theme.palette.mode === "light" ? "#f3f4f6" : "#141c2c",
+                    maxWidth: '294px',
+                    flexShrink: 0,
+                }}>
+                    <h3>Filters / Sort</h3>
 
-                        {/* Slider */}
-                        <Box sx={{width: "200px"}}>
-                            <Typography gutterBottom>Диапазон</Typography>
-                            <Slider
-                                value={value}
-                                onChange={handleRatingChange}
-                                valueLabelDisplay="auto"
-                                min={0}
-                                max={10}
-                                step={0.1}
-                                valueLabelFormat={(val) => val.toFixed(1)}
-                            />
-                            <Typography>
-                                Выбранный диапазон: {value[0].toFixed(1)} – {value[1].toFixed(1)}
-                            </Typography>
-                        </Box>
-
-                        {/* Кнопки жанров */}
-                        <Box
-                            sx={{
-                                display: "grid",
-                                gridTemplateColumns: "1fr 1fr",
-                                gap: 1,
-                            }}
+                    {/* Select */}
+                    <FormControl fullWidth>
+                        <InputLabel id="genre-select-label">Жанр</InputLabel>
+                        <Select
+                            labelId="genre-select-label"
+                            id="genre-select"
+                            value={sortSelect}
+                            onChange={handleSortChange}
                         >
-                            {genreMovieList?.genres.map((movie) => (
-                                <Button
-                                    key={movie.id}
-                                    variant="contained"
-                                    onClick={() => toggleGenre(movie.id)}
-                                    sx={{
-                                        borderRadius: "50px",
-                                        textTransform: "none",
-                                        padding: "5px 12px",
-                                        backgroundColor: (theme) =>
-                                            activeGenres.includes(movie.id)
-                                                ? theme.palette.primary.main
-                                                : theme.palette.mode === "light"
-                                                    ? "white"
-                                                    : "#324061",
-                                        color: (theme) =>
-                                            activeGenres.includes(movie.id)
-                                                ? "white"
-                                                : theme.palette.mode === "light"
-                                                    ? "black"
-                                                    : "white",
-                                        whiteSpace: "normal",
-                                        wordBreak: "break-word",
-                                    }}
-                                >
-                                    {movie.name}
-                                </Button>
+                            {sortsOptions?.map((option) => (
+                                <MenuItem key={option.value} value={option.sortby}>
+                                    {option.value}
+                                </MenuItem>
                             ))}
+                        </Select>
+                    </FormControl>
 
+                    {/* Slider */}
+                    <Box sx={{width: "200px"}}>
+                        <Typography gutterBottom>Диапазон</Typography>
+                        <Slider
+                            value={value}
+                            onChange={handleRatingChange}
+                            valueLabelDisplay="auto"
+                            min={0}
+                            max={10}
+                            step={0.1}
+                            valueLabelFormat={(val) => val.toFixed(1)}
+                        />
+                        <Typography>
+                            Выбранный диапазон: {value[0].toFixed(1)} – {value[1].toFixed(1)}
+                        </Typography>
+                    </Box>
 
+                    {/* Кнопки жанров */}
+                    <Box
+                        sx={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            gap: 1,
+                        }}
+                    >
+                        {genreMovieList?.genres.map((movie) => (
                             <Button
-
+                                key={movie.id}
                                 variant="contained"
-                                onClick={resetFiltersHandler}
+                                onClick={() => toggleGenre(movie.id)}
                                 sx={{
                                     borderRadius: "50px",
                                     textTransform: "none",
                                     padding: "5px 12px",
-                                    backgroundColor: '#2563eb',
-                                    color: 'white',
+                                    backgroundColor: (theme) =>
+                                        activeGenres.includes(movie.id)
+                                            ? theme.palette.primary.main
+                                            : theme.palette.mode === "light"
+                                                ? "white"
+                                                : "#324061",
+                                    color: (theme) =>
+                                        activeGenres.includes(movie.id)
+                                            ? "white"
+                                            : theme.palette.mode === "light"
+                                                ? "black"
+                                                : "white",
                                     whiteSpace: "normal",
                                     wordBreak: "break-word",
                                 }}
                             >
-                                Reset filters
+                                {movie.name}
                             </Button>
-
-
-                        </Box>
-                    </Box>
-                </Grid>
-
-                                                                     {/* Правая колонка */}
-                <Grid>
-                    <Box sx={{display: "flex", flexWrap: "wrap"}}>
-                        {discoverMovies?.results.map((movie) => (
-                            <Box
-                                key={movie.id}
-                                sx={{
-                                    flex: "1 0 18%",
-                                    margin: 1,
-                                    position: "relative",
-                                    "&:hover .favorite-btn": {opacity: 1},
-                                }}
-                            >
-                                <MovieCard
-                                    movieId={movie.id}
-                                    title={movie.title}
-                                    posterPath={movie.poster_path}
-                                    vote_average={movie.vote_average}
-                                />
-                            </Box>
                         ))}
-                    </Box>
 
-                    {discoverMovies?.results !== undefined &&
-                    discoverMovies.total_results > PAGE_SIZE ? (
-                        <MoviesPagination
-                            totalCount={discoverMovies?.total_results || 0}
-                            page={page}
-                            setPage={setPage}
-                        />
-                    ) : (
-                        <div></div>
-                    )}
-                </Grid>
-            </Grid>
+
+                        <Button
+
+                            variant="contained"
+                            onClick={resetFiltersHandler}
+                            sx={{
+                                borderRadius: "50px",
+                                textTransform: "none",
+                                padding: "5px 12px",
+                                backgroundColor: '#2563eb',
+                                color: 'white',
+                                whiteSpace: "normal",
+                                wordBreak: "break-word",
+                            }}
+                        >
+                            Reset filters
+                        </Button>
+
+
+                    </Box>
+                </Box>
+
+
+                {/* Правая колонка */}
+
+                <Box sx={{display: "flex", flexWrap: "wrap", maxWidth: '882px', flexGrow: 1}}>
+                    {discoverMovies?.results.map((movie) => (
+                        <Box
+                            key={movie.id}
+                            sx={{
+                                flex: "1 0 18%",
+                                margin: 1,
+                                position: "relative",
+                                "&:hover .favorite-btn": {opacity: 1},
+                            }}
+                        >
+                            <MovieCard
+                                movieId={movie.id}
+                                title={movie.title}
+                                posterPath={movie.poster_path}
+                                vote_average={movie.vote_average}
+                            />
+                        </Box>
+                    ))}
+                </Box>
+
+
+            </Box>
+
+
+            {discoverMovies?.results !== undefined &&
+            discoverMovies.total_results > PAGE_SIZE ? (
+                <MoviesPagination
+                    totalCount={discoverMovies?.total_results || 0}
+                    page={page}
+                    setPage={setPage}
+                />
+            ) : (
+                <div></div>
+            )}
+
+
         </>
     )
 }
