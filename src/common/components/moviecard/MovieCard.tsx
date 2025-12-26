@@ -20,9 +20,13 @@ export type FavoriteMovie = {
 
 export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCardProps) => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
-    const imageUrl = `https://image.tmdb.org/t/p/w185${posterPath}`;
+
+    const imageUrl = posterPath
+        ? `https://image.tmdb.org/t/p/w500${posterPath}`
+        : "https://placehold.co/188x270/EEE/31343C?font=montserrat&text=no+poster"
+
 
     const handleNavigateClick = () => {
         navigate(`/movie/${movieId}`)
