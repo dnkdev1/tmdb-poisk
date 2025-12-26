@@ -27,7 +27,7 @@ export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCard
         ? `https://image.tmdb.org/t/p/w500${posterPath}`
         : "https://placehold.co/188x270/EEE/31343C?font=montserrat&text=no+poster"
 
-
+console.log(imageUrl)
     const handleNavigateClick = () => {
         navigate(`/movie/${movieId}`)
     }

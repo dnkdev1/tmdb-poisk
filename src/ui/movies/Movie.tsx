@@ -42,7 +42,6 @@ export const Movie = () => {
         e.currentTarget.style.color = theme.palette.mode === "light" ? "black" : "white"
     }
 
-
     return (
         <>
 
@@ -52,7 +51,7 @@ export const Movie = () => {
                     style={{
                         backgroundImage: movie?.poster_path
                             ? `url(https://image.tmdb.org/t/p/original${movie?.poster_path})`
-                            : "none",
+                            : `url(https://placehold.co/188x270/EEE/31343C?font=montserrat&text=no+poster)`,
                     }}
                 />
 
@@ -132,7 +131,7 @@ export const Movie = () => {
                                 src={
                                     actor.profile_path
                                         ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
-                                        : "/no-image.png"
+                                        : "https://placehold.co/280x420/EEE/31343C?font=montserrat&text=no%20poster"
                                 }
                                 alt={actor.name}
                                 className={s.castImage}
