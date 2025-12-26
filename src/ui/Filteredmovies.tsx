@@ -1,6 +1,6 @@
-import {useGetDiscoverMovieMoviesQuery, useGetGenreListMoviesQuery} from "../features/api/movieApi.ts"
+import {useGetGenreListMoviesQuery, useLazyGetDiscoverMovieMoviesQuery} from "../features/api/movieApi.ts"
 import {Box, Button, FormControl, MenuItem, Select, type SelectChangeEvent, Slider} from "@mui/material"
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import {PAGE_SIZE} from "../common/constants.ts"
 import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx"
 import {MovieCard} from "../common/components/moviecard/MovieCard.tsx"
@@ -13,10 +13,6 @@ export const Filteredmovies = () => {
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
 
-
-
-
-
     const sortsOptions = [
         {value: 'Popularity ↓', sortby: 'popularity.desc'},
         {value: 'Popularity ↑', sortby: 'popularity.asc'},
@@ -28,25 +24,36 @@ export const Filteredmovies = () => {
         {value: 'Title Z-A', sortby: 'original_title.desc'}
     ]
 
-
     const [page, setPage] = useState(1)
     const [value, setValue] = useState([0.0, 10.0])                       // slider
     const [sortSelect, setSortSelect] = useState(sortsOptions[0].sortby)  //select
     const [activeGenres, setActiveGenres] = useState<number[]>([])       ///genres buttons array
 
     const {data: genreMovieList} = useGetGenreListMoviesQuery()
-    const {data: discoverMovies} = useGetDiscoverMovieMoviesQuery(
-        {
-            params: {
-                sort_by: sortSelect,
-                "vote_average.gte": value[0],
-                "vote_average.lte": value[1],
-                with_genres: activeGenres,
-                page: page
-            }
-        })
 
-    console.log(discoverMovies?.results)
+
+    const [trigger, { data: discoverMovies }] = useLazyGetDiscoverMovieMoviesQuery()
+
+    const handleRatingChange = (_event: Event, newValue: number[]) => {
+        setValue(newValue) //Реализуй debounce с задержкой в 200 мс, чтобы при движении ползунка не улетала 100 запросов
+    }
+
+    useEffect(() => {                                                   //for debounce
+        const handler = setTimeout(() => {
+            trigger({
+                params: {
+                    sort_by: sortSelect,
+                    "vote_average.gte": value[0],
+                    "vote_average.lte": value[1],
+                    with_genres: activeGenres,
+                    page: page,
+                },
+            });
+        }, 200)
+        return () => clearTimeout(handler);
+    }, [sortSelect, value, activeGenres, page, trigger])
+
+
 
     const toggleGenre = (id: number) => {
         setActiveGenres((prev) =>
@@ -72,10 +79,6 @@ export const Filteredmovies = () => {
         console.log(el)
     ))
 
-
-    const handleRatingChange = (_event: Event, newValue: number[]) => {
-        setValue(newValue) //Реализуй debounce с задержкой в 200 мс, чтобы при движении ползунка не улетала 100 запросов
-    }
 
 
 

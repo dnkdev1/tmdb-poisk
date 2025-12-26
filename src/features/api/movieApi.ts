@@ -88,4 +88,5 @@ export const {
     useGetSearchMoviesQuery,
     useGetGenreListMoviesQuery,
     useGetDiscoverMovieMoviesQuery,
+    useLazyGetDiscoverMovieMoviesQuery,
 } = movieApi
