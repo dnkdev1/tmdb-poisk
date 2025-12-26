@@ -11,6 +11,7 @@ import {selectThemeMode} from "../app/app-slice.ts";
 import {getTheme} from "../common/theme/theme.ts";
 
 export const Search = () => {
+
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
     const navigate = useNavigate()
@@ -48,7 +49,7 @@ export const Search = () => {
 
                     <SearchBar
                         onClear={clearResults}
-                        value={''}
+                        value={query}
                         onChange={handleSearch}
                         textFieldSx={{
                             color: theme.palette.mode === "light" ? "black" : "white", // цвет текста
@@ -85,6 +86,7 @@ export const Search = () => {
                     }}
                 >
 
+
                     {searchResults?.results?.length ? (
                         searchResults.results.map((movie) => (
                             <Box
@@ -103,11 +105,52 @@ export const Search = () => {
                                 />
                             </Box>
                         ))
-                    ) : (
+                    ) : params.size === 0 ? (
                         <Typography variant="h6" color="text.secondary">
-                            Ничего не найдено
+                            Enter a title to start searching.
                         </Typography>
+                    ) : (
+                        <>
+                            <Typography variant="h6" color="text.secondary" display="block"
+                            >
+                                Results for "{query}"
+                            </Typography>
+
+                            <Typography variant='subtitle1' color="text.secondary" display="block"
+                            >
+                                No matches found for
+                            </Typography>
+                            <Typography variant='subtitle1' color="text.secondary" display="block"
+                            >
+                                "{query}"
+                            </Typography>
+                        </>
                     )}
+
+
+                    {/*{searchResults?.results?.length ? (*/}
+                    {/*    searchResults.results.map((movie) => (*/}
+                    {/*        <Box*/}
+                    {/*            key={movie.id}*/}
+                    {/*            sx={{*/}
+                    {/*                position: "relative",*/}
+                    {/*                flex: "0 0 20%",*/}
+                    {/*                "&:hover .favorite-btn": {opacity: 1},*/}
+                    {/*            }}*/}
+                    {/*        >*/}
+                    {/*            <MovieCard*/}
+                    {/*                movieId={movie.id}*/}
+                    {/*                title={movie.title}*/}
+                    {/*                posterPath={movie.poster_path}*/}
+                    {/*                vote_average={movie.vote_average}*/}
+                    {/*            />*/}
+                    {/*        </Box>*/}
+                    {/*    ))*/}
+                    {/*) : (*/}
+                    {/*    <Typography variant="h6" color="text.secondary">*/}
+                    {/*        Ничего не найдено*/}
+                    {/*    </Typography>*/}
+                    {/*)}*/}
 
 
                 </Box>
