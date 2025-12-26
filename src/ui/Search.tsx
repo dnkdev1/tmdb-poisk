@@ -81,8 +81,8 @@ export const Search = () => {
                         flexWrap: "wrap",
                         minHeight: "300px",
 
-                        alignItems: searchResults?.results?.length ? "flex-start" : "center",
-                        justifyContent: searchResults?.results?.length ? "flex-start" : "center",
+                        alignItems: searchResults?.results?.length ? "flex-start" : "flex-start",
+                        justifyContent: searchResults?.results?.length ? "flex-start" : "flex-start",
                     }}
                 >
 
@@ -111,8 +111,8 @@ export const Search = () => {
                         </Typography>
                     ) : (
                         <>
-                            <Typography variant="h6" color="text.secondary" display="block"
-                            >
+                            <Box display="flex" flexDirection="column">
+                            <Typography sx={{ fontWeight: 'bold' }} variant="h6" color="text.secondary" display="block" paddingBottom={'20px'}>
                                 Results for "{query}"
                             </Typography>
 
@@ -124,33 +124,9 @@ export const Search = () => {
                             >
                                 "{query}"
                             </Typography>
+                            </Box>
                         </>
                     )}
-
-
-                    {/*{searchResults?.results?.length ? (*/}
-                    {/*    searchResults.results.map((movie) => (*/}
-                    {/*        <Box*/}
-                    {/*            key={movie.id}*/}
-                    {/*            sx={{*/}
-                    {/*                position: "relative",*/}
-                    {/*                flex: "0 0 20%",*/}
-                    {/*                "&:hover .favorite-btn": {opacity: 1},*/}
-                    {/*            }}*/}
-                    {/*        >*/}
-                    {/*            <MovieCard*/}
-                    {/*                movieId={movie.id}*/}
-                    {/*                title={movie.title}*/}
-                    {/*                posterPath={movie.poster_path}*/}
-                    {/*                vote_average={movie.vote_average}*/}
-                    {/*            />*/}
-                    {/*        </Box>*/}
-                    {/*    ))*/}
-                    {/*) : (*/}
-                    {/*    <Typography variant="h6" color="text.secondary">*/}
-                    {/*        Ничего не найдено*/}
-                    {/*    </Typography>*/}
-                    {/*)}*/}
 
 
                 </Box>
