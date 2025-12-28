@@ -46,6 +46,7 @@ export const Header = () => {
                         color: theme.palette.text.primary,
                         width: '100vw',
                         justifyContent: 'center',
+
                     }}>
 
                 <div className={s.wrapper}>
@@ -54,7 +55,8 @@ export const Header = () => {
                         display: "flex",
                         flexWrap: "nowrap",
                         width: '100%',
-
+                        paddingInline: '0',
+                        ['@media (min-width:600px)']:{paddingInline: '0'},
                     }}>
                         <div className={s.headerWR}>
 

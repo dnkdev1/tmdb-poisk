@@ -9,7 +9,6 @@ export const baseApi = createApi({
 
         const result = await fetchBaseQuery({
             baseUrl: "https://api.themoviedb.org/3",
-
             prepareHeaders: (headers) => {
                 headers.set("Authorization", `Bearer ${import.meta.env.VITE_API_KEY}`)
             },

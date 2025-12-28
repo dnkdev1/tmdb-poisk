@@ -1,16 +1,25 @@
 import {baseApi} from "./../../app/baseApi"
-import type {DetailOfMovieResponse, GenresResponse, ListOfMoviesResponse, MovieCastResponse} from "./movieApi.types.ts";
+import {
+    type DetailOfMovieResponse,
+    type GenresResponse,
+    type ListOfMoviesResponse,
+    ListOfMoviesResponseSchema,
+    type MovieCastResponse
+} from "./movieApi.types.ts";
 import {PAGE_SIZE} from "../../common/constants.ts";
+
 
 
 export const movieApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
 
         getPopularMovies: builder.query<ListOfMoviesResponse, { params: { page: number } }>({
+
             query: ({params}) => ({
                 url: `/movie/popular`,
                 params: { ...params, count: PAGE_SIZE },
             }),
+            transformResponse: (response: unknown) => ListOfMoviesResponseSchema.parse(response), //  zod validation нужно дальше сделать так: handleError(api, result) и return result видимо
         }),
 
         getTopRatedMovies: builder.query<ListOfMoviesResponse, { params: { page: number } }>({
