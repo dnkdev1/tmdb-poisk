@@ -9,37 +9,44 @@ import {MoviesPagination} from "../../../common/components/pagination/MoviesPagi
 
 export const NowPlaying = () => {
     const [page, setPage] = useState(1)
-    const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery({params:{page}})
+    const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery({params: {page}})
 
 
     return (
         <>
-            <MoviesNav />
+            <Box className={'mainnowplayingWR'}>
 
-            <h1>NowPlaying</h1>
+                <MoviesNav/>
+
+                <Box className={'secondWR'} sx={{alignItems: "center", maxWidth: '1200px', margin: '0 auto'}}>
+
+                    <h2>NowPlaying</h2>
 
 
-            <Box sx={{display: "flex", flexWrap: "wrap"}}>
-                {nowPlayingMovies?.results.map((movie) => (
-                    <Box
-                        key={movie.id}
-                        sx={{
-                            flex: "1 0 18%",
-                            margin: 1,
-                            position: "relative",
-                            "&:hover .favorite-btn": {opacity: 1},
-                        }}
-                    >
-                        <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path ?? ''}
-                            vote_average={movie.vote_average}
-                            />
+                    <Box sx={{display: "flex", flexWrap: "wrap"}}>
+                        {nowPlayingMovies?.results.map((movie) => (
+                            <Box
+                                key={movie.id}
+                                sx={{
+                                    flex: "1 0 18%",
+                                    margin: 1,
+                                    position: "relative",
+                                    "&:hover .favorite-btn": {opacity: 1},
+                                }}
+                            >
+                                <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path ?? ''}
+                                           vote_average={movie.vote_average}
+                                />
 
+                            </Box>
+                        ))}
                     </Box>
-                ))}
+                </Box>
             </Box>
 
+
             {nowPlayingMovies?.results !== undefined && nowPlayingMovies.total_results > PAGE_SIZE ? (
-                <MoviesPagination totalCount={nowPlayingMovies?.total_results || 0} page={page} setPage={setPage} />
+                <MoviesPagination totalCount={nowPlayingMovies?.total_results || 0} page={page} setPage={setPage}/>
             ) : (
                 <div></div>
             )}
