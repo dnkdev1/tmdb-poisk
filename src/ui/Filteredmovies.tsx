@@ -270,7 +270,7 @@ export const Filteredmovies = () => {
                             <MovieCard
                                 movieId={movie.id}
                                 title={movie.title}
-                                posterPath={movie.poster_path}
+                                posterPath={movie.poster_path ?? ''}
                                 vote_average={movie.vote_average}
                             />
                         </Box>

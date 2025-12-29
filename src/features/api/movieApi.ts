@@ -203,6 +203,9 @@ export const {
     useGetSimilarQuery,
     useGetSearchMoviesQuery,
     useGetGenreListMoviesQuery,
-    useGetDiscoverMovieMoviesQuery,
     useLazyGetDiscoverMovieMoviesQuery,
 } = movieApi
+
+
+
+
