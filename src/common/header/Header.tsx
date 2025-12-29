@@ -7,6 +7,8 @@ import {useAppDispatch} from "../hooks/useAppDispatch.ts"
 import {AppBar, IconButton, LinearProgress, Snackbar, Toolbar} from "@mui/material"
 import * as React from "react"
 import {useState} from "react"
+import {ToastContainer} from "react-toastify";
+
 
 export const Header = () => {
     const themeMode = useAppSelector(selectThemeMode)
@@ -200,6 +202,11 @@ export const Header = () => {
                 message={error}
                 anchorOrigin={{vertical: "bottom", horizontal: "right"}}
             />
+
+
+            {/*{for show zod errors}*/}
+            <ToastContainer />
+
         </>
     )
 }
