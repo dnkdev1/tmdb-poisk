@@ -55,9 +55,10 @@ export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCard
                 top: -10,
                 right: -10, display: "flex", flexDirection: "column", gap: 1,
             }} >
-                <FavoriteButton onClick={() => manageFavoriteMovieToLocalStorage( movieId.toString(), imageUrl, title, vote_average ) } />
+                {/*<FavoriteButton movieId={movieId} onClick={() => manageFavoriteMovieToLocalStorage( movieId.toString(), imageUrl, title, vote_average ) } />*/}
 
                 <FavoriteButton
+                    movieId={movieId}
                     onClick={(e) => {
                         e.preventDefault()   // отменяет переход по ссылке
                         manageFavoriteMovieToLocalStorage(
