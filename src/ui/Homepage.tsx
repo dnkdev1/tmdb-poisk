@@ -98,7 +98,7 @@ export const Homepage = () => {
                             <h2>Popular Movies</h2>
                             <Button
                                 variant="contained"
-                                href={"/movies/popular"}
+                                href={"movies/popular"}
                                 sx={{
                                     width: '100px',
                                     height: '40px',
