@@ -19,7 +19,17 @@ export const Header = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
 
     const changeMode = () => {
-        dispatch(changeThemeModeAC({themeMode: themeMode === "light" ? "dark" : "light"}))
+        const ls = localStorage.getItem('theme')
+        if (ls && ls === 'light') {
+            localStorage.setItem('theme', 'dark')
+            dispatch(changeThemeModeAC({themeMode: 'dark'}))
+        }
+        if(ls && ls === 'dark'){
+            localStorage.setItem('theme', 'light')
+            dispatch(changeThemeModeAC({themeMode: 'light'}))
+        }
+
+        // dispatch(changeThemeModeAC({themeMode: themeMode === "light" ? "dark" : "light"}))
     }
 
     const onHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -58,7 +68,7 @@ export const Header = () => {
                         flexWrap: "nowrap",
                         width: '100%',
                         paddingInline: '0',
-                        ['@media (min-width:600px)']:{paddingInline: '0'},
+                        ['@media (min-width:600px)']: {paddingInline: '0'},
                     }}>
                         <div className={s.headerWR}>
 
@@ -205,7 +215,7 @@ export const Header = () => {
 
 
             {/*{for show zod errors}*/}
-            <ToastContainer />
+            <ToastContainer/>
 
         </>
     )

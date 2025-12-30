@@ -8,20 +8,33 @@ import {Header} from "./common/header/Header.tsx";
 //import {Footer} from "./common/footer/Footer.tsx";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import {useAppSelector} from "./common/hooks/useAppSelector.ts";
-import {selectThemeMode} from "./app/app-slice.ts";
+import {changeThemeModeAC, selectThemeMode} from "./app/app-slice.ts";
 import {getTheme} from "./common/theme/theme.ts";
 import {PopularMovies} from "./ui/movies/popular/PopularMovies.tsx";
 import {Outlet} from "react-router"
 import {TopRated} from "./ui/movies/toprated/TopRated.tsx";
 import {Upcoming} from "./ui/movies/upcoming/Upcoming.tsx"
 import {NowPlaying} from "./ui/movies/nowplaying/NowPlaying.tsx";
-import {Movie} from  "./ui/movies/Movie.tsx"
+import {Movie} from "./ui/movies/Movie.tsx"
 import {PATH} from "./common/constants.ts";
 import {Footer} from "./common/footer/Footer.tsx";
 import {Error404} from "./ui/Error404.tsx";
+import {useAppDispatch} from "./common/hooks/useAppDispatch.ts";
 
 
 function App() {
+    const dispatch = useAppDispatch()
+    const ls = localStorage.getItem('theme')
+
+    if (ls && ls === 'light') {
+        dispatch(changeThemeModeAC({themeMode: `light`}))
+    }
+    if (ls && ls === 'dark') {
+        dispatch(changeThemeModeAC({themeMode: `dark`}))
+    }
+    if(!ls){
+        localStorage.setItem('theme', 'light')
+    }
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
 
@@ -31,25 +44,25 @@ function App() {
             <CssBaseline/>
 
 
-            <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+            <div style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}>
 
-            <Header/>
-            <div className="content" style={{ flex: 1 }}>
-                <Routes>
-                    <Route path={PATH.HOMEPAGE} element={<Homepage/>}/>
-                    <Route path={PATH.POPULAR_MOVIES} element={<PopularMovies/>}/>
-                    <Route path={PATH.FILTRED_MOVIES} element={<Filteredmovies/>}/>
-                    <Route path={PATH.TOP_RATED_MOVIES} element={<TopRated/>}/>
-                    <Route path={PATH.UPCOMING_MOVIES} element={<Upcoming/>}/>
-                    <Route path={PATH.NOW_PLAYING_MOVIES} element={<NowPlaying/>}/>
-                    <Route path={PATH.SEARCH} element={<Search/>}/>
-                    <Route path={PATH.FAVORITES} element={<Favorites/>}/>
-                    <Route path={PATH.MOVIE} element={<Movie/>}/>
-                    <Route path={PATH.ERROR} element={<Error404 /> } />
-                </Routes>
-            </div>
-            <Outlet/>
-            <Footer/>
+                <Header/>
+                <div className="content" style={{flex: 1}}>
+                    <Routes>
+                        <Route path={PATH.HOMEPAGE} element={<Homepage/>}/>
+                        <Route path={PATH.POPULAR_MOVIES} element={<PopularMovies/>}/>
+                        <Route path={PATH.FILTRED_MOVIES} element={<Filteredmovies/>}/>
+                        <Route path={PATH.TOP_RATED_MOVIES} element={<TopRated/>}/>
+                        <Route path={PATH.UPCOMING_MOVIES} element={<Upcoming/>}/>
+                        <Route path={PATH.NOW_PLAYING_MOVIES} element={<NowPlaying/>}/>
+                        <Route path={PATH.SEARCH} element={<Search/>}/>
+                        <Route path={PATH.FAVORITES} element={<Favorites/>}/>
+                        <Route path={PATH.MOVIE} element={<Movie/>}/>
+                        <Route path={PATH.ERROR} element={<Error404/>}/>
+                    </Routes>
+                </div>
+                <Outlet/>
+                <Footer/>
             </div>
 
         </ThemeProvider>

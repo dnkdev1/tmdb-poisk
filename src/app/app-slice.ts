@@ -58,7 +58,10 @@ return
             state.status = action.payload.status
         }),
         changeThemeModeAC: create.reducer<{ themeMode: ThemeMode }>((state, action) => {
+
+
             state.themeMode = action.payload.themeMode
+
         }),
     }),
 })
