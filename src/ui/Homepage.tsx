@@ -1,5 +1,5 @@
 import {SearchBar} from "../common/searchbar/Searchbar.tsx"
-import {Box, Button, Typography} from "@mui/material"
+import {Box, Button, Skeleton, Typography} from "@mui/material"
 import {
     useGetNowPlayingMoviesQuery,
     useGetPopularMoviesQuery,
@@ -97,17 +97,32 @@ export const Homepage = () => {
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
 
-                            {popularMovies?.results.slice(0, 6).map((movie) => (
-
-                                <Box key={movie.id} sx={{
-                                    position: "relative", margin: 1,
-                                    "&:hover .favorite-btn": {opacity: 1,},
-                                }}>
-                                    <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path ?? ''}
-                                               vote_average={movie.vote_average}
-                                    />
-                                </Box>
-                            ))}
+                            {popularMovies
+                                ? popularMovies.results.slice(0, 6).map((movie) => (
+                                    <Box
+                                        key={movie.id}
+                                        sx={{
+                                            position: "relative",
+                                            margin: 1,
+                                            "&:hover .favorite-btn": { opacity: 1 },
+                                        }}
+                                    >
+                                        <MovieCard
+                                            movieId={movie.id}
+                                            title={movie.title}
+                                            posterPath={movie.poster_path ?? ""}
+                                            vote_average={movie.vote_average}
+                                        />
+                                    </Box>
+                                ))
+                                : Array.from(new Array(6)).map((_, index) => (
+                                    <Box key={index} sx={{ position: "relative", margin: 1 }}>
+                                        <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
+                                        />
+                                        <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
+                                        <Skeleton variant="text" width={180} />
+                                    </Box>
+                                ))}
 
                         </Box>
                     </Box>
@@ -142,17 +157,32 @@ export const Homepage = () => {
 
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-                            {topRatedMovies?.results.slice(0, 6).map((movie) => (
-                                <Box key={movie.id} sx={{
-                                    position: "relative", margin: 1, "&:hover .favorite-btn": {
-                                        opacity: 1,
-                                    },
-                                }}>
-                                    <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path ?? ''}
-                                               vote_average={movie.vote_average}
-                                    />
-                                </Box>
-                            ))}
+                            {topRatedMovies
+                                ? topRatedMovies.results.slice(0, 6).map((movie) => (
+                                    <Box
+                                        key={movie.id}
+                                        sx={{
+                                            position: "relative",
+                                            margin: 1,
+                                            "&:hover .favorite-btn": { opacity: 1 },
+                                        }}
+                                    >
+                                        <MovieCard
+                                            movieId={movie.id}
+                                            title={movie.title}
+                                            posterPath={movie.poster_path ?? ""}
+                                            vote_average={movie.vote_average}
+                                        />
+                                    </Box>
+                                ))
+                                : Array.from(new Array(6)).map((_, index) => (
+                                    <Box key={index} sx={{ position: "relative", margin: 1 }}>
+                                        <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
+                                        />
+                                        <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
+                                        <Skeleton variant="text" width={180} />
+                                    </Box>
+                                ))}
                         </Box>
                     </Box>
 
@@ -187,17 +217,32 @@ export const Homepage = () => {
 
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-                            {upcomingMovies?.results.slice(0, 6).map((movie) => (
-                                <Box key={movie.id} sx={{
-                                    position: "relative", margin: 1, "&:hover .favorite-btn": {
-                                        opacity: 1,
-                                    },
-                                }}>
-                                    <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path ?? ''}
-                                               vote_average={movie.vote_average}
-                                    />
-                                </Box>
-                            ))}
+                            {upcomingMovies
+                                ? upcomingMovies.results.slice(0, 6).map((movie) => (
+                                    <Box
+                                        key={movie.id}
+                                        sx={{
+                                            position: "relative",
+                                            margin: 1,
+                                            "&:hover .favorite-btn": { opacity: 1 },
+                                        }}
+                                    >
+                                        <MovieCard
+                                            movieId={movie.id}
+                                            title={movie.title}
+                                            posterPath={movie.poster_path ?? ""}
+                                            vote_average={movie.vote_average}
+                                        />
+                                    </Box>
+                                ))
+                                : Array.from(new Array(6)).map((_, index) => (
+                                    <Box key={index} sx={{ position: "relative", margin: 1 }}>
+                                        <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
+                                        />
+                                        <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
+                                        <Skeleton variant="text" width={180} />
+                                    </Box>
+                                ))}
                         </Box>
                     </Box>
 
@@ -232,17 +277,32 @@ export const Homepage = () => {
 
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-                            {nowPlayingMovies?.results.slice(0, 6).map((movie) => (
-                                <Box key={movie.id} sx={{
-                                    position: "relative", margin: 1, "&:hover .favorite-btn": {
-                                        opacity: 1,
-                                    },
-                                }}>
-                                    <MovieCard movieId={movie.id} title={movie.title} posterPath={movie.poster_path ?? ''}
-                                               vote_average={movie.vote_average}
-                                    />
-                                </Box>
-                            ))}
+                            {nowPlayingMovies
+                                ? nowPlayingMovies.results.slice(0, 6).map((movie) => (
+                                    <Box
+                                        key={movie.id}
+                                        sx={{
+                                            position: "relative",
+                                            margin: 1,
+                                            "&:hover .favorite-btn": { opacity: 1 },
+                                        }}
+                                    >
+                                        <MovieCard
+                                            movieId={movie.id}
+                                            title={movie.title}
+                                            posterPath={movie.poster_path ?? ""}
+                                            vote_average={movie.vote_average}
+                                        />
+                                    </Box>
+                                ))
+                                : Array.from(new Array(6)).map((_, index) => (
+                                    <Box key={index} sx={{ position: "relative", margin: 1 }}>
+                                        <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
+                                        />
+                                        <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
+                                        <Skeleton variant="text" width={180} />
+                                    </Box>
+                                ))}
                         </Box>
                     </Box>
                 </Box>
