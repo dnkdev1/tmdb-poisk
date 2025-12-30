@@ -74,10 +74,10 @@ export const SearchBar = ({onClear, value, onSearch, onChange, buttonSx }: Props
                             borderColor: "#d3d3d3", // убираем hover‑эффект
                         },
                         "&.Mui-focused fieldset": {
-                            borderColor: "#2563eb",
-                            borderWidth: "4px",
-                            transform: "scaleY(1.01)", // увеличивается только по высоте
-                        },
+                            borderColor: "transparent",   // убираем цвет основной рамки
+                            borderWidth: "3px",
+                            boxShadow: "0 0 0 4px #2563eb", // увеличиваем spread → создаётся зазор
+                        }
                     },
                 }}
                 placeholder="Search for a movie"
