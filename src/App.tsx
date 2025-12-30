@@ -20,23 +20,29 @@ import {PATH} from "./common/constants.ts";
 import {Footer} from "./common/footer/Footer.tsx";
 import {Error404} from "./ui/Error404.tsx";
 import {useAppDispatch} from "./common/hooks/useAppDispatch.ts";
+import {useEffect} from "react";
 
 
 function App() {
     const dispatch = useAppDispatch()
-    const ls = localStorage.getItem('theme')
-
-    if (ls && ls === 'light') {
-        dispatch(changeThemeModeAC({themeMode: `light`}))
-    }
-    if (ls && ls === 'dark') {
-        dispatch(changeThemeModeAC({themeMode: `dark`}))
-    }
-    if(!ls){
-        localStorage.setItem('theme', 'light')
-    }
     const themeMode = useAppSelector(selectThemeMode)
+
+    useEffect(() => {
+        const ls = localStorage.getItem('theme')
+
+        if (ls === 'light') {
+            dispatch(changeThemeModeAC({ themeMode: 'light' }))
+        } else if (ls === 'dark') {
+            dispatch(changeThemeModeAC({ themeMode: 'dark' }))
+        } else {
+            localStorage.setItem('theme', 'light')
+            dispatch(changeThemeModeAC({ themeMode: 'light' }))
+        }
+    }, [dispatch])
+
     const theme = getTheme(themeMode)
+
+
 
 
     return (

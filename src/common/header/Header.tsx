@@ -11,6 +11,11 @@ import {ToastContainer} from "react-toastify";
 
 
 export const Header = () => {
+
+
+
+
+
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
     const dispatch = useAppDispatch()
@@ -28,8 +33,6 @@ export const Header = () => {
             localStorage.setItem('theme', 'light')
             dispatch(changeThemeModeAC({themeMode: 'light'}))
         }
-
-        // dispatch(changeThemeModeAC({themeMode: themeMode === "light" ? "dark" : "light"}))
     }
 
     const onHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {

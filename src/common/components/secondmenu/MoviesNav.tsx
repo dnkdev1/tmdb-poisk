@@ -32,15 +32,18 @@ export const MoviesNav = () => {
                     fontSize: '14px',
                     backgroundColor: isActive ? "#2563eb" : (theme.palette.mode === "light" ? "#d1d5db" : "transparent"),
                     borderRadius: 20,
-                    borderColor: isActive ? 'transparent' : (theme.palette.mode === "light" ? "#d1d5db" : "#27354f"),
                     height: "35px",
                     width: '144px',
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    border: isActive ? "1px solid transparent" : "1px solid #d1d5db",
                     marginLeft: '10px',
                     marginRight: "10px",
+                    borderStyle: "solid",
+                    borderWidth: "1px",
+                    borderColor: isActive ? "transparent" : (theme.palette.mode === "light" ? "#d1d5db" : "#27354f"),
+
+
                 })}
                 className={({isActive}) => (isActive ? "active-link" : "")}
                 to="/movies/popular"
@@ -58,15 +61,16 @@ export const MoviesNav = () => {
                     fontSize: '14px',
                     backgroundColor: isActive ? "#2563eb" : (theme.palette.mode === "light" ? "#d1d5db" : "transparent"),
                     borderRadius: 20,
-                    borderColor: isActive ? 'transparent' : (theme.palette.mode === "light" ? "#d1d5db" : "#27354f"),
                     height: '35px',
                     width: '144px',
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    border: isActive ? "1px solid transparent" : "1px solid #d1d5db",
                     marginLeft: '10px',
                     marginRight: "10px",
+                    borderStyle: "solid",
+                    borderWidth: "1px",
+                    borderColor: isActive ? "transparent" : (theme.palette.mode === "light" ? "#d1d5db" : "#27354f"),
 
                 })}
                 className={({isActive}) => (isActive ? "active-link" : "")}
@@ -86,15 +90,17 @@ export const MoviesNav = () => {
                     fontSize: '14px',
                     backgroundColor: isActive ? "#2563eb" : (theme.palette.mode === "light" ? "#d1d5db" : "transparent"),
                     borderRadius: 20,
-                    borderColor: isActive ? 'transparent' : (theme.palette.mode === "light" ? "#d1d5db" : "#27354f"),
                     height: '35px',
                     width: '144px',
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    border: isActive ? "1px solid transparent" : "1px solid #d1d5db",
                     marginLeft: '10px',
                     marginRight: "10px",
+                    borderStyle: "solid",
+                    borderWidth: "1px",
+                    borderColor: isActive ? "transparent" : (theme.palette.mode === "light" ? "#d1d5db" : "#27354f"),
+
                 })}
                 className={({isActive}) => (isActive ? "active-link" : "")}
                 to="/movies/upcoming"
@@ -111,15 +117,17 @@ export const MoviesNav = () => {
                     fontSize: '14px',
                     backgroundColor: isActive ? "#2563eb" : (theme.palette.mode === "light" ? "#d1d5db" : "transparent"),
                     borderRadius: 20,
-                    borderColor: isActive ? 'transparent' : (theme.palette.mode === "light" ? "#d1d5db" : "#27354f"),
                     height: '35px',
                     width: '144px',
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    border: isActive ? "1px solid transparent" : "1px solid #d1d5db",
                     marginLeft: '10px',
                     marginRight: "10px",
+                    borderStyle: "solid",
+                    borderWidth: "1px",
+                    borderColor: isActive ? "transparent" : (theme.palette.mode === "light" ? "#d1d5db" : "#27354f"),
+
                 })}
                 className={({isActive}) => (isActive ? "active-link" : "")}
                 to="/movies/now-playing"
