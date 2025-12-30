@@ -9,9 +9,6 @@ import {
 import {MovieCard} from "../common/components/moviecard/MovieCard.tsx"
 import {useState} from "react"
 import {useNavigate} from "react-router"
-import {useAppSelector} from "../common/hooks/useAppSelector.ts";
-import {selectThemeMode} from "../app/app-slice.ts";
-import {getTheme} from "../common/theme/theme.ts";
 
 const randomNumber = Math.floor(Math.random() * 20)
 
@@ -19,9 +16,6 @@ export const Homepage = () => {
 
     const [search, setSearch] = useState('')
     console.log(search)
-
-    const themeMode = useAppSelector(selectThemeMode)
-    const theme = getTheme(themeMode)
 
 
     const navigate = useNavigate()
@@ -54,24 +48,10 @@ export const Homepage = () => {
                     <Typography variant="h3" sx={{color: "white", paddingBottom: '10px', fontFamily:'Helvetica', fontWeight:'800'}}>WELCOME</Typography>
                     <Typography variant="h6" sx={{color: "white", paddingBottom: '20px'}}>Browse highlighted titles from TMDB</Typography>
 
-
-
-
                         <SearchBar
                             onClear={clearResults}
                             value={''}
                             onChange={handleSearch}
-                            textFieldSx={{
-                                color: theme.palette.mode === "light" ? "black" : "white", // цвет текста
-                                backgroundColor: theme.palette.mode === "light" ? "white" : "black",
-                                height: "50px",
-                                width: "430px",
-                                borderRadius: "40px",
-                                "& .MuiInputBase-input::placeholder": {
-                                    color: theme.palette.mode === "light" ? "white" : "black", // цвет placeholder
-                                    opacity: 1, // чтобы цвет применился
-                                },
-                            }}
                             buttonSx={{
                                 color: "white",
                                 backgroundColor: "#2563eb",
