@@ -18,7 +18,7 @@ export type FavoriteMovie = {
     voteAverage: number
 }
 
-export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCardProps) => {
+export const MovieCard = ({movieId, title, posterPath, vote_average}: MovieCardProps) => {
 
     const navigate = useNavigate()
 
@@ -35,60 +35,64 @@ export const MovieCard = ({movieId, title, posterPath, vote_average }: MovieCard
 
     return (
         <>
-        <Card onClick={handleNavigateClick} sx={{ maxWidth: '189px', borderRadius: "15px", boxShadow: "none", position: "relative", }}>
 
-            <CardMedia
-                component="img"
-                height="270"
-                image={imageUrl}
-                alt={`${title} poster`}
+            <Card
+                onClick={handleNavigateClick}
                 sx={{
+                    maxWidth: '189px',
                     borderRadius: "15px",
-                    transition: "transform 0.3s ease",
-                    "&:hover": {
-                        transform: "scale(1.05)",
-                    },
+                    boxShadow: "none",
+                    position: "relative",
+                    background: "none",
+                    backgroundColor: "unset",
                 }}
-            />
-
-            <Box sx={{ position: "absolute",
-                top: -10,
-                right: -10, display: "flex", flexDirection: "column", gap: 1,
-            }} >
-                {/*<FavoriteButton movieId={movieId} onClick={() => manageFavoriteMovieToLocalStorage( movieId.toString(), imageUrl, title, vote_average ) } />*/}
-
-                <FavoriteButton
-                    movieId={movieId}
-                    onClick={(e) => {
-                        e.preventDefault()   // отменяет переход по ссылке
-                        manageFavoriteMovieToLocalStorage(
-                            movieId.toString(),
-                            imageUrl,
-                            title,
-                            vote_average
-                        )
+            >
+                <CardMedia
+                    component="img"
+                    height="270"
+                    image={imageUrl}
+                    alt={`${title} poster`}
+                    sx={{
+                        borderRadius: "15px",
+                        transition: "transform 0.3s ease",
+                        "&:hover": {
+                            transform: "scale(1.05)",
+                        },
                     }}
                 />
 
+                <Box sx={{ position: "absolute", top: -10, right: -10, display: "flex", flexDirection: "column", gap: 1 }}>
+                    <FavoriteButton
+                        movieId={movieId}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            manageFavoriteMovieToLocalStorage(
+                                movieId.toString(),
+                                imageUrl,
+                                title,
+                                vote_average
+                            )
+                        }}
+                    />
+                </Box>
+
+                <Box sx={{ position: "absolute", top: -20, right: -10, display: "flex", flexDirection: "column", gap: 1 }}>
+                    <RatingButton voteAverage={vote_average} onClick={handleNavigateClick} />
+                </Box>
+
+                <CardContent
+                    sx={{
+                        background: "none",
+                        backgroundColor: "unset",
+                        padding: "8px 0",
+                    }}
+                >
+                    <Typography variant="subtitle1">{title}</Typography>
+                </CardContent>
+            </Card>
 
 
-            </Box>
 
-            <Box sx={{ position: "absolute",
-                top: -20,
-                right: -10, display: "flex", flexDirection: "column", gap: 1,
-            }} >
-                <RatingButton voteAverage={vote_average} onClick={handleNavigateClick} />
-            </Box>
-
-
-
-            <CardContent>
-                <Typography variant="subtitle1">
-                    {title}
-                </Typography>
-            </CardContent>
-        </Card>
         </>
     )
 }
