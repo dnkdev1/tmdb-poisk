@@ -35,7 +35,7 @@ export const TopRated = () => {
                                         movieId={movie.id}
                                         title={movie.title}
                                         posterPath={movie.poster_path ?? ""}
-                                        vote_average={movie.vote_average}
+                                        vote_average={movie.vote_average ?? 0}
                                     />
                                 </Box>
                             ))

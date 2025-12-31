@@ -8,7 +8,7 @@ export type MovieCardProps = {
     movieId: number,
     title: string
     posterPath: string
-    vote_average:number
+    vote_average: number
 }
 
 export type FavoriteMovie = {
