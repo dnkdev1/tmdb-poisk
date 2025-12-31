@@ -76,7 +76,7 @@ export const MovieCard = ({movieId, title, posterPath, vote_average}: MovieCardP
                     />
                 </Box>
 
-                <Box sx={{ position: "absolute", top: -20, right: -10, display: "flex", flexDirection: "column", gap: 1 }}>
+                <Box sx={{ position: "absolute", top: -30, right: -10, display: "flex", flexDirection: "column", gap: 1 }}>
                     <RatingButton voteAverage={vote_average} onClick={handleNavigateClick} />
                 </Box>
 

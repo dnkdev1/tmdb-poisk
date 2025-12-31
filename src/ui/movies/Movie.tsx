@@ -97,6 +97,34 @@ export const Movie = () => {
 
                         <IconButton className={s.vote} sx={{backgroundColor: color}}>{fixedVoiteAverage}</IconButton>
 
+
+
+
+
+
+
+                        {/*<Box sx={{ position: "absolute", top: -10, right: -10, display: "flex", flexDirection: "column", gap: 1 }}>*/}
+                        {/*    <FavoriteButton*/}
+                        {/*        movieId={movie?.id ?? 0} // если id undefined → будет 0*/}
+                        {/*        onClick={(e) => {*/}
+                        {/*            e.preventDefault()*/}
+                        {/*            manageFavoriteMovieToLocalStorage(*/}
+                        {/*                (movie?.id ?? 0).toString(),*/}
+                        {/*                `https://image.tmdb.org/t/p/original${movie?.poster_path ?? ""}`,*/}
+                        {/*                movie?.title ?? "",*/}
+                        {/*                movie?.vote_average ?? 0*/}
+                        {/*            )*/}
+                        {/*        }}*/}
+                        {/*    />*/}
+
+                        {/*</Box>*/}
+
+
+
+
+
+
+
                         <Typography variant="subtitle1">
                             Runtime:{" "}
                             {movie?.runtime
@@ -120,6 +148,7 @@ export const Movie = () => {
                     </div>
                 </div>
             </div>
+
 
             <div className={s.castSection}>
                 <Typography variant="h5" fontWeight={700} gutterBottom>Cast</Typography>
