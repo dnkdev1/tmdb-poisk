@@ -40,7 +40,7 @@ export const TopRated = () => {
                                 </Box>
                             ))
                             :
-                            Array.from(new Array(8)).map((_, index) => (
+                            Array.from(new Array(20)).map((_, index) => (
                                 <Box key={index} sx={{ flex: "1 0 18%", margin: 1,}}>
                                     <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }} />
                                     <Skeleton variant="text" width={180} sx={{ mt: 1 }} />

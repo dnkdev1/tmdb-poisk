@@ -75,7 +75,7 @@ export const Search = () => {
 
                     {isLoading && query ? (
 
-                        Array.from(new Array(5)).map((_, index) => (
+                        Array.from(new Array(20)).map((_, index) => (
                             <Box
                                 key={index}
                                 sx={{ flex: "1 0 18%", margin: 1 }}
