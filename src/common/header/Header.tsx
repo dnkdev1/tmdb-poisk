@@ -12,10 +12,6 @@ import {ToastContainer} from "react-toastify";
 
 export const Header = () => {
 
-
-
-
-
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
     const dispatch = useAppDispatch()
