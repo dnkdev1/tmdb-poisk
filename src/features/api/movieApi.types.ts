@@ -1,21 +1,25 @@
 import {z} from "zod"
 
+
 export const MovieSchema = z.object({
     adult: z.boolean(),
-    backdrop_path: z.string().nullable(),
-    genre_ids: z.array(z.number()),
+    backdrop_path: z.string().nullable().optional(),
+    genre_ids: z.array(z.number()).nullable().optional(),
     id: z.number(),
     original_language: z.string(),
     original_title: z.string(),
-    overview: z.string().nullable(),
-    popularity: z.number(),
-    poster_path: z.string().nullable(),
-    release_date: z.string().nullable(),
+    overview: z.string().nullable().optional(),
+    popularity: z.number().nullable().optional(),
+    poster_path: z.string().nullable().optional(),
+    release_date: z.string().nullable().optional(),
     title: z.string(),
-    video: z.boolean(),
-    vote_average: z.number(),
-    vote_count: z.number(),
+    video: z.boolean().nullable().optional(),
+    vote_average: z.number().nullable().optional(),
+    vote_count: z.number().nullable().optional(),
 }).strict();
+
+
+
 export type Movie = z.infer<typeof MovieSchema>
 
 

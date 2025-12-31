@@ -203,7 +203,7 @@ export const {
     useGetSimilarQuery,
     useGetSearchMoviesQuery,
     useGetGenreListMoviesQuery,
-    useLazyGetDiscoverMovieMoviesQuery,
+    useLazyGetDiscoverMovieMoviesQuery,              // popularity вверх и rating вверх ошибка зод
 } = movieApi
 
 
