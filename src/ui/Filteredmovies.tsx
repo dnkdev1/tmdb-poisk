@@ -1,5 +1,5 @@
 import {useGetGenreListMoviesQuery, useLazyGetDiscoverMovieMoviesQuery} from "../features/api/movieApi.ts"
-import {Box, Button, FormControl, MenuItem, Select, type SelectChangeEvent, Slider} from "@mui/material"
+import {Box, Button, FormControl, MenuItem, Select, type SelectChangeEvent, Skeleton, Slider} from "@mui/material"
 import {useEffect, useState} from "react"
 import {PAGE_SIZE} from "../common/constants.ts"
 import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx"
@@ -257,24 +257,34 @@ export const Filteredmovies = () => {
                 {/* Правая колонка */}
 
                 <Box sx={{display: "flex", flexWrap: "wrap", maxWidth: '882px', flexGrow: 1}}>
-                    {discoverMovies?.results.map((movie) => (
-                        <Box
-                            key={movie.id}
-                            sx={{
-                                flex: "1 0 18%",
-                                margin: 1,
-                                position: "relative",
-                                "&:hover .favorite-btn": {opacity: 1},
-                            }}
-                        >
-                            <MovieCard
-                                movieId={movie.id}
-                                title={movie.title}
-                                posterPath={movie.poster_path ?? ''}
-                                vote_average={movie.vote_average}
-                            />
-                        </Box>
-                    ))}
+
+                    {discoverMovies
+                        ? discoverMovies.results.map((movie) => (
+                            <Box
+                                key={movie.id}
+                                sx={{
+                                    flex: "1 0 18%",
+                                    margin: 1,
+                                    position: "relative",
+                                    "&:hover .favorite-btn": { opacity: 1 },
+                                }}
+                            >
+                                <MovieCard
+                                    movieId={movie.id}
+                                    title={movie.title}
+                                    posterPath={movie.poster_path ?? ""}
+                                    vote_average={movie.vote_average}
+                                />
+                            </Box>
+                        ))
+                        :
+                        Array.from(new Array(8)).map((_, index) => (
+                            <Box key={index} sx={{ flex: "1 0 18%", margin: 1,}}>
+                                <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }} />
+                                <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
+                                <Skeleton variant="text" width={180} />
+                            </Box>
+                        ))}
                 </Box>
 
 
