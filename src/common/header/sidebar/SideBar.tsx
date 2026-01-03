@@ -9,7 +9,7 @@ type SideBarProps = {
 
 export const SideBar: React.FC<SideBarProps> = ({ isSideBarNavOpen, toggleSideBarNav }) => {
     return (
-        <Drawer anchor="left" open={isSideBarNavOpen} onClose={toggleSideBarNav(false)} sx={{ "& .MuiDrawer-paper": { width: 280 } }}>
+        <Drawer anchor="left" open={isSideBarNavOpen} onClose={toggleSideBarNav(false)} sx={{ "& .MuiDrawer-paper": { width: 180 } }}>
             <List>
                 <ListItem disablePadding>
                     <ListItemButton component={NavLink} to="/" onClick={toggleSideBarNav(false)}>
