@@ -25,6 +25,8 @@ export const Header = () => {
 
 
     const isMobileResolution = useMediaQuery("(max-width:400px)")
+
+
     const [isSideBarNavOpen, setIsSideBarNavOpen] = useState(false)
 
 

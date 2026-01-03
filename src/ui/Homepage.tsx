@@ -1,5 +1,5 @@
 import {SearchBar} from "../common/searchbar/Searchbar.tsx"
-import {Box, Button, Skeleton, Typography} from "@mui/material"
+import {Box, Button, Skeleton, Typography, useMediaQuery} from "@mui/material"
 import {
     useGetNowPlayingMoviesQuery,
     useGetPopularMoviesQuery,
@@ -34,6 +34,9 @@ export const Homepage = () => {
     const imageUrl = popularMovies?.results?.[randomNumber]?.backdrop_path
         ? `https://image.tmdb.org/t/p/original${popularMovies.results[randomNumber].backdrop_path}`
         : "";
+
+    const isMobileResolution = useMediaQuery("(max-width:400px)")
+
 
     return (
         <>
@@ -107,7 +110,7 @@ export const Homepage = () => {
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
 
                             {popularMovies
-                                ? popularMovies.results.slice(0, 6).map((movie) => (
+                                ? popularMovies.results.slice(0, isMobileResolution ? 2 : 6).map((movie) => (
                                     <Box
                                         key={movie.id}
                                         sx={{
@@ -124,7 +127,7 @@ export const Homepage = () => {
                                         />
                                     </Box>
                                 ))
-                                : Array.from(new Array(6)).map((_, index) => (
+                                : Array.from(new Array(isMobileResolution ? 2 : 6)).map((_, index) => (
                                     <Box key={index} sx={{ position: "relative", margin: 1 }}>
                                         <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
                                         />
@@ -167,7 +170,7 @@ export const Homepage = () => {
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
                             {topRatedMovies
-                                ? topRatedMovies.results.slice(0, 6).map((movie) => (
+                                ? topRatedMovies.results.slice(0, isMobileResolution ? 2 : 6).map((movie) => (
                                     <Box
                                         key={movie.id}
                                         sx={{
@@ -184,7 +187,7 @@ export const Homepage = () => {
                                         />
                                     </Box>
                                 ))
-                                : Array.from(new Array(6)).map((_, index) => (
+                                : Array.from(new Array(isMobileResolution ? 2 : 6)).map((_, index) => (
                                     <Box key={index} sx={{ position: "relative", margin: 1 }}>
                                         <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
                                         />
@@ -227,7 +230,7 @@ export const Homepage = () => {
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
                             {upcomingMovies
-                                ? upcomingMovies.results.slice(0, 6).map((movie) => (
+                                ? upcomingMovies.results.slice(0, isMobileResolution ? 2 : 6).map((movie) => (
                                     <Box
                                         key={movie.id}
                                         sx={{
@@ -244,7 +247,7 @@ export const Homepage = () => {
                                         />
                                     </Box>
                                 ))
-                                : Array.from(new Array(6)).map((_, index) => (
+                                : Array.from(new Array(isMobileResolution ? 2 : 6)).map((_, index) => (
                                     <Box key={index} sx={{ position: "relative", margin: 1 }}>
                                         <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
                                         />
@@ -287,7 +290,7 @@ export const Homepage = () => {
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
                             {nowPlayingMovies
-                                ? nowPlayingMovies.results.slice(0, 6).map((movie) => (
+                                ? nowPlayingMovies.results.slice(0, isMobileResolution ? 2 : 6).map((movie) => (
                                     <Box
                                         key={movie.id}
                                         sx={{
@@ -304,7 +307,7 @@ export const Homepage = () => {
                                         />
                                     </Box>
                                 ))
-                                : Array.from(new Array(6)).map((_, index) => (
+                                : Array.from(new Array(isMobileResolution ? 2 : 6)).map((_, index) => (
                                     <Box key={index} sx={{ position: "relative", margin: 1 }}>
                                         <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
                                         />
