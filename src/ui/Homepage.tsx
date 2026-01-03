@@ -44,7 +44,16 @@ export const Homepage = () => {
                     justifyContent: "center", flexDirection: "column",
                 }}>
 
-                    <Box className={'searchWR'} sx={{minWidth: '1200px'}}>
+                    <Box className={'searchWR'} sx={{
+                        width: {
+                            xs: "100%",
+                            sm: "600px",
+                            md: "800px",
+                            lg: "1200px",
+                        },
+                        paddingRight: "50px",
+                    }}
+                    >
                     <Typography variant="h3" sx={{color: "white", paddingBottom: '10px', fontFamily:'Helvetica', fontWeight:'800'}}>WELCOME</Typography>
                     <Typography variant="h6" sx={{color: "white", paddingBottom: '20px'}}>Browse highlighted titles from TMDB</Typography>
 
