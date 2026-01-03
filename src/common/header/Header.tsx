@@ -92,8 +92,8 @@ export const Header = () => {
                                     width: "100%",
                                     maxWidth: "400px",
 
-                                    paddingLeft: '10px',
-                                    paddingRight: '10px',
+                                    paddingLeft: '14px',
+                                    paddingRight: '14px',
                                 }}>
                                     <IconButton onClick={toggleSideBarNav(true)} color="inherit">
                                         <MenuIcon />
