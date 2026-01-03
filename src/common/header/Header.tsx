@@ -83,11 +83,12 @@ export const Header = () => {
                     >
                         {isMobileResolution ? (
                             <>
-                                <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: "24px", justifyContent: 'space-between', width: '590px' }}>
                                     <IconButton onClick={toggleSideBarNav(true)} color="inherit">
                                         <MenuIcon />
                                     </IconButton>
                                     <Logo />
+                                    <ThemeModeButton themeMode={themeMode} changeMode={changeMode} />
                                 </div>
 
                                 <SideBar
