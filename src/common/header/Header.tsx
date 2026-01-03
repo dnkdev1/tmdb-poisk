@@ -83,7 +83,7 @@ export const Header = () => {
                     >
                         {isMobileResolution ? (
                             <>
-                                <div style={{ display: "flex", alignItems: "center", gap: "24px", justifyContent: 'space-between', width: '290px' }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: "24px", justifyContent: 'space-between', width: '390px' }}>
                                     <IconButton onClick={toggleSideBarNav(true)} color="inherit">
                                         <MenuIcon />
                                     </IconButton>
