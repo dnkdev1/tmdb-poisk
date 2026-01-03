@@ -24,8 +24,10 @@ export const Header = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
 
 
-    const isMobileResolution = useMediaQuery("(max-width:600px)")
+    const isMobileResolution = useMediaQuery("(max-width:400px)")
     const [isSideBarNavOpen, setIsSideBarNavOpen] = useState(false)
+
+
 
     const toggleSideBarNav = (open: boolean) => () => {
         setIsSideBarNavOpen(open)
@@ -83,13 +85,15 @@ export const Header = () => {
                     >
                         {isMobileResolution ? (
                             <>
-                                <div style={{ display: "flex",
+                                <div style={{
+                                    display: "flex",
                                     alignItems: "center",
-                                    gap: "24px",
                                     justifyContent: 'space-between',
-                                    width: '380px',
-                                    marginLeft: '4px',
-                                    marginRight: '4px',
+                                    width: "100%",
+                                    maxWidth: "400px",
+
+                                    paddingLeft: '4px',
+                                    paddingRight: '4px',
                                 }}>
                                     <IconButton onClick={toggleSideBarNav(true)} color="inherit">
                                         <MenuIcon />
