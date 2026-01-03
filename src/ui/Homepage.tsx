@@ -51,7 +51,7 @@ export const Homepage = () => {
                             md: "800px",
                             lg: "1200px",
                         },
-                        paddingRight: "14px",
+                        paddingRight: "24px",
                     }}
                     >
                     <Typography variant="h3" sx={{color: "white", paddingBottom: '10px', fontFamily:'Helvetica', fontWeight:'800'}}>WELCOME</Typography>
