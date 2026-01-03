@@ -77,13 +77,13 @@ export const Header = () => {
                             flexWrap: "nowrap",
                             width: "100%",
                             paddingInline: "0",
-                            ["@media (min-width:600px)"]: { paddingInline: "0" },
+                            ["@media (min-width:400px)"]: { paddingInline: "0" },
                             justifyContent: "space-between",
                         }}
                     >
                         {isMobileResolution ? (
                             <>
-                                <div style={{ display: "flex", alignItems: "center", gap: "24px", justifyContent: 'space-between', width: '590px' }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: "24px", justifyContent: 'space-between', width: '290px' }}>
                                     <IconButton onClick={toggleSideBarNav(true)} color="inherit">
                                         <MenuIcon />
                                     </IconButton>
