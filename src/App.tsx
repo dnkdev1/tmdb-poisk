@@ -15,7 +15,7 @@ import {Outlet} from "react-router"
 import {TopRated} from "./ui/movies/toprated/TopRated.tsx";
 import {Upcoming} from "./ui/movies/upcoming/Upcoming.tsx"
 import {NowPlaying} from "./ui/movies/nowplaying/NowPlaying.tsx";
-import {Movie} from "./ui/movies/Movie.tsx"
+import {MovieDetail} from "./ui/movies/MovieDetail.tsx"
 import {PATH} from "./common/constants.ts";
 import {Footer} from "./common/footer/Footer.tsx";
 import {Error404} from "./ui/Error404.tsx";
@@ -63,7 +63,7 @@ function App() {
                         <Route path={PATH.NOW_PLAYING_MOVIES} element={<NowPlaying/>}/>
                         <Route path={PATH.SEARCH} element={<Search/>}/>
                         <Route path={PATH.FAVORITES} element={<Favorites/>}/>
-                        <Route path={PATH.MOVIE} element={<Movie/>}/>
+                        <Route path={PATH.MOVIE} element={<MovieDetail/>}/>
                         <Route path={PATH.ERROR} element={<Error404/>}/>
                     </Routes>
                 </div>

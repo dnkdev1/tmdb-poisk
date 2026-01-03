@@ -8,7 +8,7 @@ import {useAppSelector} from "../../common/hooks/useAppSelector.ts";
 import {selectThemeMode} from "../../app/app-slice.ts";
 import {getTheme} from "../../common/theme/theme.ts";
 
-export const Movie = () => {
+export const MovieDetail = () => {
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
 
