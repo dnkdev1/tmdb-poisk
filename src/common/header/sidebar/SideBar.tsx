@@ -32,7 +32,7 @@ export const SideBar: React.FC<SideBarProps> = ({ isSideBarNavOpen, toggleSideBa
     return (
         <Drawer anchor="left" open={isSideBarNavOpen} onClose={toggleSideBarNav(false)} sx={{ "& .MuiDrawer-paper": { width: "80%" } }}>
             <List>
-                <ListItem sx={{paddingRight: "50px", paddingLeft: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
+                <ListItem sx={{paddingRight: "50px", paddingLeft: "0px", paddingTop: "50px", paddingBottom: "0px"}}>
                     <ListItemButton component={NavLink} to="/" onClick={toggleSideBarNav(false)}>
                         <ListItemText primary="Main" />
                     </ListItemButton>
