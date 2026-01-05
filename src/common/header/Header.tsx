@@ -24,7 +24,7 @@ export const Header = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
 
 
-    const isMobileResolution = useMediaQuery("(max-width:400px)")
+    const isMobileResolution = useMediaQuery("(max-width:400px)")  ///1024 показывать мобильное меню
 
 
     const [isSideBarNavOpen, setIsSideBarNavOpen] = useState(false)
