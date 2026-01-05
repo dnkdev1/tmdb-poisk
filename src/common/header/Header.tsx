@@ -92,16 +92,15 @@ export const Header = () => {
                                     alignItems: "center",
                                     justifyContent: 'space-between',
                                     width: "100%",
-                                    maxWidth: "400px",
 
-                                    paddingLeft: '14px',
-                                    paddingRight: '14px',
+
+                                    paddingLeft: '20px',
+                                    paddingRight: '20px',
                                 }}>
                                     <IconButton onClick={toggleSideBarNav(true)} color="inherit">
                                         <MenuIcon />
                                     </IconButton>
                                     <Logo />
-                                    {/*<ThemeModeButton themeMode={themeMode} changeMode={changeMode} />*/}
                                 </div>
 
                                 <SideBar
@@ -112,7 +111,8 @@ export const Header = () => {
                         ) : (
                             <div
                                 className={s.headerWR}
-                                style={{ display: "flex", alignItems: "center", gap: "20px" }}
+                                style={{ display: "flex", alignItems: "center", gap: "20px", paddingLeft: '20px',
+                                    paddingRight: '20px', }}
                             >
                                 <Logo />
                                 <HeaderNav
