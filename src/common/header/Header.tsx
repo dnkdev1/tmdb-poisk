@@ -24,7 +24,7 @@ export const Header = () => {
     const [openSnackbar, setOpenSnackbar] = useState(false)
 
 
-    const isMobileResolution = useMediaQuery("(max-width:400px)")  ///1024 показывать мобильное меню
+    const isMobileResolution = useMediaQuery("(max-width:1024px)")  ///1024 показывать мобильное меню
 
 
     const [isSideBarNavOpen, setIsSideBarNavOpen] = useState(false)
@@ -101,7 +101,7 @@ export const Header = () => {
                                         <MenuIcon />
                                     </IconButton>
                                     <Logo />
-                                    <ThemeModeButton themeMode={themeMode} changeMode={changeMode} />
+                                    {/*<ThemeModeButton themeMode={themeMode} changeMode={changeMode} />*/}
                                 </div>
 
                                 <SideBar
