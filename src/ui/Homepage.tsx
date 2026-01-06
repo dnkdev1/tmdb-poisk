@@ -1,14 +1,15 @@
 import {SearchBar} from "../common/searchbar/Searchbar.tsx"
-import {Box, Button, Skeleton, Typography, useMediaQuery} from "@mui/material"
+import {Box, Button, Typography, useMediaQuery} from "@mui/material"
 import {
     useGetNowPlayingMoviesQuery,
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,
     useGetUpcomingMoviesQuery,
 } from "../features/api/movieApi.ts"
-import {MovieCard} from "../common/components/moviecard/MovieCard.tsx"
 import {useState} from "react"
 import {useNavigate} from "react-router"
+import {MoviesList} from "../common/header/movielist/MovieList.tsx";
+
 
 const randomNumber = Math.floor(Math.random() * 20)
 
@@ -35,7 +36,7 @@ export const Homepage = () => {
         ? `https://image.tmdb.org/t/p/original${popularMovies.results[randomNumber].backdrop_path}`
         : "";
 
-    const isMobileResolution = useMediaQuery("(max-width:400px)")
+    const isMobileResolution = useMediaQuery("(max-width:1024px)")
 
 
     return (
@@ -57,8 +58,14 @@ export const Homepage = () => {
                         paddingRight: "24px",
                     }}
                     >
-                    <Typography variant="h3" sx={{color: "white", paddingBottom: '10px', fontFamily:'Helvetica', fontWeight:'800'}}>WELCOME</Typography>
-                    <Typography variant="h6" sx={{color: "white", paddingBottom: '20px'}}>Browse highlighted titles from TMDB</Typography>
+                        <Typography variant="h3" sx={{
+                            color: "white",
+                            paddingBottom: '10px',
+                            fontFamily: 'Helvetica',
+                            fontWeight: '800'
+                        }}>WELCOME</Typography>
+                        <Typography variant="h6" sx={{color: "white", paddingBottom: '20px'}}>Browse highlighted titles
+                            from TMDB</Typography>
 
                         <SearchBar
                             onClear={clearResults}
@@ -77,7 +84,8 @@ export const Homepage = () => {
                 </Box>
 
 
-                <Box className={'mainTestWR'} sx={{maxWidth: '1200px', margin: '0 auto'
+                <Box className={'mainTestWR'} sx={{
+                    maxWidth: '1200px', margin: '0 auto'
                 }}>
                     <Box className={'testWR'}>
                         <Box sx={{
@@ -109,32 +117,7 @@ export const Homepage = () => {
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
 
-                            {popularMovies
-                                ? popularMovies.results.slice(0, isMobileResolution ? 2 : 6).map((movie) => (
-                                    <Box
-                                        key={movie.id}
-                                        sx={{
-                                            position: "relative",
-                                            margin: 1,
-                                            "&:hover .favorite-btn": { opacity: 1 },
-                                        }}
-                                    >
-                                        <MovieCard
-                                            movieId={movie.id}
-                                            title={movie.title}
-                                            posterPath={movie.poster_path ?? ""}
-                                            vote_average={movie.vote_average ?? 0}
-                                        />
-                                    </Box>
-                                ))
-                                : Array.from(new Array(isMobileResolution ? 2 : 6)).map((_, index) => (
-                                    <Box key={index} sx={{ position: "relative", margin: 1 }}>
-                                        <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
-                                        />
-                                        <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
-                                        <Skeleton variant="text" width={180} />
-                                    </Box>
-                                ))}
+                            <MoviesList movieList={popularMovies} isMobileResolution={isMobileResolution}/>
 
                         </Box>
                     </Box>
@@ -169,32 +152,9 @@ export const Homepage = () => {
 
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-                            {topRatedMovies
-                                ? topRatedMovies.results.slice(0, isMobileResolution ? 2 : 6).map((movie) => (
-                                    <Box
-                                        key={movie.id}
-                                        sx={{
-                                            position: "relative",
-                                            margin: 1,
-                                            "&:hover .favorite-btn": { opacity: 1 },
-                                        }}
-                                    >
-                                        <MovieCard
-                                            movieId={movie.id}
-                                            title={movie.title}
-                                            posterPath={movie.poster_path ?? ""}
-                                            vote_average={movie.vote_average ?? 0}
-                                        />
-                                    </Box>
-                                ))
-                                : Array.from(new Array(isMobileResolution ? 2 : 6)).map((_, index) => (
-                                    <Box key={index} sx={{ position: "relative", margin: 1 }}>
-                                        <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
-                                        />
-                                        <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
-                                        <Skeleton variant="text" width={180} />
-                                    </Box>
-                                ))}
+
+                            <MoviesList movieList={topRatedMovies} isMobileResolution={isMobileResolution}/>
+
                         </Box>
                     </Box>
 
@@ -229,32 +189,9 @@ export const Homepage = () => {
 
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-                            {upcomingMovies
-                                ? upcomingMovies.results.slice(0, isMobileResolution ? 2 : 6).map((movie) => (
-                                    <Box
-                                        key={movie.id}
-                                        sx={{
-                                            position: "relative",
-                                            margin: 1,
-                                            "&:hover .favorite-btn": { opacity: 1 },
-                                        }}
-                                    >
-                                        <MovieCard
-                                            movieId={movie.id}
-                                            title={movie.title}
-                                            posterPath={movie.poster_path ?? ""}
-                                            vote_average={movie.vote_average ?? 0}
-                                        />
-                                    </Box>
-                                ))
-                                : Array.from(new Array(isMobileResolution ? 2 : 6)).map((_, index) => (
-                                    <Box key={index} sx={{ position: "relative", margin: 1 }}>
-                                        <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
-                                        />
-                                        <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
-                                        <Skeleton variant="text" width={180} />
-                                    </Box>
-                                ))}
+
+                            <MoviesList movieList={upcomingMovies} isMobileResolution={isMobileResolution}/>
+
                         </Box>
                     </Box>
 
@@ -289,32 +226,9 @@ export const Homepage = () => {
 
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-                            {nowPlayingMovies
-                                ? nowPlayingMovies.results.slice(0, isMobileResolution ? 2 : 6).map((movie) => (
-                                    <Box
-                                        key={movie.id}
-                                        sx={{
-                                            position: "relative",
-                                            margin: 1,
-                                            "&:hover .favorite-btn": { opacity: 1 },
-                                        }}
-                                    >
-                                        <MovieCard
-                                            movieId={movie.id}
-                                            title={movie.title}
-                                            posterPath={movie.poster_path ?? ""}
-                                            vote_average={movie.vote_average ?? 0}
-                                        />
-                                    </Box>
-                                ))
-                                : Array.from(new Array(isMobileResolution ? 2 : 6)).map((_, index) => (
-                                    <Box key={index} sx={{ position: "relative", margin: 1 }}>
-                                        <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }}
-                                        />
-                                        <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
-                                        <Skeleton variant="text" width={180} />
-                                    </Box>
-                                ))}
+
+                            <MoviesList movieList={nowPlayingMovies} isMobileResolution={isMobileResolution}/>
+
                         </Box>
                     </Box>
                 </Box>
