@@ -1,12 +1,12 @@
 import {useGetCreditsQuery, useGetDetailsOfMoviesQuery, useGetSimilarQuery} from "../../features/api/movieApi.ts"
 import {NavLink, useNavigate, useParams} from "react-router"
-import {IconButton, Typography} from "@mui/material"
-import {MovieCard} from "../../common/components/moviecard/MovieCard.tsx"
+import {IconButton, Typography, useMediaQuery} from "@mui/material"
 import s from './movie.module.css'
 import * as React from "react";
 import {useAppSelector} from "../../common/hooks/useAppSelector.ts";
 import {selectThemeMode} from "../../app/app-slice.ts";
 import {getTheme} from "../../common/theme/theme.ts";
+import {MoviesList} from "../../common/header/movielist/MovieList.tsx";
 
 export const MovieDetail = () => {
     const themeMode = useAppSelector(selectThemeMode)
@@ -41,6 +41,8 @@ export const MovieDetail = () => {
     const onLiveHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.currentTarget.style.color = theme.palette.mode === "light" ? "black" : "white"
     }
+
+    const isMobileResolution = useMediaQuery("(max-width:1024px)")
 
     return (
         <>
@@ -176,16 +178,9 @@ export const MovieDetail = () => {
                 <Typography variant="h5" fontWeight={700} gutterBottom>Similar Movies</Typography>
 
                 <div className={s.similarList}>
-                    {similar?.results.slice(0, 6).map((movie) => (
-                        <div key={movie.id} className={s.similarItem}>
-                            <MovieCard
-                                movieId={movie.id}
-                                title={movie.title}
-                                posterPath={movie.poster_path ?? ''}
-                                vote_average={movie.vote_average ?? 0}
-                            />
-                        </div>
-                    ))}
+
+                    <MoviesList movieList={similar} isMobileResolution={isMobileResolution}/>
+
                 </div>
             </div>
 
