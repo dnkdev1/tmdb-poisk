@@ -48,7 +48,7 @@ export const MovieDetail = () => {
 
                     <div className={s.headerRowMobile}>
                         <div
-                            className={s.poster}
+                            className={s.mobilePoster}
                             style={{
                                 backgroundImage: movie?.poster_path
                                     ? `url(https://image.tmdb.org/t/p/original${movie?.poster_path})`
@@ -60,14 +60,14 @@ export const MovieDetail = () => {
                                 {movie?.title}
                             </Typography>
 
-                            <BackButton navigateBack={() => navigate(-1)}/>
+
 
                         </div>
                     </div>
 
 
                     <div className={s.details}>
-                        <div className={s.infoRow}>
+                        <div className={s.mobileInfoRow}>
                             <Typography variant="subtitle1">
                                 Release year: {movie?.release_date?.slice(0, 4)}
                             </Typography>
@@ -79,6 +79,9 @@ export const MovieDetail = () => {
                                 {fixedVoiteAverage}
                             </IconButton>
 
+
+
+
                             <Typography variant="subtitle1">
                                 Runtime:{" "}
                                 {movie?.runtime
@@ -87,6 +90,9 @@ export const MovieDetail = () => {
                                     }m`
                                     : ""}
                             </Typography>
+
+
+                            <BackButton navigateBack={() => navigate(-1)}/>
                         </div>
 
                         <Typography variant="subtitle1" gutterBottom>

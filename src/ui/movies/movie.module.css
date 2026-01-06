@@ -8,7 +8,22 @@
     margin: 0 auto;
 }
 
+.titleBlock {
+    display: flex;
+    align-items: center;   /* выравнивание по вертикали */
+    justify-content: space-between; /* заголовок слева, кнопка справа */
+    gap: 16px;             /* расстояние между ними */
+}
 
+
+.mobilePoster {
+    width: 100%;
+    height: 1000px;
+    background-size: cover;
+    background-position: center;
+    /*border-radius: 20px;*/
+    flex-shrink: 0;
+}
 
 .poster {
     width: 280px;
@@ -36,6 +51,18 @@
     border: 1px solid;
     cursor: pointer;
 }
+
+.mobileInfoRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+
+
 
 .infoRow {
     flex: 1;
