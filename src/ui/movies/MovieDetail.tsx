@@ -1,16 +1,12 @@
 import {useGetCreditsQuery, useGetDetailsOfMoviesQuery, useGetSimilarQuery} from "../../features/api/movieApi.ts"
-import {NavLink, useNavigate, useParams} from "react-router"
+import {useNavigate, useParams} from "react-router"
 import {IconButton, Typography, useMediaQuery} from "@mui/material"
 import s from './movie.module.css'
-import * as React from "react";
-import {useAppSelector} from "../../common/hooks/useAppSelector.ts";
-import {selectThemeMode} from "../../app/app-slice.ts";
-import {getTheme} from "../../common/theme/theme.ts";
-import {MoviesList} from "../../common/header/movielist/MovieList.tsx";
+import {MoviesList} from "../../common/header/movielist/MovieList.tsx"
+import {CastsSwiper} from "../../common/components/castsswiper/CastsSwiper.tsx"
+import {BackButton} from "../../common/components/backbutton/BackButton.tsx"
 
 export const MovieDetail = () => {
-    const themeMode = useAppSelector(selectThemeMode)
-    const theme = getTheme(themeMode)
 
     const {id} = useParams<{ id: string }>()
     const navigate = useNavigate()
@@ -34,13 +30,13 @@ export const MovieDetail = () => {
         color = '#facc15'
 
 
-    const onHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.currentTarget.style.color = "cornflowerblue"
-
-    }
-    const onLiveHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.currentTarget.style.color = theme.palette.mode === "light" ? "black" : "white"
-    }
+    // const onHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    //     e.currentTarget.style.color = "cornflowerblue"
+    //
+    // }
+    // const onLiveHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    //     e.currentTarget.style.color = theme.palette.mode === "light" ? "black" : "white"
+    // }
 
     const isMobileResolution = useMediaQuery("(max-width:1024px)")
 
@@ -49,7 +45,7 @@ export const MovieDetail = () => {
         <>
             {isMobileResolution ? (
                 <div className={s.containerMobile}>
-                    {/* Постер слева + заголовок и кнопка справа */}
+
                     <div className={s.headerRowMobile}>
                         <div
                             className={s.poster}
@@ -63,51 +59,13 @@ export const MovieDetail = () => {
                             <Typography variant="h4" fontWeight={700} gutterBottom>
                                 {movie?.title}
                             </Typography>
-                            <NavLink
-                                onMouseEnter={onHoover}
-                                onMouseLeave={onLiveHoover}
-                                onClick={() => navigate(-1)}
-                                style={({isActive}) => ({
-                                    color: isActive
-                                        ? "white"
-                                        : theme.palette.mode === "light"
-                                            ? "black"
-                                            : "white",
-                                    textDecoration: "none",
-                                    fontSize: "14px",
-                                    backgroundColor: isActive
-                                        ? "#2563eb"
-                                        : theme.palette.mode === "light"
-                                            ? "#d1d5db"
-                                            : "transparent",
-                                    borderRadius: 20,
-                                    borderColor: isActive
-                                        ? "transparent"
-                                        : theme.palette.mode === "light"
-                                            ? "#d1d5db"
-                                            : "#27354f",
-                                    height: "35px",
-                                    width: "100px",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    border: isActive
-                                        ? "1px solid transparent"
-                                        : "1px solid #d1d5db",
-                                    marginLeft: "10px",
-                                    marginRight: "10px",
-                                })}
-                                className={({isActive}) =>
-                                    isActive ? "active-link" : ""
-                                }
-                                to="/movies/popular"
-                            >
-                                Back
-                            </NavLink>
+
+                            <BackButton navigateBack={() => navigate(-1)}/>
+
                         </div>
                     </div>
 
-                    {/* Детали */}
+
                     <div className={s.details}>
                         <div className={s.infoRow}>
                             <Typography variant="subtitle1">
@@ -152,35 +110,8 @@ export const MovieDetail = () => {
                         </div>
                     </div>
 
-                    {/* Cast */}
-                    <div className={s.castSection}>
-                        <Typography variant="h5" fontWeight={700} gutterBottom>
-                            Cast
-                        </Typography>
-                        <div className={s.castList}>
-                            {credits?.cast?.slice(0, 6).map((actor) => (
-                                <div key={actor.id} className={s.castItem}>
-                                    <img
-                                        src={
-                                            actor.profile_path
-                                                ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
-                                                : "https://placehold.co/280x420/EEE/31343C?font=montserrat&text=no%20poster"
-                                        }
-                                        alt={actor.name}
-                                        className={s.castImage}
-                                    />
-                                    <Typography variant="subtitle2">
-                                        {actor.name}
-                                    </Typography>
-                                    <Typography variant="caption">
-                                        {actor.character}
-                                    </Typography>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <CastsSwiper credits={credits} isMobileResolution={isMobileResolution}/>
 
-                    {/* Similar */}
                     <div className={s.similarSection}>
                         <Typography variant="h5" fontWeight={700} gutterBottom>
                             Similar Movies
@@ -193,12 +124,13 @@ export const MovieDetail = () => {
                         </div>
                     </div>
                 </div>
+
             ) : (
 
                 <>
 
 
-                    /* Десктопная версия */
+                    /* Desktop */
                     <div className={s.container}>
                         <div
                             className={s.poster}
@@ -214,47 +146,9 @@ export const MovieDetail = () => {
                                 <Typography variant="h4" fontWeight={700} gutterBottom>
                                     {movie?.title}
                                 </Typography>
-                                <NavLink
-                                    onMouseEnter={onHoover}
-                                    onMouseLeave={onLiveHoover}
-                                    onClick={() => navigate(-1)}
-                                    style={({isActive}) => ({
-                                        color: isActive
-                                            ? "white"
-                                            : theme.palette.mode === "light"
-                                                ? "black"
-                                                : "white",
-                                        textDecoration: "none",
-                                        fontSize: "14px",
-                                        backgroundColor: isActive
-                                            ? "#2563eb"
-                                            : theme.palette.mode === "light"
-                                                ? "#d1d5db"
-                                                : "transparent",
-                                        borderRadius: 20,
-                                        borderColor: isActive
-                                            ? "transparent"
-                                            : theme.palette.mode === "light"
-                                                ? "#d1d5db"
-                                                : "#27354f",
-                                        height: "35px",
-                                        width: "100px",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        border: isActive
-                                            ? "1px solid transparent"
-                                            : "1px solid #d1d5db",
-                                        marginLeft: "10px",
-                                        marginRight: "10px",
-                                    })}
-                                    className={({isActive}) =>
-                                        isActive ? "active-link" : ""
-                                    }
-                                    to="/movies/popular"
-                                >
-                                    Back
-                                </NavLink>
+
+                                <BackButton navigateBack={() => navigate(-1)}/>
+
                             </div>
 
                             <div className={s.infoRow}>
