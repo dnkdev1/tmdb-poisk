@@ -8,6 +8,8 @@
     margin: 0 auto;
 }
 
+
+
 .poster {
     width: 280px;
     height: 420px;
@@ -65,7 +67,7 @@
 .castSection {
     padding-top: 30px;
     margin: 0 auto;
-    max-width: 1200px;
+    width: 100%;
     /*justify-content: space-around;*/
 }
 
@@ -96,7 +98,7 @@
 .similarSection {
     padding-top: 30px;
     margin: 0 auto;
-    max-width: 1200px;
+    width: 100%;
 }
 
 .similarList {
@@ -111,3 +113,5 @@
     position: relative;
 
 }
+
+
