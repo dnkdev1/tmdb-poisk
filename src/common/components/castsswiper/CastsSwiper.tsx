@@ -27,7 +27,7 @@ export const CastsSwiper: React.FC<CastSwiperProps> = ({ credits, isMobileResolu
     }
 
     return (
-        <div className="castSection">
+        <div className={s.castSection}>
             <Typography variant="h5" fontWeight={700} gutterBottom>
                 Cast
             </Typography>

@@ -55,7 +55,7 @@ export const MovieDetail = () => {
                                     : `url(https://placehold.co/188x270/EEE/31343C?font=montserrat&text=no+poster)`,
                             }}
                         />
-                        <div className={s.titleBlock}>
+                        <div className={s.mobileTitleBlock}>
                             <Typography variant="h4" fontWeight={700} gutterBottom>
                                 {movie?.title}
                             </Typography>
@@ -66,7 +66,7 @@ export const MovieDetail = () => {
                     </div>
 
 
-                    <div className={s.details}>
+                    <div className={s.mobileDetails}>
                         <div className={s.mobileInfoRow}>
                             <Typography variant="subtitle1">
                                 Release year: {movie?.release_date?.slice(0, 4)}

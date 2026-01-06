@@ -8,11 +8,20 @@
     margin: 0 auto;
 }
 
+.mobileTitleBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-left: 10px;
+}
+
+
 .titleBlock {
     display: flex;
-    align-items: center;   /* выравнивание по вертикали */
-    justify-content: space-between; /* заголовок слева, кнопка справа */
-    gap: 16px;             /* расстояние между ними */
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
 
@@ -21,7 +30,6 @@
     height: 1000px;
     background-size: cover;
     background-position: center;
-    /*border-radius: 20px;*/
     flex-shrink: 0;
 }
 
@@ -32,6 +40,11 @@
     background-position: center;
     border-radius: 20px;
     flex-shrink: 0;
+}
+
+.mobileDetails {
+    flex: 1;
+    padding-left: 10px;
 }
 
 .details {
@@ -142,3 +155,10 @@
 }
 
 
+.castSection {
+    padding-left: 10px;
+}
+
+.similarSection {
+    padding-left: 10px;
+}
