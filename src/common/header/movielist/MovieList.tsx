@@ -73,6 +73,7 @@ export const MoviesList: React.FC<MoviesListProps> = ({ movieList, isMobileResol
                         title={movie.title}
                         posterPath={movie.poster_path ?? ""}
                         vote_average={movie.vote_average ?? 0}
+                        isMobileResolution={isMobileResolution}
                     />
                 </Box>
             ))}
