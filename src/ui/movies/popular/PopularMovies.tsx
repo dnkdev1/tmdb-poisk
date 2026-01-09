@@ -1,6 +1,6 @@
 import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx"
 import {useGetPopularMoviesQuery} from "../../../features/api/movieApi.ts"
-import {Box, Skeleton} from "@mui/material"
+import {Box, Skeleton, useMediaQuery} from "@mui/material"
 import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx"
 import {MoviesPagination} from "../../../common/components/pagination/MoviesPagination.tsx"
 import {PAGE_SIZE} from "../../../common/constants.ts"
@@ -13,6 +13,7 @@ export const PopularMovies = () => {
 
     const {data: popularMovies} = useGetPopularMoviesQuery({params: {page}});
 
+    const isMobileResolution = useMediaQuery("(max-width:1024px)")
 
     return (
         <>
@@ -43,6 +44,7 @@ export const PopularMovies = () => {
                                         title={movie.title}
                                         posterPath={movie.poster_path ?? ""}
                                         vote_average={movie.vote_average ?? 0}
+                                        isMobileResolution={isMobileResolution}
                                     />
                                 </Box>
                             ))

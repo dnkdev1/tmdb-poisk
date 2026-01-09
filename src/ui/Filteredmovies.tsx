@@ -1,5 +1,15 @@
 import {useGetGenreListMoviesQuery, useLazyGetDiscoverMovieMoviesQuery} from "../features/api/movieApi.ts"
-import {Box, Button, FormControl, MenuItem, Select, type SelectChangeEvent, Skeleton, Slider} from "@mui/material"
+import {
+    Box,
+    Button,
+    FormControl,
+    MenuItem,
+    Select,
+    type SelectChangeEvent,
+    Skeleton,
+    Slider,
+    useMediaQuery
+} from "@mui/material"
 import {useEffect, useState} from "react"
 import {PAGE_SIZE} from "../common/constants.ts"
 import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx"
@@ -12,6 +22,7 @@ import {getTheme} from "../common/theme/theme.ts"
 export const Filteredmovies = () => {
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
+    const isMobileResolution = useMediaQuery("(max-width:1024px)")
 
     const sortsOptions = [
         {value: 'Popularity ↓', sortby: 'popularity.desc'},
@@ -274,6 +285,7 @@ export const Filteredmovies = () => {
                                     title={movie.title}
                                     posterPath={movie.poster_path ?? ""}
                                     vote_average={movie.vote_average ?? 0}
+                                    isMobileResolution={isMobileResolution}
                                 />
                             </Box>
                         ))

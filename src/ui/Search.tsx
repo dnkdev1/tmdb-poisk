@@ -1,6 +1,6 @@
 import {useLocation, useNavigate} from "react-router"
 import {useGetSearchMoviesQuery} from "../features/api/movieApi.ts"
-import {Box, Skeleton, Typography} from "@mui/material"
+import {Box, Skeleton, Typography, useMediaQuery} from "@mui/material"
 import {MovieCard} from "../common/components/moviecard/MovieCard.tsx"
 import {PAGE_SIZE} from "../common/constants.ts"
 import {MoviesPagination} from "../common/components/pagination/MoviesPagination.tsx"
@@ -19,6 +19,7 @@ export const Search = () => {
     const query = params.get("query") || ""
     const [page, setPage] = useState(1)
     const {data: searchResults, isLoading} = useGetSearchMoviesQuery({query, params: {page}})
+    const isMobileResolution = useMediaQuery("(max-width:1024px)")
 
     const onChangeSearch = (value: string) => {
         navigate(`/search?query=${encodeURIComponent(value)}`)
@@ -105,6 +106,7 @@ export const Search = () => {
                                     title={movie.title}
                                     posterPath={movie.poster_path ?? ""}
                                     vote_average={movie.vote_average ?? 0}
+                                    isMobileResolution={isMobileResolution}
                                 />
                             </Box>
                         ))

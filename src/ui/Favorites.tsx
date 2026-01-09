@@ -1,11 +1,12 @@
 import {getFavoriteMoviesFromLocalStorage} from "../common/utils/localstorage.ts"
-import {Box} from "@mui/material"
+import {Box, useMediaQuery} from "@mui/material"
 import {MovieCard} from "../common/components/moviecard/MovieCard.tsx"
 
 
 export const Favorites = () => {
 
     const favorites = getFavoriteMoviesFromLocalStorage()
+    const isMobileResolution = useMediaQuery("(max-width:1024px)")
 
     return (
         <>
@@ -25,7 +26,7 @@ export const Favorites = () => {
                             }}
                         >
                             <MovieCard movieId={Number(movie.id)} title={movie.title} posterPath={movie.posterUrl}
-                                       vote_average={movie.voteAverage}
+                                       vote_average={movie.voteAverage} isMobileResolution={isMobileResolution}
                             />
 
                         </Box>

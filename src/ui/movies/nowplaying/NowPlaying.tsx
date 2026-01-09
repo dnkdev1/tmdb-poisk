@@ -1,6 +1,6 @@
 import {MoviesNav} from "../../../common/components/secondmenu/MoviesNav.tsx";
 import {useGetNowPlayingMoviesQuery} from "../../../features/api/movieApi.ts";
-import {Box, Skeleton} from "@mui/material";
+import {Box, Skeleton, useMediaQuery} from "@mui/material";
 import {MovieCard} from "../../../common/components/moviecard/MovieCard.tsx";
 import {useState} from "react";
 import {PAGE_SIZE} from "../../../common/constants.ts";
@@ -10,7 +10,7 @@ import {MoviesPagination} from "../../../common/components/pagination/MoviesPagi
 export const NowPlaying = () => {
     const [page, setPage] = useState(1)
     const {data: nowPlayingMovies} = useGetNowPlayingMoviesQuery({params: {page}})
-
+    const isMobileResolution = useMediaQuery("(max-width:1024px)")
 
     return (
         <>
@@ -40,6 +40,7 @@ export const NowPlaying = () => {
                                         title={movie.title}
                                         posterPath={movie.poster_path ?? ""}
                                         vote_average={movie.vote_average ?? 0}
+                                        isMobileResolution={isMobileResolution}
                                     />
                                 </Box>
                             ))
