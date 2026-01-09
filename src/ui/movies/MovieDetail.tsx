@@ -198,8 +198,19 @@ export const MovieDetail = () => {
 
                         </div>
 
+
+
+
+
+
+
+
+
+
                     </div>
 
+
+                    <div className={s.container}>
                     {/* Cast */}
                     <div className={s.castSection}>
                         <Typography variant="h5" fontWeight={700} gutterBottom>
@@ -229,6 +240,11 @@ export const MovieDetail = () => {
                     </div>
 
                     {/* Similar */}
+
+                    </div>
+
+
+                    <div className={s.container}>
                     <div className={s.similarSection}>
                         <Typography variant="h5" fontWeight={700} gutterBottom>
                             Similar Movies
@@ -240,6 +256,10 @@ export const MovieDetail = () => {
                             />
                         </div>
                     </div>
+                    </div>
+
+
+
 
                 </>
             )}
