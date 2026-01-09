@@ -29,15 +29,6 @@ export const MovieDetail = () => {
     if (Number(fixedVoiteAverage) > 5 && Number(fixedVoiteAverage) < 7)
         color = '#facc15'
 
-
-    // const onHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    //     e.currentTarget.style.color = "cornflowerblue"
-    //
-    // }
-    // const onLiveHoover = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    //     e.currentTarget.style.color = theme.palette.mode === "light" ? "black" : "white"
-    // }
-
     const isMobileResolution = useMediaQuery("(max-width:1024px)")
 
     return (
@@ -59,12 +50,8 @@ export const MovieDetail = () => {
                             <Typography variant="h4" fontWeight={700} gutterBottom>
                                 {movie?.title}
                             </Typography>
-
-
-
                         </div>
                     </div>
-
 
                     <div className={s.mobileDetails}>
                         <div className={s.mobileInfoRow}>
@@ -78,9 +65,6 @@ export const MovieDetail = () => {
                             >
                                 {fixedVoiteAverage}
                             </IconButton>
-
-
-
 
                             <Typography variant="subtitle1">
                                 Runtime:{" "}
@@ -123,10 +107,12 @@ export const MovieDetail = () => {
                             Similar Movies
                         </Typography>
                         <div className={s.similarList}>
-                            <MoviesList
-                                movieList={similar}
-                                isMobileResolution={isMobileResolution}
-                            />
+                            {similar &&
+                                <MoviesList
+                                    movieList={similar}
+                                    isMobileResolution={isMobileResolution}
+                                />
+                            }
                         </div>
                     </div>
                 </div>
@@ -134,8 +120,6 @@ export const MovieDetail = () => {
             ) : (
 
                 <>
-
-
 
                     <div className={s.container}>
                         <div
@@ -194,64 +178,59 @@ export const MovieDetail = () => {
                                 ))}
                             </div>
 
-
-
                         </div>
 
+                    </div>
+
+                    <div className={s.container}>
+                        {/* Cast */}
+                        <div className={s.castSection}>
+                            <Typography variant="h5" fontWeight={700} gutterBottom>
+                                Cast
+                            </Typography>
+                            <div className={s.castList}>
+                                {credits?.cast?.slice(0, 6).map((actor) => (
+                                    <div key={actor.id} className={s.castItem}>
+                                        <img
+                                            src={
+                                                actor.profile_path
+                                                    ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
+                                                    : "https://placehold.co/280x420/EEE/31343C?font=montserrat&text=no%20poster"
+                                            }
+                                            alt={actor.name}
+                                            className={s.castImage}
+                                        />
+                                        <Typography variant="subtitle2">
+                                            {actor.name}
+                                        </Typography>
+                                        <Typography variant="caption">
+                                            {actor.character}
+                                        </Typography>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Similar */}
 
                     </div>
 
 
                     <div className={s.container}>
-                    {/* Cast */}
-                    <div className={s.castSection}>
-                        <Typography variant="h5" fontWeight={700} gutterBottom>
-                            Cast
-                        </Typography>
-                        <div className={s.castList}>
-                            {credits?.cast?.slice(0, 6).map((actor) => (
-                                <div key={actor.id} className={s.castItem}>
-                                    <img
-                                        src={
-                                            actor.profile_path
-                                                ? `https://image.tmdb.org/t/p/w200${actor.profile_path}`
-                                                : "https://placehold.co/280x420/EEE/31343C?font=montserrat&text=no%20poster"
-                                        }
-                                        alt={actor.name}
-                                        className={s.castImage}
+                        <div className={s.similarSection}>
+                            <Typography variant="h5" fontWeight={700} gutterBottom>
+                                Similar Movies
+                            </Typography>
+                            <div className={s.similarList}>
+                                {similar &&
+                                    <MoviesList
+                                        movieList={similar}
+                                        isMobileResolution={isMobileResolution}
                                     />
-                                    <Typography variant="subtitle2">
-                                        {actor.name}
-                                    </Typography>
-                                    <Typography variant="caption">
-                                        {actor.character}
-                                    </Typography>
-                                </div>
-                            ))}
+                                }
+                            </div>
                         </div>
                     </div>
-
-                    {/* Similar */}
-
-                    </div>
-
-
-                    <div className={s.container}>
-                    <div className={s.similarSection}>
-                        <Typography variant="h5" fontWeight={700} gutterBottom>
-                            Similar Movies
-                        </Typography>
-                        <div className={s.similarList}>
-                            <MoviesList
-                                movieList={similar}
-                                isMobileResolution={isMobileResolution}
-                            />
-                        </div>
-                    </div>
-                    </div>
-
-
-
 
                 </>
             )}

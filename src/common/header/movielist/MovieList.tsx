@@ -1,9 +1,10 @@
 import { Box, Skeleton } from "@mui/material"
 import {MovieCard} from "../../components/moviecard/MovieCard.tsx"
+import type {ListOfMoviesResponse, Movie} from "../../../features/api/movieApi.types.ts";
 
 
 interface MoviesListProps {
-    movieList: any
+    movieList: ListOfMoviesResponse
     isMobileResolution: boolean
 }
 
@@ -37,7 +38,7 @@ export const MoviesList: React.FC<MoviesListProps> = ({ movieList, isMobileResol
                 "&::-webkit-scrollbar": { display: "none" },
             }}
         >
-            {movieList.results.map((movie: any) => (
+            {movieList.results.map((movie: Movie) => (
                 <Box
                     key={movie.id}
                     sx={{
@@ -59,7 +60,7 @@ export const MoviesList: React.FC<MoviesListProps> = ({ movieList, isMobileResol
         </Box>
     ) : (
         <>
-            {movieList.results.slice(0, 6).map((movie: any) => (
+            {movieList.results.slice(0, 6).map((movie: Movie) => (
                 <Box
                     key={movie.id}
                     sx={{

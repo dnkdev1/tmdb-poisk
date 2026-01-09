@@ -116,9 +116,9 @@ export const Homepage = () => {
                         </Box>
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-
-                            <MoviesList movieList={popularMovies} isMobileResolution={isMobileResolution}/>
-
+                            {popularMovies &&
+                                <MoviesList movieList={popularMovies} isMobileResolution={isMobileResolution}/>
+                            }
                         </Box>
                     </Box>
 
@@ -152,9 +152,9 @@ export const Homepage = () => {
 
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-
-                            <MoviesList movieList={topRatedMovies} isMobileResolution={isMobileResolution}/>
-
+                            {topRatedMovies &&
+                                <MoviesList movieList={topRatedMovies} isMobileResolution={isMobileResolution}/>
+                            }
                         </Box>
                     </Box>
 
@@ -189,9 +189,9 @@ export const Homepage = () => {
 
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-
-                            <MoviesList movieList={upcomingMovies} isMobileResolution={isMobileResolution}/>
-
+                            {upcomingMovies &&
+                                <MoviesList movieList={upcomingMovies} isMobileResolution={isMobileResolution}/>
+                            }
                         </Box>
                     </Box>
 
@@ -226,9 +226,9 @@ export const Homepage = () => {
 
 
                         <Box sx={{display: "flex", flexWrap: "nowrap"}}>
-
-                            <MoviesList movieList={nowPlayingMovies} isMobileResolution={isMobileResolution}/>
-
+                            {nowPlayingMovies &&
+                                <MoviesList movieList={nowPlayingMovies} isMobileResolution={isMobileResolution}/>
+                            }
                         </Box>
                     </Box>
                 </Box>
