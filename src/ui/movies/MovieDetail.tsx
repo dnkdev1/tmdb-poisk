@@ -1,7 +1,7 @@
 import {useGetCreditsQuery, useGetDetailsOfMoviesQuery, useGetSimilarQuery} from "../../features/api/movieApi.ts"
 import {useNavigate, useParams} from "react-router"
 import {IconButton, Typography, useMediaQuery} from "@mui/material"
-import s from './movie.module.css'
+import s from './movieDetail.module.css'
 import {MoviesList} from "../../common/header/movielist/MovieList.tsx"
 import {CastsSwiper} from "../../common/components/castsswiper/CastsSwiper.tsx"
 import {BackButton} from "../../common/components/backbutton/BackButton.tsx"
@@ -197,14 +197,6 @@ export const MovieDetail = () => {
 
 
                         </div>
-
-
-
-
-
-
-
-
 
 
                     </div>
