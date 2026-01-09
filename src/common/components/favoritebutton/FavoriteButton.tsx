@@ -7,10 +7,11 @@ import {useState} from "react";
 type Props = {
     onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
     movieId: number
+    isMobileResolution: boolean
 }
 
 
-export const FavoriteButton = ({onClick, movieId}: Props) => {
+export const FavoriteButton = ({onClick, movieId, isMobileResolution}: Props) => {
 
     const isItFavoritePage = location.pathname === "/favorites"
     const [isFavorite, setIsFavorite] = useState(() => {
@@ -46,7 +47,7 @@ export const FavoriteButton = ({onClick, movieId}: Props) => {
                         borderRadius: "50%",
                         backgroundColor: "#1f2937",
                         color: isFavorite ? "#facc15" : "#d1d5db",
-                        opacity: isFavorite ? 1 : 0,
+                        opacity: isMobileResolution ? 1 : (isFavorite ? 1 : 0),
                         border: "none",
                         transition: isFavorite ? "none" : "opacity 0.3s ease, color 0.3s ease",
                         "&:hover": {

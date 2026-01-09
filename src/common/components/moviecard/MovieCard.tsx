@@ -4,11 +4,12 @@ import {FavoriteButton} from "../favoritebutton/FavoriteButton.tsx";
 import {useNavigate} from "react-router";
 import {manageFavoriteMovieToLocalStorage} from "../../utils/localstorage.ts";
 
-export type MovieCardProps = {
+export type Props = {
     movieId: number,
     title: string
     posterPath: string
     vote_average: number
+    isMobileResolution: boolean
 }
 
 export type FavoriteMovie = {
@@ -18,7 +19,7 @@ export type FavoriteMovie = {
     voteAverage: number
 }
 
-export const MovieCard = ({movieId, title, posterPath, vote_average}: MovieCardProps) => {
+export const MovieCard = ({movieId, title, posterPath, vote_average, isMobileResolution}: Props) => {
 
     const navigate = useNavigate()
 
@@ -73,6 +74,7 @@ export const MovieCard = ({movieId, title, posterPath, vote_average}: MovieCardP
                                 vote_average
                             )
                         }}
+                        isMobileResolution={isMobileResolution}
                     />
                 </Box>
 
