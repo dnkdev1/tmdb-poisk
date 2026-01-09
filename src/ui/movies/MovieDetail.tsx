@@ -136,7 +136,7 @@ export const MovieDetail = () => {
                 <>
 
 
-                    /* Desktop */
+
                     <div className={s.container}>
                         <div
                             className={s.poster}
