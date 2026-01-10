@@ -6,39 +6,52 @@ import {MoviesPagination} from "../../../common/components/pagination/MoviesPagi
 import {PAGE_SIZE} from "../../../common/constants.ts"
 import {useState} from "react"
 
-
 export const PopularMovies = () => {
     const [page, setPage] = useState(1)
 
-
     const {data: popularMovies} = useGetPopularMoviesQuery({params: {page}});
 
-    const isMobileResolution = useMediaQuery("(max-width:1024px)")
+    const isMobileResolution = useMediaQuery("(max-width:800px)")
+
 
     return (
         <>
             <Box className={'mainpopularWR'}>
-
                 <MoviesNav/>
 
                 <Box className={'secondWR'} sx={{alignItems: "center", maxWidth: '1200px', margin: '0 auto'}}>
-
                     <h2>Popular Movies Page</h2>
 
+                    <Box
+                        sx={{
+                            display: "grid",
+                            gap: 2,
+                            px: "14px",
 
-                    <Box sx={{display: "flex", flexWrap: "wrap"}}>
+                            gridTemplateColumns: "repeat(5, 1fr)",
 
+                            "@media (max-width:1024px)": {
+                                gridTemplateColumns: "repeat(4, 1fr)",
+                            },
+
+                            "@media (max-width:800px)": {
+                                gridTemplateColumns: "repeat(3, 1fr)",
+                            },
+
+                            "@media (max-width:600px)": {
+                                gridTemplateColumns: "repeat(2, 1fr)",
+                            },
+
+                            "@media (max-width:360px)": {
+                                gridTemplateColumns: "repeat(1, 1fr)",
+                            },
+
+                            justifyItems: "center",
+                        }}
+                    >
                         {popularMovies
                             ? popularMovies.results.map((movie) => (
-                                <Box
-                                    key={movie.id}
-                                    sx={{
-                                        flex: "1 0 18%",
-                                        margin: 1,
-                                        position: "relative",
-                                        "&:hover .favorite-btn": { opacity: 1 },
-                                    }}
-                                >
+                                <Box key={movie.id} sx={{ width: "100%" }}>
                                     <MovieCard
                                         movieId={movie.id}
                                         title={movie.title}
@@ -48,27 +61,28 @@ export const PopularMovies = () => {
                                     />
                                 </Box>
                             ))
-                            :
-                            Array.from(new Array(20)).map((_, index) => (
-                                <Box key={index} sx={{ flex: "1 0 18%", margin: 1,}}>
-                                    <Skeleton variant="rectangular" width={189} height={270} sx={{ borderRadius: "15px" }} />
+                            : Array.from(new Array(20)).map((_, index) => (
+                                <Box key={index} sx={{ width: "100%" }}>
+                                    <Skeleton
+                                        variant="rectangular"
+                                        width={189}
+                                        height={270}
+                                        sx={{ borderRadius: "15px" }}
+                                    />
                                     <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
                                     <Skeleton variant="text" width={180} />
                                 </Box>
                             ))}
-
                     </Box>
+
                 </Box>
             </Box>
-
 
             {popularMovies?.results !== undefined && popularMovies.total_results > PAGE_SIZE ? (
                 <MoviesPagination totalCount={popularMovies?.total_results || 0} page={page} setPage={setPage}/>
             ) : (
                 <div></div>
             )}
-
-
         </>
     )
 }
