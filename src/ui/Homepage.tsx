@@ -41,7 +41,7 @@ export const Homepage = () => {
 
     return (
         <>
-            <Box className={'testWRAPPER'} sx={{alignItems: "center", margin: '0 auto'}}>
+            <Box className={'testWRAPPER'}>
                 <Box sx={{
                     width: "100vw", height: "700px", backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
                     backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", pl: 4,
@@ -55,7 +55,8 @@ export const Homepage = () => {
                             md: "800px",
                             lg: "1200px",
                         },
-                        paddingRight: "24px",
+                        // paddingRight: "24px",
+                        px: "14px",
                     }}
                     >
                         <Typography variant="h3" sx={{
@@ -87,7 +88,7 @@ export const Homepage = () => {
                 <Box className={'mainTestWR'} sx={{
                     maxWidth: '1200px', margin: '0 auto'
                 }}>
-                    <Box className={'testWR'}>
+                    <Box className={'testWR'} sx={{px: "14px",}}>
                         <Box sx={{
                             display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
                             marginLeft: '10px',
