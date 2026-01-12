@@ -23,7 +23,7 @@ export const Filteredmovies = () => {
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
     // const isTabletResolution = useMediaQuery("(max-width:800px)")
-    const isMobileResolution = useMediaQuery("(max-width:600px)")
+    const isMobileResolution = useMediaQuery("(max-width:700px)")
     const isMinResolution = useMediaQuery("(max-width:360px)")
 
     const sortsOptions = [
@@ -301,13 +301,11 @@ export const Filteredmovies = () => {
                         //     gridTemplateColumns: "repeat(1, 1fr)",
                         // },
 
-                        "@media (max-width:600px)": {
-                            gridTemplateColumns: "repeat(2, 1fr)",
-                        },
-
-                        "@media (max-width:360px)": {
+                        "@media (max-width:700px)": {
                             gridTemplateColumns: "repeat(1, 1fr)",
                         },
+
+
 
                         justifyItems: "center",
 

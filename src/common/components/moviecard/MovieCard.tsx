@@ -1,4 +1,4 @@
-import {Box, Card, CardContent, CardMedia, Typography} from "@mui/material";
+import {Box, Card, CardContent, CardMedia, Typography, useMediaQuery} from "@mui/material";
 import {RatingButton} from "../ratingbutton/RatingButton.tsx";
 import {FavoriteButton} from "../favoritebutton/FavoriteButton.tsx";
 import {useNavigate} from "react-router";
@@ -33,6 +33,8 @@ export const MovieCard = ({movieId, title, posterPath, vote_average, isMobileRes
         navigate(`/movie/${movieId}`)
     }
 
+    const isMinResolution = useMediaQuery("(max-width:700px)")
+
 
     return (
         <>
@@ -40,7 +42,7 @@ export const MovieCard = ({movieId, title, posterPath, vote_average, isMobileRes
             <Card
                 onClick={handleNavigateClick}
                 sx={{
-                    maxWidth: '189px',
+                    maxWidth: isMinResolution ? "none" : "189px",
                     borderRadius: "15px",
                     boxShadow: "none",
                     position: "relative",

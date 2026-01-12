@@ -37,15 +37,15 @@ export const Homepage = () => {
         : "";
 
     const isMobileResolution = useMediaQuery("(max-width:1024px)")
-
+    const isMinResolution = useMediaQuery("(max-width:600px)")
 
     return (
         <>
             <Box className={'testWRAPPER'}>
                 <Box sx={{
                     width: "100vw", height: "700px", backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
-                    backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", pl: 4,
-                    justifyContent: "center", flexDirection: "column",
+                    backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center",
+                    justifyContent: "center", flexDirection: "column", pl: 0,
                 }}>
 
                     <Box className={'searchWR'} sx={{
@@ -55,8 +55,11 @@ export const Homepage = () => {
                             md: "800px",
                             lg: "1200px",
                         },
-                        // paddingRight: "24px",
+
                         px: "6px",
+                        mx: isMinResolution ? "auto" : undefined,
+                        textAlign: isMinResolution ? "center" : "left",
+
                     }}
                     >
                         <Typography variant="h3" sx={{
