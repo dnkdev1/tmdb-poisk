@@ -103,7 +103,7 @@ export const Filteredmovies = () => {
 
         <>
             <Box className={'mainfilterWR'} sx={{
-                alignItems: "flex-start",
+                // alignItems: "flex-start",
                 maxWidth: '1200px',
                 margin: '0 auto',
                 display: 'flex',
@@ -112,6 +112,8 @@ export const Filteredmovies = () => {
                     : "row",
                 gap: 2,
                 paddingTop: '30px',
+                alignItems: isMobileResolution || isMinResolution ? "center" : "flex-start",
+
             }}>
 
                 {/* Левая колонка */}
@@ -122,7 +124,8 @@ export const Filteredmovies = () => {
                     gap: 2,
                     backgroundColor: theme.palette.mode === "light" ? "#f3f4f6" : "#141c2c",
                     borderRadius: '20px',
-                    width: '294px',
+                    // width: '294px',
+                    width: isMobileResolution || isMinResolution ? '100%' : '294px',
                     flexShrink: 0,
                     padding: '24px',
                 }}>
@@ -159,7 +162,9 @@ export const Filteredmovies = () => {
 
 
                     {/* Slider */}
-                    <Box sx={{width: "246px", height: "61px"}}>
+                    <Box sx={{
+                        width: isMobileResolution || isMinResolution ? '100%' : "246px",
+                        height: "61px"}}>
 
                         <Box className={'wrapper-ratingWR'} sx={{ alignItems:'center' ,width: '100%', display: 'flex' ,justifyContent: 'space-between'}}>
                             <span>Rating</span>
@@ -186,6 +191,7 @@ export const Filteredmovies = () => {
                                 '& .MuiSlider-rail': {
                                     backgroundColor: '#ccc',
                                 },
+
                             }}
                         />
 
@@ -198,8 +204,8 @@ export const Filteredmovies = () => {
                             display: "grid",
                             gridTemplateColumns: "1fr 1fr",
                             gap: 1,
-                            justifyItems: 'start',
-                            alignItems: "start",
+                            justifyItems: isMobileResolution || isMinResolution ? 'center' : 'start',
+                            alignItems: isMobileResolution || isMinResolution ? 'center' : "start",
 
 
                         }}
@@ -304,6 +310,8 @@ export const Filteredmovies = () => {
                         },
 
                         justifyItems: "center",
+
+
                     }}
                 >
 

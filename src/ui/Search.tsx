@@ -61,18 +61,45 @@ export const Search = () => {
 
                 </Box>
 
+                {/*<Box*/}
+                {/*    sx={{*/}
+                {/*        paddingLeft: "15px",*/}
+                {/*        display: "flex",*/}
+                {/*        flexWrap: "wrap",*/}
+                {/*        minHeight: "300px",*/}
+
+                {/*        alignItems: searchResults?.results?.length ? "flex-start" : "flex-start",*/}
+                {/*        justifyContent: searchResults?.results?.length ? "flex-start" : "flex-start",*/}
+                {/*    }}*/}
+                {/*>*/}
+
                 <Box
                     sx={{
-                        paddingLeft: "15px",
-                        display: "flex",
-                        flexWrap: "wrap",
-                        minHeight: "300px",
+                        display: "grid",
+                        gap: 2,
+                        px: "14px",
 
-                        alignItems: searchResults?.results?.length ? "flex-start" : "flex-start",
-                        justifyContent: searchResults?.results?.length ? "flex-start" : "flex-start",
+                        gridTemplateColumns: "repeat(5, 1fr)",
+
+                        "@media (max-width:1024px)": {
+                            gridTemplateColumns: "repeat(4, 1fr)",
+                        },
+
+                        "@media (max-width:800px)": {
+                            gridTemplateColumns: "repeat(3, 1fr)",
+                        },
+
+                        "@media (max-width:600px)": {
+                            gridTemplateColumns: "repeat(2, 1fr)",
+                        },
+
+                        "@media (max-width:360px)": {
+                            gridTemplateColumns: "repeat(1, 1fr)",
+                        },
+
+                        justifyItems: "center",
                     }}
                 >
-
 
                     {isLoading && query ? (
 
@@ -95,11 +122,7 @@ export const Search = () => {
                         searchResults.results.map((movie) => (
                             <Box
                                 key={movie.id}
-                                sx={{
-                                    position: "relative",
-                                    flex: "0 0 20%",
-                                    "&:hover .favorite-btn": { opacity: 1 },
-                                }}
+                                sx={{width: "100%"}}
                             >
                                 <MovieCard
                                     movieId={movie.id}

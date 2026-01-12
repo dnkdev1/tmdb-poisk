@@ -20,6 +20,7 @@ export const PopularMovies = () => {
                 <MoviesNav/>
 
                 <Box className={'secondWR'} sx={{alignItems: "center", maxWidth: '1200px', margin: '0 auto'}}>
+
                     <h2 style={{ textAlign: "center" }}>Popular Movies Page</h2>
 
                     <Box
