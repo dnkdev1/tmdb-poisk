@@ -86,7 +86,7 @@ export const Homepage = () => {
 
 
                 <Box className={'mainTestWR'} sx={{
-                    maxWidth: '1200px', margin: '0 auto', px: "14px",
+                    maxWidth: '1200px', margin: '0 auto', px: "10px",
                 }}>
                     <Box className={'testWR'} >
                         <Box sx={{
