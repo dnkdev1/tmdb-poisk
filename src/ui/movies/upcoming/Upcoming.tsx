@@ -16,19 +16,48 @@ export const Upcoming = () => {
             <Box className={'mainupcomingWR'}>
                 <MoviesNav/>
                 <Box className={'secondWR'} sx={{alignItems: "center", maxWidth: '1200px', margin: '0 auto'}}>
-                    <h2>Upcoming Moves Page</h2>
 
-                    <Box sx={{display: "flex", flexWrap: "wrap"}}>
+                    <h2 style={{ textAlign: "center" }}>Upcoming Moves Page</h2>
+
+                    <Box
+                        sx={{
+                            display: "grid",
+                            gap: 2,
+                            px: "14px",
+
+                            gridTemplateColumns: "repeat(5, 1fr)",
+
+                            "@media (max-width:1024px)": {
+                                gridTemplateColumns: "repeat(4, 1fr)",
+                            },
+
+                            "@media (max-width:800px)": {
+                                gridTemplateColumns: "repeat(3, 1fr)",
+                            },
+
+                            "@media (max-width:600px)": {
+                                gridTemplateColumns: "repeat(2, 1fr)",
+                            },
+
+                            "@media (max-width:360px)": {
+                                gridTemplateColumns: "repeat(1, 1fr)",
+                            },
+
+                            justifyItems: "center",
+                        }}
+                    >
+
                         {upcomingMovies && !isLoading
                             ? upcomingMovies.results.map((movie) => (
                                 <Box
                                     key={movie.id}
-                                    sx={{
-                                        flex: "1 0 18%",
-                                        margin: 1,
-                                        position: "relative",
-                                        "&:hover .favorite-btn": { opacity: 1 },
-                                    }}
+                                    // sx={{
+                                    //     flex: "1 0 18%",
+                                    //     margin: 1,
+                                    //     position: "relative",
+                                    //     "&:hover .favorite-btn": { opacity: 1 },
+                                    // }}
+                                    sx={{width: "100%"}}
                                 >
                                     <MovieCard
                                         movieId={movie.id}

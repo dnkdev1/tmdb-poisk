@@ -22,7 +22,9 @@ import {getTheme} from "../common/theme/theme.ts"
 export const Filteredmovies = () => {
     const themeMode = useAppSelector(selectThemeMode)
     const theme = getTheme(themeMode)
-    const isMobileResolution = useMediaQuery("(max-width:1024px)")
+    // const isTabletResolution = useMediaQuery("(max-width:800px)")
+    const isMobileResolution = useMediaQuery("(max-width:600px)")
+    const isMinResolution = useMediaQuery("(max-width:360px)")
 
     const sortsOptions = [
         {value: 'Popularity ↓', sortby: 'popularity.desc'},
@@ -105,7 +107,9 @@ export const Filteredmovies = () => {
                 maxWidth: '1200px',
                 margin: '0 auto',
                 display: 'flex',
-                flexDirection: "row",
+                flexDirection: isMobileResolution || isMinResolution
+                    ? "column"
+                    : "row",
                 gap: 2,
                 paddingTop: '30px',
             }}>
@@ -171,20 +175,18 @@ export const Filteredmovies = () => {
                             step={0.1}
                             valueLabelFormat={(val) => val.toFixed(1)}
                             sx={{
-                                color: '#2563eb', // основной цвет слайдера
+                                color: '#2563eb',
                                 '& .MuiSlider-thumb': {
-                                    backgroundColor: '#fff', // цвет "ползунка"
+                                    backgroundColor: '#fff',
                                     border: '2px solid #2563eb',
                                 },
                                 '& .MuiSlider-track': {
-                                    backgroundColor: '#2563eb', // цвет активной линии
+                                    backgroundColor: '#2563eb',
                                 },
                                 '& .MuiSlider-rail': {
-                                    backgroundColor: '#ccc', // цвет неактивной линии
+                                    backgroundColor: '#ccc',
                                 },
                             }}
-
-
                         />
 
                     </Box>
@@ -267,18 +269,50 @@ export const Filteredmovies = () => {
 
                 {/* Правая колонка */}
 
-                <Box sx={{display: "flex", flexWrap: "wrap", maxWidth: '882px', flexGrow: 1}}>
+
+
+                <Box
+                    sx={{
+                        display: "grid",
+                        gap: 2,
+                        px: "14px",
+
+                        gridTemplateColumns: "repeat(5, 1fr)",
+
+                        "@media (max-width:1200px)": {
+                            gridTemplateColumns: "repeat(4, 1fr)",
+                        },
+
+                        "@media (max-width:1024px)": {
+                            gridTemplateColumns: "repeat(3, 1fr)",
+                        },
+
+                        "@media (max-width:900px)": {
+                            gridTemplateColumns: "repeat(2, 1fr)",
+                        },
+
+                        // "@media (max-width:750px)": {
+                        //     gridTemplateColumns: "repeat(1, 1fr)",
+                        // },
+
+                        "@media (max-width:600px)": {
+                            gridTemplateColumns: "repeat(2, 1fr)",
+                        },
+
+                        "@media (max-width:360px)": {
+                            gridTemplateColumns: "repeat(1, 1fr)",
+                        },
+
+                        justifyItems: "center",
+                    }}
+                >
+
 
                     {discoverMovies
                         ? discoverMovies.results.map((movie) => (
                             <Box
                                 key={movie.id}
-                                sx={{
-                                    flex: "1 0 18%",
-                                    margin: 1,
-                                    position: "relative",
-                                    "&:hover .favorite-btn": { opacity: 1 },
-                                }}
+                                sx={{width: "100%"}}
                             >
                                 <MovieCard
                                     movieId={movie.id}
