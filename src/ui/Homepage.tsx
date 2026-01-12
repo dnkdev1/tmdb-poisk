@@ -56,7 +56,7 @@ export const Homepage = () => {
                             lg: "1200px",
                         },
                         // paddingRight: "24px",
-                        px: "14px",
+                        px: "4px",
                     }}
                     >
                         <Typography variant="h3" sx={{
@@ -86,7 +86,7 @@ export const Homepage = () => {
 
 
                 <Box className={'mainTestWR'} sx={{
-                    maxWidth: '1200px', margin: '0 auto', px: "10px",
+                    maxWidth: '1200px', margin: '0 auto', px: "4px",
                 }}>
                     <Box className={'testWR'} >
                         <Box sx={{
