@@ -41,7 +41,7 @@ export const Homepage = () => {
 
     return (
         <>
-            <Box className={'testWRAPPER'}>
+            <Box className={'testWRAPPER'} sx={{alignItems: "center", margin: '0 auto'}}>
                 <Box sx={{
                     width: "100vw", height: "700px", backgroundImage: imageUrl ? `url(${imageUrl})` : "none",
                     backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", pl: 4,

@@ -22,15 +22,14 @@ export const FavoriteButton = ({onClick, movieId, isMobileResolution}: Props) =>
 
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         if (isItFavoritePage) {
-            onClick(e);
-            window.location.reload();
+            onClick(e)
+            window.location.reload()
         } else {
-            e.preventDefault();
-            e.stopPropagation();
-            onClick(e);
+            e.preventDefault()
+            e.stopPropagation()
+            onClick(e)
 
-            // обновляем состояние сразу
-            setIsFavorite((prev) => !prev);
+            setIsFavorite((prev) => !prev)
         }
     };
 
@@ -51,6 +50,7 @@ export const FavoriteButton = ({onClick, movieId, isMobileResolution}: Props) =>
                         border: "none",
                         transition: isFavorite ? "none" : "opacity 0.3s ease, color 0.3s ease",
                         "&:hover": {
+                            opacity: 1,
                             color: isFavorite ? "#facc15" : "#d1d5db",
                             backgroundColor: "#2563eb",
                             border: "none",
