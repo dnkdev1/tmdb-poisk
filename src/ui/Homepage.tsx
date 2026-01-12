@@ -86,9 +86,9 @@ export const Homepage = () => {
 
 
                 <Box className={'mainTestWR'} sx={{
-                    maxWidth: '1200px', margin: '0 auto'
+                    maxWidth: '1200px', margin: '0 auto', px: "14px",
                 }}>
-                    <Box className={'testWR'} sx={{px: "14px",}}>
+                    <Box className={'testWR'} >
                         <Box sx={{
                             display: "flex", flexWrap: "nowrap", justifyContent: 'space-between',
                             marginLeft: '10px',
