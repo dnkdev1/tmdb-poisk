@@ -2,7 +2,9 @@ import {NavLink} from "react-router"
 import {useAppSelector} from "../../../common/hooks/useAppSelector"
 import {selectThemeMode} from "../../../app/app-slice"
 import {getTheme} from "../../../common/theme/theme"
-import * as React from "react";
+import {useMediaQuery} from "@mui/material";
+
+
 
 
 export const MoviesNav = () => {
@@ -17,12 +19,38 @@ export const MoviesNav = () => {
         e.currentTarget.style.color = theme.palette.mode === "light" ? "black" : "white"
     }
 
+    const isTabletResolution = useMediaQuery("(max-width:800px)")
+    const isMobileResolution = useMediaQuery("(max-width:600px)")
+    const isMinResolution = useMediaQuery("(max-width:360px)")
+
 
     return (
-        <nav style={{alignItems: "center", display: "flex", justifyContent: "center", paddingTop: "20px"}}>
 
 
-            <NavLink
+        <nav
+            style={{
+                display: "grid",
+                gridTemplateColumns: isMinResolution
+                    ? "1fr"
+                    : isMobileResolution
+                        ? "repeat(2, 1fr)"
+                        : isTabletResolution
+                            ? "repeat(2, 1fr)"
+                            : "repeat(4, 1fr)",
+                gap: "10px",
+                rowGap: "20px",
+                justifyContent: "center",
+                justifyItems: "center",
+                alignItems: "center",
+                paddingTop: "20px",
+                margin: "0 auto",
+                maxWidth: "100%",
+            }}
+        >
+
+
+
+        <NavLink
                 onMouseEnter={onHoover}
                 onMouseLeave={onLiveHoover}
 

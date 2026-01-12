@@ -51,7 +51,7 @@ export const PopularMovies = () => {
                     >
                         {popularMovies
                             ? popularMovies.results.map((movie) => (
-                                <Box key={movie.id} sx={{ width: "100%" }}>
+                                <Box key={movie.id} sx={{width: "100%"}}>
                                     <MovieCard
                                         movieId={movie.id}
                                         title={movie.title}
@@ -62,15 +62,15 @@ export const PopularMovies = () => {
                                 </Box>
                             ))
                             : Array.from(new Array(20)).map((_, index) => (
-                                <Box key={index} sx={{ width: "100%" }}>
+                                <Box key={index} sx={{width: "100%"}}>
                                     <Skeleton
                                         variant="rectangular"
                                         width={189}
                                         height={270}
-                                        sx={{ borderRadius: "15px" }}
+                                        sx={{borderRadius: "15px"}}
                                     />
-                                    <Skeleton variant="text" width={180} sx={{ mt: 1 }} />
-                                    <Skeleton variant="text" width={180} />
+                                    <Skeleton variant="text" width={180} sx={{mt: 1}}/>
+                                    <Skeleton variant="text" width={180}/>
                                 </Box>
                             ))}
                     </Box>
@@ -78,11 +78,14 @@ export const PopularMovies = () => {
                 </Box>
             </Box>
 
+
             {popularMovies?.results !== undefined && popularMovies.total_results > PAGE_SIZE ? (
                 <MoviesPagination totalCount={popularMovies?.total_results || 0} page={page} setPage={setPage}/>
             ) : (
                 <div></div>
             )}
+
+
         </>
     )
 }
