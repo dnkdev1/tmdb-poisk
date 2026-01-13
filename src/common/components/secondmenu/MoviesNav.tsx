@@ -37,14 +37,16 @@ export const MoviesNav = () => {
                         : isTabletResolution
                             ? "repeat(2, 1fr)"
                             : "repeat(4, 1fr)",
-                gap: "10px",
+                gap: "20px",
                 rowGap: "20px",
                 justifyContent: "center",
                 justifyItems: "center",
                 alignItems: "center",
                 paddingTop: "20px",
                 margin: "0 auto",
-                maxWidth: "100%",
+                maxWidth: "1200px",
+                // paddingLeft: '20px',
+                // paddingRight: '20px'
             }}
         >
 
