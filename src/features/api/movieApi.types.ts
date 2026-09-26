@@ -16,7 +16,7 @@ export const MovieSchema = z.object({
     video: z.boolean().nullable().optional(),
     vote_average: z.number().nullable().optional(),
     vote_count: z.number().nullable().optional(),
-}).strict();
+});
 
 
 
